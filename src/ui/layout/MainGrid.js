@@ -8,9 +8,9 @@ const MainGrid = () => {
             
             {prods.map(prod => {
                return(
-                    <div id={prod.key} className="product">
+                    <div className="product">
                         <div className="prod-pic">
-                            <img src={"product.png"} />
+                            <img src={"product.png"} alt="" />
                         </div>
                         <div className="prod-content">
                             <h1 className="prod-title">Title {prod.key}</h1>

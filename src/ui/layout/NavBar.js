@@ -1,5 +1,6 @@
 import "./NavBar.css"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -7,16 +8,16 @@ const NavBar = () => {
     return (
         <div className={"navbar"}>
             <div className={"logo"}>
-                <div><img className={"logopic"} src={"airplane.svg"}/></div>
+                <Link to="/"><div><img className={"logopic"} src={"airplane.svg"}/></div></Link>
                 <div className={"logotext"}>E-Shop</div>
             </div>
 
             <div className={"mainbar"}>
-                <a href={"#"}><span>Sort</span></a>
-                <a href={"#"}>By</a>
-                <a href={"#"}>Filter</a>
-                <a href={"#"}>Click</a>
-                <a href={"#"}>Cart</a>
+                <Link to={"a"}><span>Sort</span></Link>
+                <Link to={"#"}>By</Link>
+                <Link to={"#"}>Filter</Link>
+                <Link to={"#"}>Click</Link>
+                <Link to={"/cart"}>Cart</Link>
             </div>
         </div>
     )
