@@ -1,11 +1,11 @@
-import MainGrid from "../components/MainGrid"
+import Products from "../components/Products";
 
 const Home = () => {
-    return(
-        <>
-            <MainGrid />
-        </>
-    )
-}
+  return (
+    <>
+      <Products />
+    </>
+  );
+};
 
-export default Home
+export default Home;
