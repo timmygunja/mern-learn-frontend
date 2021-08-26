@@ -5,7 +5,7 @@ import classes from "./Cart.module.css";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
-  const totalPrice = useSelector((state) => state.cart.items.totalPrice);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   return (
     <Section name="cart">
@@ -19,6 +19,7 @@ const Cart = () => {
                 title: item.title,
                 description: item.description,
                 price: item.price,
+                quantity: item.quantity
               }}
             />
           ))}

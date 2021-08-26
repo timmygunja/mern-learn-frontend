@@ -8,7 +8,7 @@ const ProductItem = (props) => {
 
   const onAddHandler = () => {
     dispatch(
-      cartActions.add({
+      cartActions.addToCart({
         id: id,
         title: title,
         description: description,
