@@ -1,17 +1,20 @@
+import classes from "./CartItem.module.css";
+
 const CartItem = (props) => {
-  const { id, title, description, price } = props.item;
+  const { id, title, description, price, quantity } = props.item;
 
   return (
-    <li className="product">
-      <div className="prod-pic">
+    <li className={classes.product}>
+      <div className={classes['prod-pic']}>
         <img src={"product.png"} alt="" />
       </div>
-      <div className="prod-content">
-        <h1 className="prod-title">{title}</h1>
-        <p className="prod-description">{description}</p>
-        <p className="prod-price">{price} ₽</p>
-        <button className="prod-add">+</button>
-        <button className="prod-like">-</button>
+      <div className={classes['prod-content']}>
+        <h1 className={classes['prod-title']}>{title}</h1>
+        <p className={classes['prod-description']}>{description}</p>
+        <p className={classes['prod-price']}>{price} ₽</p>
+        <button className={classes['prod-remove']}>-</button>
+        <p className={classes['prod-quantity']}>Quantity: {quantity}</p>
+        <button className={classes['prod-add']}>+</button>
       </div>
     </li>
   );

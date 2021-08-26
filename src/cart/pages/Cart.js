@@ -1,26 +1,30 @@
 import { useSelector } from "react-redux";
 import Section from "../../shared/UIElements/Section";
 import CartItem from "../components/CartItem";
+import classes from "./Cart.module.css";
 
 const Cart = () => {
-    const cartItems = useSelector(state => state.cart.items)    
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalPrice = useSelector((state) => state.cart.items.totalPrice);
 
   return (
-    <Section name='cart'>
-      <h2>Your Shopping Cart</h2>
-      <ul>
-        {cartItems.map((item) => (
-          <CartItem
-            key={item.id}
-            item={{
-              id: item.id,
-              title: item.title,
-              description: item.description,
-              price: item.price,
-            }}
-          />
-        ))}
-      </ul>
+    <Section name="cart">
+      <div className={classes.cart}>
+        <div className={classes.mainbar}>
+          {cartItems.map((item) => (
+            <CartItem
+              key={item.id}
+              item={{
+                id: item.id,
+                title: item.title,
+                description: item.description,
+                price: item.price,
+              }}
+            />
+          ))}
+        </div>
+        <div className={classes.sidebar}>Total price: {totalPrice}</div>
+      </div>
     </Section>
   );
 };
