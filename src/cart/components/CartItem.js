@@ -19,10 +19,10 @@ const CartItem = (props) => {
 
   const decreaseQuantity = () => {
     dispatch(
-        cartActions.removeFromCart({
-          id: id,
-        })
-      );
+      cartActions.removeFromCart({
+        id: id,
+      })
+    );
   };
 
   return (

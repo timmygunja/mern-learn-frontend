@@ -1,9 +1,9 @@
-import Products from "../components/Products";
+import ProductsList from "../components/ProductsList";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
-      <Products />
+      <ProductsList products={props.products} />
     </>
   );
 };

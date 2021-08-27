@@ -1,53 +1,51 @@
 .navbar {
-    display: grid;
-    grid-template-columns: 2fr 7fr;
-    grid-gap: 20px;
-    grid-template-areas:
-            "logo mainbar";
-    border-bottom: 1px #f5f5f5 solid;
-    box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.15), 0 -5px 2px 2px rgba(0, 0, 0, 0.1);
-    min-height: 5rem;
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  grid-gap: 20px;
+  grid-template-areas: "logo mainbar";
+  border-bottom: 1px #f5f5f5 solid;
+  box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.15), 0 -5px 2px 2px rgba(0, 0, 0, 0.1);
+  min-height: 5rem;
 }
 
 .logo {
-    grid-area: logo;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 5px;
-    margin: 10px 20px;
-    font-size: 30px;
-    font-weight: 400;
+  grid-area: logo;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 5px;
+  margin: 10px 20px;
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .logopic {
-    max-width: 60px;
+  max-width: 60px;
 }
 
 .logotext {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mainbar {
-    grid-area: mainbar;
+  grid-area: mainbar;
 
-    margin: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
-    font-size: 22px;
-    font-weight: 300;
-
+  margin: 0 20px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 4fr 2fr 2fr;
+  font-size: 22px;
+  font-weight: 300;
 }
 
 .mainbar a {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mainbar a:hover,
 .mainbar a:focus {
-    background-color: rgba(245, 245, 245, 0.65);
+  background-color: rgba(245, 245, 245, 0.65);
 }

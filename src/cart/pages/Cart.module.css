@@ -1,16 +1,16 @@
 .cart {
-    display: grid;
-    grid-template-columns: 6fr 3fr;
-    grid-template-areas: "mainbar sidebar";
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: 6fr 3fr;
+  grid-template-areas: "mainbar sidebar";
+  grid-gap: 20px;
 }
 
 .mainbar {
-    grid-area: mainbar;
+  grid-area: mainbar;
 }
 
 .sidebar {
-    grid-area: sidebar;
-    padding: 10px;
-    border-left: 1px solid gray;
+  grid-area: sidebar;
+  padding: 10px;
+  border-left: 1px solid gray;
 }

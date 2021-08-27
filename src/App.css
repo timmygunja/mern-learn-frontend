@@ -8,3 +8,8 @@
 a {
   color: black;
 }
+
+.centered {
+    text-align: center;
+    margin: 30px;
+}
