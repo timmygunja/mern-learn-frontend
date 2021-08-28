@@ -32,7 +32,7 @@
   margin: 10px 5px 0px 5px;
   grid-template-areas:
     "prod-title prod-title prod-title"
-    "prod-description prod-description prod-price"
+    "prod-firm prod-firm prod-price"
     "prod-add . prod-like";
 }
 
@@ -48,8 +48,8 @@
   text-align: left;
 }
 
-.prod-description {
-  grid-area: prod-description;
+.prod-firm {
+  grid-area: prod-firm;
   text-align: left;
   font-weight: 400;
   font-size: 18px;

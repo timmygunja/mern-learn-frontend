@@ -17,7 +17,7 @@ const Cart = () => {
               item={{
                 id: item.id,
                 title: item.title,
-                description: item.description,
+                firm: item.firm,
                 price: item.price,
                 quantity: item.quantity,
               }}

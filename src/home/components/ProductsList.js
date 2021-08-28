@@ -2,7 +2,6 @@ import "./ProductsList.css";
 import ProductItem from "./ProductItem";
 
 const ProductsList = (props) => {
-
   return (
     <div className="maingrid">
       {props.products.map((product) => {
@@ -12,6 +11,7 @@ const ProductsList = (props) => {
             id={product.id}
             title={product.title}
             price={product.price}
+            firm={product.firm}
             description={product.description}
           />
         );
