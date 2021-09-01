@@ -64,9 +64,3 @@
   margin: 10px 0;
 }
 
-.size-table {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 7px;
-}
-

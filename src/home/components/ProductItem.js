@@ -1,10 +1,9 @@
 import "./ProductsList.css";
 import { cartActions } from "../../store/cart-slice";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const { id, title, firm, description, price } = props;
 
