@@ -31,9 +31,8 @@
   grid-gap: 5px;
   margin: 10px 5px 0px 5px;
   grid-template-areas:
-    "prod-title prod-title prod-title"
-    "prod-firm prod-firm prod-price"
-    "prod-add . prod-like";
+    "prod-title prod-title prod-price"
+    "prod-firm prod-firm prod-like"
 }
 
 .prod-content img {
@@ -58,13 +57,9 @@
 .prod-price {
   grid-area: prod-price;
   color: black;
-  text-align: right;
+  /* text-align: right; */
   font-weight: 400;
   font-size: 18px;
-}
-
-.prod-add {
-  grid-area: prod-add;
 }
 
 .prod-like {

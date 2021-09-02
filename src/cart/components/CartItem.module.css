@@ -26,7 +26,7 @@
   grid-gap: 5px;
   grid-template-areas:
     "prod-title prod-title prod-price"
-    "prod-firm prod-firm prod-firm"
+    "prod-firm prod-firm prod-size"
     "prod-remove prod-quantity prod-add";
 }
 
@@ -51,6 +51,14 @@
   text-align: right;
   font-weight: 500;
   font-size: 20px;
+}
+
+.prod-size {
+  grid-area: prod-size;
+  color: black;
+  text-align: right;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .prod-content button {

@@ -1,8 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/cart-slice";
+import { sizesActions } from "../../store/sizes-slice";
 import ButtonSize from "./ButtonSize";
 import classes from "./SizeForm.module.css";
 
-const SizeForm = () => {
+const SizeForm = (props) => {
+  const dispatch = useDispatch();
+  const { id, title, firm, description, price } = props;
   const sizeList = useSelector((state) => state.sizes.sizeList);
   const sizeChosen = useSelector((state) => state.sizes.sizeChosen);
 
@@ -12,16 +16,24 @@ const SizeForm = () => {
 
   const onAddToCartHandler = (e) => {
     e.preventDefault();
-    console.log(`last chosen size is ${sizeChosen}`);
+    // console.log(`last chosen size is ${sizeChosen}`);
+    dispatch(
+      cartActions.addToCart({
+        id: id,
+        title: title,
+        firm: firm,
+        description: description,
+        price: price,
+        size: sizeChosen,
+      })
+    );
+    dispatch(sizesActions.chooseSize(undefined));
   };
 
   return (
-    <form
-      className={classes["size-table"]}
-    >
-      
-      {sizeList.map(size => {
-        return <ButtonSize key={size} value={size}></ButtonSize>
+    <form className={classes["size-table"]}>
+      {sizeList.map((size) => {
+        return <ButtonSize key={size} value={size}></ButtonSize>;
       })}
 
       <button

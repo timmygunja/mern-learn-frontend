@@ -5,7 +5,7 @@ import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
-  const { id, title, firm, price, quantity } = props.item;
+  const { id, title, firm, price, size, quantity } = props.item;
 
   const increaseQuantity = () => {
     dispatch(
@@ -14,6 +14,7 @@ const CartItem = (props) => {
         title: title,
         firm: firm,
         price: price,
+        size: size,
       })
     );
   };
@@ -34,7 +35,8 @@ const CartItem = (props) => {
       <div className={classes["prod-content"]}>
         <h1 className={classes["prod-title"]}>{title}</h1>
         <p className={classes["prod-firm"]}>{firm}</p>
-        <p className={classes["prod-price"]}>{price * quantity} ₽</p>
+        <p className={classes["prod-price"]}>{price } ₽</p>
+        <p className={classes["prod-size"]}>Size: {size}</p>
         <button className={classes["prod-remove"]} onClick={decreaseQuantity}>
           -
         </button>

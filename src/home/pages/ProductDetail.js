@@ -44,9 +44,15 @@ const ProductDetail = (props) => {
                 <hr />
               </div>
             </div>
-            
-            <SizeForm />
 
+            <SizeForm
+              key={product.id}
+              title={product.title}
+              firm={product.firm}
+              description={product.description}
+              price={product.price}
+              size={product.size}
+            />
           </div>
         </div>
       </Section>
