@@ -35,7 +35,7 @@ const CartItem = (props) => {
       <div className={classes["prod-content"]}>
         <h1 className={classes["prod-title"]}>{title}</h1>
         <p className={classes["prod-firm"]}>{firm}</p>
-        <p className={classes["prod-price"]}>{price } ₽</p>
+        <p className={classes["prod-price"]}>{price} ₽</p>
         <p className={classes["prod-size"]}>Size: {size}</p>
         <button className={classes["prod-remove"]} onClick={decreaseQuantity}>
           -

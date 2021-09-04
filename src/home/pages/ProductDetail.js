@@ -46,7 +46,7 @@ const ProductDetail = (props) => {
             </div>
 
             <SizeForm
-              key={product.id}
+              id={product.id}
               title={product.title}
               firm={product.firm}
               description={product.description}

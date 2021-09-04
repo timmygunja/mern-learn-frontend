@@ -16,10 +16,9 @@ const SizeForm = (props) => {
 
   const onAddToCartHandler = (e) => {
     e.preventDefault();
-    // console.log(`last chosen size is ${sizeChosen}`);
     dispatch(
       cartActions.addToCart({
-        id: id,
+        id: `${id}-${sizeChosen}`,
         title: title,
         firm: firm,
         description: description,

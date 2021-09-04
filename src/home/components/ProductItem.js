@@ -1,9 +1,8 @@
 import "./ProductsList.css";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
-  const { id, title, firm, description, price } = props;
+  const { id, title, firm, price } = props;
 
   const onLikeHandler = () => {
     alert("liked");
