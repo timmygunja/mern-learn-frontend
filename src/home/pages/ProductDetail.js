@@ -51,6 +51,7 @@ const ProductDetail = (props) => {
               firm={product.firm}
               description={product.description}
               price={product.price}
+              isFavourite={product.isFavourite}
               size={product.size}
             />
           </div>

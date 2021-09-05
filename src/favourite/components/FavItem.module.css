@@ -1,0 +1,86 @@
+.product {
+  background-color: white;
+  margin: 0 50%;
+  justify-content: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  grid-template-areas: "prod-pic prod-text";
+  grid-gap: 5px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 15px 10px;
+}
+
+.prod-pic img {
+  width: 60%;
+  border-radius: 16px;
+}
+
+.prod-content {
+  display: grid;
+  padding: 25px 25px 25px 5px;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  grid-template-areas:
+    "prod-title prod-title prod-price"
+    "prod-firm prod-firm prod-size"
+    "prod-remove . prod-add";
+}
+
+.prod-title {
+  grid-area: prod-title;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: left;
+}
+
+.prod-firm {
+  grid-area: prod-firm;
+  text-align: left;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.prod-price {
+  grid-area: prod-price;
+  color: black;
+  text-align: right;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.prod-size {
+  grid-area: prod-size;
+  color: black;
+  text-align: right;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.prod-content button {
+  cursor: pointer;
+  border-radius: 7px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  transition: all 0.2s linear;
+}
+
+.prod-add {
+  grid-area: prod-add;
+}
+
+.prod-add:hover {
+  box-shadow: 0px 0px 50px 1px rgba(0, 255, 76, 0.438) inset;
+}
+
+.prod-remove {
+  grid-area: prod-remove;
+}
+
+.prod-remove:hover {
+  box-shadow: 0px 0px 50px 1px rgba(255, 0, 0, 0.438) inset;
+}
