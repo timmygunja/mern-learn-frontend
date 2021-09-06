@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
 import Section from "../../shared/UIElements/Section";
 import CartItem from "../components/CartItem";
+import EmptyCartCard from "../components/EmptyCartCard";
 import classes from "./Cart.module.css";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
+  const cartIsEmpty = useSelector((state) => state.cart.totalCount) === 0;
 
   return (
     <Section name="cart">
@@ -24,6 +26,7 @@ const Cart = () => {
               }}
             />
           ))}
+          {cartIsEmpty && <EmptyCartCard />}
         </div>
         <div className={classes.sidebar}>Total price: {totalPrice}</div>
       </div>
