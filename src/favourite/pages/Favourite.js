@@ -1,10 +1,13 @@
 import { useSelector } from "react-redux";
 import Section from "../../shared/UIElements/Section";
+import EmptyFavCard from "../components/EmptyFavCard";
 import FavItem from "../components/FavItem";
 import classes from "./Favourite.module.css";
 
 const Favourite = () => {
   const favouriteItems = useSelector((state) => state.products.favourites);
+  const favouritesIsEmpty =
+    useSelector((state) => state.products.favourites.length) === 0;
 
   return (
     <Section name="favourite">
@@ -20,6 +23,7 @@ const Favourite = () => {
             }}
           />
         ))}
+        {favouritesIsEmpty && <EmptyFavCard />}
       </div>
     </Section>
   );
