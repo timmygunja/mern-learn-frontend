@@ -25,6 +25,7 @@ const NavBar = () => {
         <Link to={"#"}>Click</Link>
         <Link to={"/cart"}>Cart: {cartTotalCount}</Link>
         <Link to={"/favourite"}>Favourite</Link>
+        <Link to={"/profile"}>Profile</Link>
         {/* <Link to={"/auth"}>Auth</Link> */}
       </div>
     </div>

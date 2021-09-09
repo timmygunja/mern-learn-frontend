@@ -1,0 +1,30 @@
+.form {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px 10px;
+  grid-template-areas: 
+    "login"
+    "password"
+    "submit";
+}
+
+/* .login-logo {
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    padding: 0 0 5px 0;
+} */
+
+.login-input {
+  grid-area: login;
+}
+
+.password-input {
+  grid-area: password;
+}
+
+.submit-button {
+  grid-area: submit;
+}

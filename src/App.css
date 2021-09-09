@@ -14,3 +14,15 @@ a {
     margin: 50px;
 }
 
+.hard-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.low-centered {
+  display: flex;
+  justify-content:flex-end;
+  align-items: flex-end;
+}
+
