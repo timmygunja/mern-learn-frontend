@@ -1,10 +1,10 @@
-import "./Section.css"
+import classes from "./Section.module.css"
 
 const Section = (props) => {
     return(
-        <div className={"section"}>
-            <fieldset className={"section-outline"}>
-                <legend className={"section-legend"}>
+        <div className={classes.section}>
+            <fieldset className={classes["section-outline"]}>
+                <legend className={classes["section-legend"]}>
                     {props.name}
                 </legend>
                 {props.children}
