@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { sizesActions } from "../../store/sizes-slice";
-import "./ButtonSize.css";
+import classes from "./ButtonSize.module.css";
 
 const ButtonSize = (props) => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const ButtonSize = (props) => {
   return (
     <button
       className={
-        sizeChosen === props.value ? "size-button-clicked" : "size-button"
+        sizeChosen === props.value ? classes["size-button-clicked"] : classes["size-button"]
       }
       type={"radio"}
       onClick={onClickHandler}

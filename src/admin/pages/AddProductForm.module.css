@@ -1,0 +1,42 @@
+.form {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px 10px;
+  grid-template-areas: 
+    "name"
+    "firm"
+    "description"
+    "price"
+    "size"
+    "quantity"
+    "submit";
+}
+
+.name-input {
+  grid-area: name;
+}
+
+.firm-input {
+  grid-area: firm;
+}
+
+.description-input {
+  grid-area: description;
+}
+
+.price-input {
+  grid-area: price;
+}
+
+.size-input {
+  grid-area: size;
+}
+
+.quantity-input {
+  grid-area: quantity;
+}
+
+.submit-button {
+  grid-area: submit;
+}

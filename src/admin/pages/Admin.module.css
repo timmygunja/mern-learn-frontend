@@ -1,0 +1,14 @@
+.admin {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    grid-template-areas: 
+        "stats addform";
+}
+
+.section-stats {
+    grid-area: stats;
+}
+
+.section-add-form {
+    grid-area: addform;
+}

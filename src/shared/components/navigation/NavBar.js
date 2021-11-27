@@ -21,8 +21,8 @@ const NavBar = () => {
           <span>Sort</span>
         </Link>
         <Link to={"#"}>By</Link>
-        <Link to={"#"}>Filter</Link>
-        <Link to={"#"}>Click</Link>
+        <Link to={"/admin"}>Admin</Link>
+        <Link to={"/auth"}>Auth</Link>
         <Link to={"/cart"}>Cart: {cartTotalCount}</Link>
         <Link to={"/favourite"}>Favourite</Link>
         <Link to={"/profile"}>Profile</Link>
