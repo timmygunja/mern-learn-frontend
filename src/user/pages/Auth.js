@@ -3,70 +3,140 @@ import classes from "./Auth.module.css";
 import TextField from "@material-ui/core/TextField";
 import Card from "../../shared/UIElements/Card";
 import Button from "@material-ui/core/Button";
-// import Grid from "@material-ui/core/Grid";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import { useRef } from "react";
-import { InputAdornment } from "@material-ui/core";
+// import AccountCircle from "@material-ui/icons/AccountCircle";
+import { useRef, useState } from "react";
 import { uiActions } from "../../store/ui-slice";
-import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import LoadingSpinner from "../../shared/UIElements/LoadingSpinner"
 
 const Auth = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const isLogged = useSelector((state) => state.ui.isLogged);
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState("")
 
-  const loginRef = useRef("");
+  const usernameRef = useRef("");
   const passwordRef = useRef("");
 
-  const submitHandler = (e) => {
+  const submitLoginHandler = async (e) => {
     e.preventDefault();
+
+    if (!isLogged) {
+    }
 
     dispatch(
       uiActions.login({
         user: {
-          login: loginRef.current.value,
+          username: usernameRef.current.value,
           password: passwordRef.current.value,
         },
       })
     );
+  };
 
-    console.log(isLogged);
-    // history.push("/");
+  const submitRegisterHandler = async (e) => {
+    e.preventDefault();
+    setIsLoading(true)
+
+    if (!isLogged) {
+      try {
+        const response = await fetch("http://localhost:5000/api/users/signup", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            username: usernameRef.current.value,
+            password: passwordRef.current.value,
+          }),
+        });
+
+        const responseData = await response.json();
+        console.log(responseData);
+      } catch (error) {
+        console.log(error);
+      }
+
+      setIsLoading(false)
+    }
+
+    // dispatch(
+    //   uiActions.login({
+    //     user: {
+    //       username: usernameRef.current.value,
+    //       password: passwordRef.current.value,
+    //     },
+    //   })
+    // );
   };
 
   return (
-    <Section name={"auth"}>
-      <div className={"hard-centered"}>
-        <Card>
-          <form className={classes.form}>
-            {/* <div className={classes["login-logo"]}>
-              <AccountCircle />
-            </div> */}
-            <TextField
-              className={classes["login-input"]}
-              label="Login"
-              variant="outlined"
-              inputRef={loginRef}
-            />
-            <TextField
-              className={classes["password-input"]}
-              label="Password"
-              variant="outlined"
-              inputRef={passwordRef}
-            />
-            <Button
-              className={classes["submit-button"]}
-              onClick={submitHandler}
-              type={"submit"}
-              variant="outlined"
-            >
-              Submit
-            </Button>
-          </form>
-        </Card>
-      </div>
-    </Section>
+    <>
+      {isLoading && <LoadingSpinner asOverlay />}
+      <Section name={"Log in"}>
+        <div className={"hard-centered"}>
+          <Card>
+            <form className={classes.form}>
+              {/* <div className={classes["username-logo"]}>
+                <AccountCircle />
+              </div> */}
+              <TextField
+                className={classes["username-input"]}
+                label="Username"
+                variant="outlined"
+                inputRef={usernameRef}
+              />
+              <TextField
+                className={classes["password-input"]}
+                label="Password"
+                variant="outlined"
+                inputRef={passwordRef}
+              />
+              <Button
+                className={classes["submit-button"]}
+                onClick={submitLoginHandler}
+                type={"submit"}
+                variant="outlined"
+              >
+                Submit
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </Section>
+
+      <Section name={"Register"}>
+        <div className={"hard-centered"}>
+          <Card>
+            <form className={classes.form}>
+              {/* <div className={classes["username-logo"]}>
+            <AccountCircle />
+          </div> */}
+              <TextField
+                className={classes["username-input"]}
+                label="Username"
+                variant="outlined"
+                inputRef={usernameRef}
+              />
+              <TextField
+                className={classes["password-input"]}
+                label="Password"
+                variant="outlined"
+                inputRef={passwordRef}
+              />
+              <Button
+                className={classes["submit-button"]}
+                onClick={submitRegisterHandler}
+                type={"submit"}
+                variant="outlined"
+              >
+                Submit
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </Section>
+    </>
   );
 };
 

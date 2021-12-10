@@ -13,7 +13,7 @@ import Profile from "./user/pages/Profile";
 function App() {
   const products = useSelector((state) => state.products.items);
   const isLogged = useSelector((state) => state.ui.isLogged);
-  const username = useSelector((state) => state.ui.user.login);
+  const username = useSelector((state) => state.ui.user.username);
 
   return (
     <div className="App">
@@ -39,7 +39,6 @@ function App() {
             <Auth />
           </Route>
           <Route exact path="/profile">
-            {console.log(isLogged)}
             {isLogged ? (
               <Profile />
             ) : (

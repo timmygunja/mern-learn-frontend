@@ -5,7 +5,7 @@ const uiSlice = createSlice({
   initialState: {
     isLogged: false,
     user: {
-      login: undefined,
+      username: undefined,
       password: undefined,
     },
   },
@@ -13,7 +13,7 @@ const uiSlice = createSlice({
     login(state, action) {
       const userData = action.payload.user;
 
-      state.user.login = userData.login;
+      state.user.username = userData.username;
       state.user.password = userData.password;
 
       state.isLogged = true;
