@@ -7,7 +7,7 @@ import classes from "./SizeForm.module.css";
 
 const SizeForm = (props) => {
   const dispatch = useDispatch();
-  const { id, title, firm, description, price, isFavourite } = props;
+  const { id, name, firm, description, price, isFavourite } = props;
   const sizeList = useSelector((state) => state.sizes.sizeList);
   const sizeChosen = useSelector((state) => state.sizes.sizeChosen);
 
@@ -33,7 +33,7 @@ const SizeForm = (props) => {
     dispatch(
       cartActions.addToCart({
         id: `${id}-${sizeChosen}`,
-        title: title,
+        name: name,
         firm: firm,
         description: description,
         price: price,

@@ -2,36 +2,35 @@ import { useEffect, useState } from "react";
 import ProductsList from "../components/ProductsList";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
+import { useHttpClient } from "../../shared/hooks/http-hook";
 
-const Home = (props) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+const Home = () => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProducts, setLoadedProducts] = useState(null);
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
-    const sendRequest = async () => {
+    const loadProducts = async () => {
       try {
-        setIsLoading(true);
-        const response = await fetch("htpp://localhost:5000/api/products");
-
-        const responseData = await response.json();
-        if (!responseData.ok) {
-          throw new Error(responseData.message);
-        }
+        const responseData = await sendRequest(
+          "http://localhost:5000/api/products",
+          "GET",
+          {
+            "Content-Type": "application/json",
+          }
+        );
 
         setLoadedProducts(responseData.products);
-      } catch (err) {
-        setError(err.message);
-      }
-      setIsLoading(false);
+      } catch (err) {}
     };
-    sendRequest();
-  }, []);
+    loadProducts();
+  }, [sendRequest]);
 
   return (
     <>
-      <ProductsList products={props.products} />
+      {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />}
+      {loadedProducts && <ProductsList products={loadedProducts} />}
     </>
   );
 };

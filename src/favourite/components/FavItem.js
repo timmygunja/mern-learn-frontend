@@ -6,7 +6,7 @@ import classes from "./FavItem.module.css";
 const FavItem = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { id, title, firm, price } = props.item;
+  const { id, name, firm, price } = props.item;
 
   const removeFromFavourite = () => {
     dispatch(
@@ -26,7 +26,7 @@ const FavItem = (props) => {
         <img src={"product.png"} alt="" />
       </Link>
       <div className={classes["prod-content"]}>
-        <h1 className={classes["prod-title"]}>{title}</h1>
+        <h1 className={classes["prod-name"]}>{name}</h1>
         <p className={classes["prod-firm"]}>{firm}</p>
         <p className={classes["prod-price"]}>{price} ₽</p>
         <button

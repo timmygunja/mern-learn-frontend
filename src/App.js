@@ -10,7 +10,6 @@ import NavBar from "./shared/components/navigation/NavBar";
 import Auth from "./user/pages/Auth";
 
 function App() {
-  const products = useSelector((state) => state.products.items);
   const isLogged = useSelector((state) => state.ui.isLogged);
   const username = useSelector((state) => state.ui.user.username);
 
@@ -23,13 +22,13 @@ function App() {
       <div className={"content"}>
         <Switch>
           <Route exact path="/">
-            <Home products={products} />
+            <Home />
           </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
           <Route exact path="/products/:productId">
-            <ProductDetail products={products} />
+            <ProductDetail />
           </Route>
           <Route exact path="/favourite">
             <Favourite />

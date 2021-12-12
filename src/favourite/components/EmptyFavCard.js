@@ -8,7 +8,7 @@ const EmptyFavCard = (props) => {
         <img src={"product.png"} alt="" />
       </div>
       <div className={classes["prod-content"]}>
-        <div className={classes["prod-title"]}>No products in favourites found</div>
+        <div className={classes["prod-name"]}>No products in favourites found</div>
       </div>
     </Link>
   );

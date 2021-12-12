@@ -30,13 +30,13 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 5px;
   grid-template-areas:
-    "prod-title prod-title prod-price"
+    "prod-name prod-name prod-price"
     "prod-firm prod-firm prod-size"
     "prod-remove prod-quantity prod-add";
 }
 
-.prod-title {
-  grid-area: prod-title;
+.prod-name {
+  grid-area: prod-name;
   font-family: sans-serif;
   font-weight: 500;
   font-size: 20px;

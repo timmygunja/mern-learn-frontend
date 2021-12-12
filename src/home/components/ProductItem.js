@@ -5,7 +5,7 @@ import { productsActions } from "../../store/products-slice";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-  const { id, title, firm, price, isFavourite } = props;
+  const { id, name, firm, price, isFavourite } = props;
 
   const onLikeHandler = () => {
     if (!isFavourite) {
@@ -29,7 +29,7 @@ const ProductItem = (props) => {
         <img src={"product.png"} alt="" />
       </Link>
       <div className={classes["prod-content"]}>
-        <h1 className={classes["prod-title"]}>{title}</h1>
+        <h1 className={classes["prod-name"]}>{name}</h1>
         <p className={classes["prod-firm"]}>{firm}</p>
         <p className={classes["prod-price"]}>{price} ₽</p>
         <button

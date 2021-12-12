@@ -5,13 +5,13 @@ import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
-  const { id, title, firm, price, size, quantity } = props.item;
+  const { id, name, firm, price, size, quantity } = props.item;
 
   const increaseQuantity = () => {
     dispatch(
       cartActions.addToCart({
         id: id,
-        title: title,
+        name: name,
         firm: firm,
         price: price,
         size: size,
@@ -33,7 +33,7 @@ const CartItem = (props) => {
         <img src={"product.png"} alt="" />
       </Link>
       <div className={classes["prod-content"]}>
-        <h1 className={classes["prod-title"]}>{title}</h1>
+        <h1 className={classes["prod-name"]}>{name}</h1>
         <p className={classes["prod-firm"]}>{firm}</p>
         <p className={classes["prod-price"]}>{price} ₽</p>
         <p className={classes["prod-size"]}>Size: {size}</p>

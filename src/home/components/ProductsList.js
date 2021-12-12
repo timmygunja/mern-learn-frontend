@@ -9,10 +9,10 @@ const ProductsList = (props) => {
           <ProductItem
             key={product.id}
             id={product.id}
-            title={product.title}
-            price={product.price}
+            name={product.name}
             firm={product.firm}
             description={product.description}
+            price={product.price}
             isFavourite={product.isFavourite}
           />
         );

@@ -18,7 +18,7 @@ const Cart = () => {
               key={item.id}
               item={{
                 id: item.id,
-                title: item.title,
+                name: item.name,
                 firm: item.firm,
                 price: item.price,
                 size: item.size,
