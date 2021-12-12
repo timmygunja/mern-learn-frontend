@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Section from "../../shared/UIElements/Section";
 import classes from "./ProductDetail.module.css";
-import SizeForm from "../components/SizeForm";
+// import SizeForm from "../components/SizeForm";
 
 const ProductDetail = (props) => {
   const productId = useParams().productId;
@@ -45,7 +45,7 @@ const ProductDetail = (props) => {
               </div>
             </div>
 
-            <SizeForm
+            {/* <SizeForm
               id={product.id}
               title={product.title}
               firm={product.firm}
@@ -53,7 +53,7 @@ const ProductDetail = (props) => {
               price={product.price}
               isFavourite={product.isFavourite}
               size={product.size}
-            />
+            /> */}
           </div>
         </div>
       </Section>

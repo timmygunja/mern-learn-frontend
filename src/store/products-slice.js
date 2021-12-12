@@ -1,4 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useHttpClient } from "../shared/hooks/http-hook";
+
+// const loadProducts = async () => {
+//   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
+//   try {
+//     responseData = await sendRequest("http://localhost:5000/api/products", {
+//       "Content-Type": "application/json",
+//     });
+
+//     const products = responseData.products;
+//   } catch (err) {
+//     const products = [];
+//   }
+// };
 
 const productsSlice = createSlice({
   name: "products",

@@ -9,14 +9,14 @@ import { uiActions } from "../../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
-import { Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogged = useSelector((state) => state.ui.isLogged);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const user = useSelector((state) => state.ui.user);
 
@@ -27,25 +27,19 @@ const Auth = () => {
 
   const submitLoginHandler = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
+    
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
-        method: "POST",
-        headers: {
+      await sendRequest(
+        "http://localhost:5000/api/users/login",
+        "POST",
+        {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
+        JSON.stringify({
           username: loginUsernameRef.current.value,
           password: loginPasswordRef.current.value,
-        }),
-      });
-
-      const responseData = await response.json();
-
-      if (!response.ok) {
-        throw new Error(responseData.message);
-      }
+        })
+      );
 
       dispatch(
         uiActions.login({
@@ -55,34 +49,27 @@ const Auth = () => {
           },
         })
       );
-      history.push("/")
-    } catch (error) {
-      setError(error.message || "Something went wrong, please try again");
-    }
-
-    setIsLoading(false);
+      history.push("/");
+    } catch (error) {}
   };
 
   const submitRegisterHandler = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/signup", {
-        method: "POST",
-        headers: {
+      await sendRequest(
+        "http://localhost:5000/api/users/signup",
+        "POST",
+        {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
+        JSON.stringify({
           username: registerUsernameRef.current.value,
           password: registerPasswordRef.current.value,
-        }),
-      });
+        })
+      );
 
-      const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error(responseData.message);
-      }
+      console.log("Made Resgister request");
 
       dispatch(
         uiActions.login({
@@ -92,16 +79,15 @@ const Auth = () => {
           },
         })
       );
-      history.push("/")
+
+      console.log("dispatch");
+
+      history.push("/");
+
+      console.log("push");
     } catch (error) {
-      setError(error.message || "Something went wrong, please try again");
+      console.log(error);
     }
-
-    setIsLoading(false);
-  };
-
-  const errorHandler = () => {
-    setError(null);
   };
 
   const logoutHandler = () => {
@@ -111,7 +97,7 @@ const Auth = () => {
   return (
     <>
       {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={errorHandler} />}
+      {<ErrorModal error={error} onClear={clearError} />}
 
       <Section name={"Log in"}>
         <div className={"hard-centered"}>
