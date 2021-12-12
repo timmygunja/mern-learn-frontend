@@ -18,6 +18,11 @@ const uiSlice = createSlice({
 
       state.isLogged = true;
     },
+    logout(state) {
+      state.user.username = undefined;
+      state.user.password = undefined;
+      state.isLogged = false;
+    },
   },
 });
 

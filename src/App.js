@@ -8,7 +8,6 @@ import Home from "./home/pages/Home";
 import ProductDetail from "./home/pages/ProductDetail";
 import NavBar from "./shared/components/navigation/NavBar";
 import Auth from "./user/pages/Auth";
-import Profile from "./user/pages/Profile";
 
 function App() {
   const products = useSelector((state) => state.products.items);
@@ -37,15 +36,6 @@ function App() {
           </Route>
           <Route exact path="/auth">
             <Auth />
-          </Route>
-          <Route exact path="/profile">
-            {isLogged ? (
-              <Profile />
-            ) : (
-              <div className={"hard-centered"}>
-                You are not logged in! (url-change resets state)
-              </div>
-            )}
           </Route>
           <Route exact path="/admin">
             {isLogged && username === "admin" ? (

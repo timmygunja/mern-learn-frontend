@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px 10px;
-  grid-template-areas: 
+  grid-template-areas:
     "username"
     "password"
     "submit";
@@ -27,4 +27,11 @@
 
 .submit-button {
   grid-area: submit;
+}
+
+.logged-centered {
+  text-align: center;
+  display: grid;
+  grid-gap: 15px;
+  margin: 20px;
 }
