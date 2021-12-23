@@ -1,36 +1,60 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import ErrorModal from "../../shared/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
 import CartItem from "../components/CartItem";
+import CartItemsList from "../components/CartItemsList";
 import EmptyCartCard from "../components/EmptyCartCard";
 import classes from "./Cart.module.css";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
-  const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const cartIsEmpty = useSelector((state) => state.cart.totalCount) === 0;
+  // const cartItems = useSelector((state) => state.cart.items);
+  // const totalPrice = useSelector((state) => state.cart.totalPrice);
+  // const cartIsEmpty = useSelector((state) => state.cart.totalCount) === 0;
+
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [loadedCartItems, setLoadedCartItems] = useState(null);
+
+  useEffect(() => {
+    // async lower because useEffect async is a bad practice
+    const loadCartItems = async () => {
+      try {
+        const responseData = await sendRequest(
+          "http://localhost:5000/api/cart",
+          "GET",
+          {
+            "Content-Type": "application/json",
+          }
+        );
+
+        // console.log(responseData.cartItems);
+        setLoadedCartItems(responseData.cartItems);
+        // console.log(loadedCartItems);
+        // console.log(responseData);
+        // console.log(responseData.cartItems);
+        // setLoadedCartItems(responseData.cartItems);
+        // console.log(loadedCartItems);
+      } catch (err) {}
+    };
+    loadCartItems();
+  }, [sendRequest]);
 
   return (
-    <Section name="cart">
-      <div className={classes.cart}>
-        <div className={classes.mainbar}>
-          {cartItems.map((item) => (
-            <CartItem
-              key={item.id}
-              item={{
-                id: item.id,
-                name: item.name,
-                firm: item.firm,
-                price: item.price,
-                size: item.size,
-                quantity: item.quantity,
-              }}
-            />
-          ))}
-          {cartIsEmpty && <EmptyCartCard />}
+    <>
+      {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />}
+
+      <Section name="cart">
+        <div className={classes.cart}>
+          <div className={classes.mainbar}>
+            {loadedCartItems && loadedCartItems.length === 0 && <EmptyCartCard />}
+            {loadedCartItems && <CartItemsList cartItems={loadedCartItems} />}
+          </div>
         </div>
-        <div className={classes.sidebar}>Total price: {totalPrice}</div>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 };
 

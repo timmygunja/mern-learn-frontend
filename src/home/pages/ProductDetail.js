@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import Button from "../../shared/UIElements/Button";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
@@ -29,6 +30,15 @@ const ProductDetail = (props) => {
     };
     loadProduct();
   }, [sendRequest]);
+
+  const addToCartHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await sendRequest(`http://localhost:5000/api/cart/${productId}`, "POST", {
+        "Content-Type": "application/json",
+      });
+    } catch (err) {}
+  };
 
   if (loadedProduct) {
     return (
@@ -80,6 +90,7 @@ const ProductDetail = (props) => {
               isFavourite={product.isFavourite}
               size={product.size}
             /> */}
+              <Button onClick={addToCartHandler}>Add to cart</Button>
             </div>
           </div>
         </Section>
