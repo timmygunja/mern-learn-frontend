@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
+  const token = useSelector((state) => state.ui.user.token);
 
   return (
     <div className={"navbar"}>
@@ -23,8 +24,8 @@ const NavBar = () => {
         <Link to={"#"}>By</Link>
         <Link to={"/admin"}>Admin</Link>
         <Link to={"/auth"}>Auth</Link>
-        <Link to={"/cart"}>Cart: {cartTotalCount}</Link>
-        <Link to={"/favourite"}>Favourite</Link>
+        {token && <Link to={"/cart"}>Cart: {cartTotalCount}</Link>}
+        {token && <Link to={"/favourite"}>Favourite</Link>}
       </div>
     </div>
   );

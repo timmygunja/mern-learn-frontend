@@ -27,9 +27,9 @@ const Auth = () => {
 
   const submitLoginHandler = async (e) => {
     e.preventDefault();
-    
+
     try {
-      await sendRequest(
+      const responseData = await sendRequest(
         "http://localhost:5000/api/users/login",
         "POST",
         {
@@ -46,6 +46,7 @@ const Auth = () => {
           user: {
             username: loginUsernameRef.current.value,
             password: loginPasswordRef.current.value,
+            token: responseData.token,
           },
         })
       );
@@ -57,7 +58,7 @@ const Auth = () => {
     e.preventDefault();
 
     try {
-      await sendRequest(
+      const responseData = await sendRequest(
         "http://localhost:5000/api/users/signup",
         "POST",
         {
@@ -69,24 +70,18 @@ const Auth = () => {
         })
       );
 
-      console.log("Made Resgister request");
-
       dispatch(
         uiActions.login({
           user: {
             username: registerUsernameRef.current.value,
             password: registerPasswordRef.current.value,
+            token: responseData.token,
           },
         })
       );
 
-      console.log("dispatch");
-
       history.push("/");
-
-      console.log("push");
     } catch (error) {
-      console.log(error);
     }
   };
 

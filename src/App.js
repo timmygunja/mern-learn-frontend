@@ -12,29 +12,24 @@ import Auth from "./user/pages/Auth";
 function App() {
   const isLogged = useSelector((state) => state.ui.isLogged);
   const username = useSelector((state) => state.ui.user.username);
+  const token = useSelector((state) => state.ui.user.token);
 
   return (
     <div className="App">
       <Route path="/">
         <NavBar />
       </Route>
-      
+
       <div className={"content"}>
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/cart">
-            <Cart />
+          <Route exact path="/auth">
+            <Auth />
           </Route>
           <Route exact path="/products/:productId">
             <ProductDetail />
-          </Route>
-          <Route exact path="/favourite">
-            <Favourite />
-          </Route>
-          <Route exact path="/auth">
-            <Auth />
           </Route>
           <Route exact path="/admin">
             {isLogged && username === "admin" ? (
@@ -45,6 +40,16 @@ function App() {
               </div>
             )}
           </Route>
+          {token && (
+            <Route exact path="/cart">
+              <Cart />
+            </Route>
+          )}
+          {token && (
+            <Route exact path="/favourite">
+              <Favourite />
+            </Route>
+          )}
           <Redirect to="/"></Redirect>
         </Switch>
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Button from "../../shared/UIElements/Button";
@@ -12,6 +13,7 @@ const ProductDetail = (props) => {
   const productId = useParams().productId;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
+  const user = useSelector((state) => state.ui.user);
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -36,6 +38,7 @@ const ProductDetail = (props) => {
     try {
       await sendRequest(`http://localhost:5000/api/cart/${productId}`, "POST", {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + user.token,
       });
     } catch (err) {}
   };

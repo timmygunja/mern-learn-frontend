@@ -13,6 +13,7 @@ const Cart = () => {
   // const cartItems = useSelector((state) => state.cart.items);
   // const totalPrice = useSelector((state) => state.cart.totalPrice);
   // const cartIsEmpty = useSelector((state) => state.cart.totalCount) === 0;
+  const user = useSelector((state) => state.ui.user);
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedCartItems, setLoadedCartItems] = useState(null);
@@ -26,16 +27,10 @@ const Cart = () => {
           "GET",
           {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + user.token,
           }
         );
-
-        // console.log(responseData.cartItems);
         setLoadedCartItems(responseData.cartItems);
-        // console.log(loadedCartItems);
-        // console.log(responseData);
-        // console.log(responseData.cartItems);
-        // setLoadedCartItems(responseData.cartItems);
-        // console.log(loadedCartItems);
       } catch (err) {}
     };
     loadCartItems();
@@ -49,7 +44,9 @@ const Cart = () => {
       <Section name="cart">
         <div className={classes.cart}>
           <div className={classes.mainbar}>
-            {loadedCartItems && loadedCartItems.length === 0 && <EmptyCartCard />}
+            {loadedCartItems && loadedCartItems.length === 0 && (
+              <EmptyCartCard />
+            )}
             {loadedCartItems && <CartItemsList cartItems={loadedCartItems} />}
           </div>
         </div>
