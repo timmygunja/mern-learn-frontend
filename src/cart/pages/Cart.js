@@ -28,6 +28,7 @@ const Cart = () => {
           {
             "Content-Type": "application/json",
             Authorization: "Bearer " + user.token,
+            Username: user.username,
           }
         );
         setLoadedCartItems(responseData.cartItems);

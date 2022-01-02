@@ -39,6 +39,7 @@ const ProductDetail = (props) => {
       await sendRequest(`http://localhost:5000/api/cart/${productId}`, "POST", {
         "Content-Type": "application/json",
         Authorization: "Bearer " + user.token,
+        Username: user.username,
       });
     } catch (err) {}
   };
