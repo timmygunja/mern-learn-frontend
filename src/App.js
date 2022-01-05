@@ -7,12 +7,14 @@ import Favourite from "./favourite/pages/Favourite";
 import Home from "./home/pages/Home";
 import ProductDetail from "./home/pages/ProductDetail";
 import NavBar from "./shared/components/navigation/NavBar";
+import { useAuth } from "./shared/hooks/auth-hook";
 import Auth from "./user/pages/Auth";
+
 
 function App() {
   const isLogged = useSelector((state) => state.ui.isLogged);
   const username = useSelector((state) => state.ui.user.username);
-  const token = useSelector((state) => state.ui.user.token);
+  const { token } = useAuth();
 
   return (
     <div className="App">

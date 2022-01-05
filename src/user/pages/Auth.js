@@ -44,12 +44,13 @@ const Auth = () => {
       dispatch(
         uiActions.login({
           user: {
-            username: loginUsernameRef.current.value,
-            password: loginPasswordRef.current.value,
+            id: responseData.userId,
+            username: responseData.username,
             token: responseData.token,
           },
         })
       );
+
       history.push("/");
     } catch (error) {}
   };
@@ -73,8 +74,8 @@ const Auth = () => {
       dispatch(
         uiActions.login({
           user: {
-            username: registerUsernameRef.current.value,
-            password: registerPasswordRef.current.value,
+            id: responseData.userId,
+            username: responseData.username,
             token: responseData.token,
           },
         })
