@@ -1,5 +1,6 @@
 import { Button, Card, TextField } from "@material-ui/core";
 import { useRef } from "react";
+import ImageUpload from "../../shared/components/formElements/ImageUpload";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
@@ -32,9 +33,14 @@ const AddProductForm = () => {
           price: priceRef.current.value,
         })
       );
+      
       window.alert("successful")
     } catch (err) {}
   };
+
+  const fileUploadHandler = () => {
+
+  }
 
   return (
     <>
@@ -70,6 +76,7 @@ const AddProductForm = () => {
             inputRef={priceRef}
             type="number"
           />
+          <ImageUpload id="image" center onInput={fileUploadHandler} />
           {/* <TextField
           className={classes["size-input"]}
           label="Size"
