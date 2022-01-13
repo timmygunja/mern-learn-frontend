@@ -15,32 +15,35 @@ const AddProductForm = () => {
   const priceRef = useRef("");
   // const sizeRef = useRef("");
   // const quantityRef = useRef("");
+  let image;
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
+      const formData = new FormData();
+      formData.append("name", nameRef.current.value);
+      formData.append("firm", firmRef.current.value);
+      formData.append("description", descriptionRef.current.value);
+      formData.append("price", priceRef.current.value);
+      formData.append("image", image);
+
       const responseData = await sendRequest(
         "http://localhost:5000/api/products",
         "POST",
-        {
-          "Content-Type": "application/json",
-        },
-        JSON.stringify({
-          name: nameRef.current.value,
-          firm: firmRef.current.value,
-          description: descriptionRef.current.value,
-          price: priceRef.current.value,
-        })
+        {},
+        formData
       );
-      
-      window.alert("successful")
-    } catch (err) {}
+
+      window.alert("successful");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const fileUploadHandler = () => {
-
-  }
+  const fileUploadHandler = (pickedFile) => {
+    image = pickedFile;
+  };
 
   return (
     <>

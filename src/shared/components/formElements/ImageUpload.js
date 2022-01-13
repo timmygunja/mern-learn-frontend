@@ -20,10 +20,6 @@ const ImageUpload = (props) => {
     fileReader.readAsDataURL(file);
   }, [file]);
 
-  const pickImageHandler = () => {
-    filePickerRef.current.click();
-  };
-
   const pickedHandler = (event) => {
     let pickedFile;
     let fileIsValid = isValid; // cause of useState batching
@@ -38,7 +34,11 @@ const ImageUpload = (props) => {
       fileIsValid = false;
     }
 
-    props.onInput(props.id, pickedFile, fileIsValid);
+    props.onInput(pickedFile);
+  };
+
+  const pickImageHandler = () => {
+    filePickerRef.current.click();
   };
 
   return (

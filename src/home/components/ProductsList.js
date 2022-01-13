@@ -13,6 +13,7 @@ const ProductsList = (props) => {
             firm={product.firm}
             description={product.description}
             price={product.price}
+            image={product.image}
             isFavourite={product.isFavourite}
           />
         );

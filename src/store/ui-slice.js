@@ -21,7 +21,7 @@ const uiSlice = createSlice({
 
       state.isLogged = true;
 
-      const tokenExpirationDate = userData.tokenExpirationDate || new Date(new Date().getTime() + 3000) // 1000 * 60 * 60 * 12
+      const tokenExpirationDate = userData.tokenExpirationDate || new Date(new Date().getTime() + 1000 * 60 * 60) // 1000 * 60 * 60 * 12
       state.user.tokenExpirationDate = tokenExpirationDate;
 
       localStorage.setItem(

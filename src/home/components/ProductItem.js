@@ -5,7 +5,7 @@ import { productsActions } from "../../store/products-slice";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-  const { id, name, firm, price, isFavourite } = props;
+  const { id, name, firm, price, image, isFavourite } = props;
 
   const onLikeHandler = () => {
     if (!isFavourite) {
@@ -26,7 +26,7 @@ const ProductItem = (props) => {
   return (
     <div className={classes.product}>
       <Link to={`/products/${id}`} className={classes["prod-pic"]}>
-        <img src={"product.png"} alt="" />
+        <img src={`http://localhost:5000/${image}`} alt="" />
       </Link>
       <div className={classes["prod-content"]}>
         <h1 className={classes["prod-name"]}>{name}</h1>

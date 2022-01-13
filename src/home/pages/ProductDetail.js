@@ -54,22 +54,22 @@ const ProductDetail = (props) => {
             <div className={classes.mainbar}>
               <img
                 className={classes["product-img"]}
-                src={loadedProduct.image}
+                src={`http://localhost:5000/${loadedProduct.image}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
-                src={loadedProduct.image}
+                src={`http://localhost:5000/${loadedProduct.image}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
-                src={loadedProduct.image}
+                src={`http://localhost:5000/${loadedProduct.image}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
-                src={loadedProduct.image}
+                src={`http://localhost:5000/${loadedProduct.image}`}
                 alt=""
               />
             </div>
