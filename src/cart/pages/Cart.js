@@ -32,7 +32,7 @@ const Cart = () => {
           }
         );
         setLoadedCartItems(responseData.cartItems);
-      } catch (err) {}
+      } catch (error) {}
     };
     loadCartItems();
   }, [sendRequest]);

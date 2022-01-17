@@ -25,7 +25,7 @@ const NavBar = () => {
         <Link to={"/admin"}>Admin</Link>
         <Link to={"/auth"}>Auth</Link>
         {token && <Link to={"/cart"}>Cart: {cartTotalCount}</Link>}
-        {token && <Link to={"/favourite"}>Favourite</Link>}
+        {token && <Link to={"/favorites"}>Favorites</Link>}
       </div>
     </div>
   );

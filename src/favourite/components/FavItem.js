@@ -1,19 +1,12 @@
-import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { productsActions } from "../../store/products-slice";
 import classes from "./FavItem.module.css";
 
 const FavItem = (props) => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const { id, name, firm, price } = props.item;
 
   const removeFromFavourite = () => {
-    dispatch(
-      productsActions.removeFromFavourite({
-        id: id,
-      })
-    );
+    
   };
 
   const onAddHandler = () => {

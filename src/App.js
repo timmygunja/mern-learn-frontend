@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Admin from "./admin/pages/Admin";
 import "./App.css";
 import Cart from "./cart/pages/Cart";
-import Favourite from "./favourite/pages/Favourite";
+import Favourite from "./favourite/pages/Favorites";
 import Home from "./home/pages/Home";
 import ProductDetail from "./home/pages/ProductDetail";
 import NavBar from "./shared/components/navigation/NavBar";
@@ -48,7 +48,7 @@ function App() {
             </Route>
           )}
           {token && (
-            <Route exact path="/favourite">
+            <Route exact path="/favorites">
               <Favourite />
             </Route>
           )}
