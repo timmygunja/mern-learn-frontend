@@ -10,6 +10,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
   margin: 15px 10px;
+  padding: 15px;
 }
 
 .prod-pic {
@@ -17,9 +18,9 @@
 }
 
 .prod-pic img {
-  width: 60%;
-  border-radius: 16px;
-  margin: 5px;
+  width: 70%;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .prod-content {
@@ -39,7 +40,7 @@
   grid-area: prod-name;
   font-family: sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 24px;
   text-align: left;
 }
 
@@ -47,7 +48,7 @@
   grid-area: prod-firm;
   text-align: left;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .prod-price {
@@ -58,13 +59,13 @@
   font-size: 20px;
 }
 
-.prod-size {
+/* .prod-size {
   grid-area: prod-size;
   color: black;
   text-align: right;
   font-weight: 500;
   font-size: 18px;
-}
+} */
 
 .prod-content button {
   cursor: pointer;

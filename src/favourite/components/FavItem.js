@@ -3,7 +3,7 @@ import classes from "./FavItem.module.css";
 
 const FavItem = (props) => {
   const history = useHistory();
-  const { id, name, firm, price } = props.item;
+  const { id, name, firm, price, image } = props.item;
 
   const removeFromFavourite = () => {
     
@@ -16,7 +16,7 @@ const FavItem = (props) => {
   return (
     <li className={classes.product}>
       <Link to={`/products/${id}`} className={classes["prod-pic"]}>
-        <img src={"product.png"} alt="" />
+        <img src={`http://localhost:5000/${image}`} alt="" />
       </Link>
       <div className={classes["prod-content"]}>
         <h1 className={classes["prod-name"]}>{name}</h1>

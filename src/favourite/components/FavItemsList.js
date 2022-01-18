@@ -13,6 +13,7 @@ const FavItemsList = (props) => {
               name: item.name,
               firm: item.firm,
               price: item.price,
+              image: item.image,
             }}
           />
         );

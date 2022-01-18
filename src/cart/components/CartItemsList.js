@@ -13,6 +13,7 @@ const CartItemsList = (props) => {
               name: cartItem.name,
               firm: cartItem.firm,
               price: cartItem.price,
+              image: cartItem.image,
               // size: cartItem.size,
               // quantity: cartItem.quantity,
             }}
