@@ -64,3 +64,10 @@
   margin: 10px 0;
 }
 
+.product-buttons {
+  text-align: center;
+  margin: 10px;
+  padding: 0 5%;
+  display: grid;
+  grid-gap: 40px 0;
+}

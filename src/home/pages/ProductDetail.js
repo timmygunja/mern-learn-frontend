@@ -5,7 +5,10 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import Button from "../../shared/UIElements/Button";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
+import NeonButton from "../../shared/UIElements/NeonButton";
 import Section from "../../shared/UIElements/Section";
+import BuyButton from "../components/BuyButton";
+import LikeButton from "../components/LikeButton";
 import classes from "./ProductDetail.module.css";
 // import SizeForm from "../components/SizeForm";
 
@@ -84,6 +87,13 @@ const ProductDetail = (props) => {
                   <hr />
                 </div>
               </div>
+              <div className={classes["product-buttons"]}>
+                {/* <Button onClick={addToCartHandler}>Add to cart</Button> */}
+                <NeonButton>Add To Favorites</NeonButton>
+                {/* <LikeButton>Add To Favorites</LikeButton> */}
+                {/* <BuyButton>Add To Cart</BuyButton> */} 
+                {/* колхоз */}
+              </div>
 
               {/* <SizeForm
               id={product.id}
@@ -94,7 +104,6 @@ const ProductDetail = (props) => {
               isFavourite={product.isFavourite}
               size={product.size}
             /> */}
-              <Button onClick={addToCartHandler}>Add to cart</Button>
             </div>
           </div>
         </Section>
