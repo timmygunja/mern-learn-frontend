@@ -46,6 +46,17 @@ const ProductDetail = (props) => {
     } catch (err) {}
   };
 
+  const addToFavoritesHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await sendRequest(`http://localhost:5000/api/favorites/${productId}`, "POST", {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + user.token,
+        Username: user.username,
+      });
+    } catch (err) {}
+  };
+
   if (loadedProduct) {
     return (
       <>
@@ -88,7 +99,7 @@ const ProductDetail = (props) => {
               </div>
               <div className={classes["product-buttons"]}>
                 <BuyButton onClick={addToCartHandler}>Add To Cart</BuyButton>
-                <LikeButton>Add To Favorites</LikeButton>
+                <LikeButton onClick={addToFavoritesHandler}>Add To Favorites</LikeButton>
               </div>
             </div>
           </div>
