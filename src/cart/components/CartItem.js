@@ -10,38 +10,30 @@ import classes from "./CartItem.module.css";
 const CartItem = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { id, name, firm, price, image, size, quantity } = props.item;
+  let quantity = 1;
+  const { id, name, firm, price, image } = props.item;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
 
   const increaseQuantity = async () => {
-    // dispatch(
-    //   cartActions.addToCart({
-    //     id: id,
-    //     name: name,
-    //     firm: firm,
-    //     price: price,
-    //     size: size,
-    //   })
-    // );
+    dispatch(cartActions.addToCart());
   };
 
   const decreaseQuantity = async (event) => {
     event.preventDefault();
-    // dispatch(
-    //   cartActions.removeFromCart({
-    //     id: id,
-    //   })
-    // );
-    try {
-      await sendRequest(`http://localhost:5000/api/cart/${id}`, "DELETE", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
+    
+    if (quantity === 1) {
+      try {
+        await sendRequest(`http://localhost:5000/api/cart/${id}`, "DELETE", {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        });
+      } catch (err) {}
+    }
 
-      history.push("/cart");
-    } catch (err) {}
+    dispatch(cartActions.removeFromCart());
+    history.push("/cart");
   };
 
   return (

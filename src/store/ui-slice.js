@@ -21,8 +21,11 @@ const uiSlice = createSlice({
 
       state.isLogged = true;
 
-      const tokenExpirationDate = userData.tokenExpirationDate || new Date(new Date().getTime() + 1000 * 60 * 60) // 1000 * 60 * 60 * 12
-      state.user.tokenExpirationDate = tokenExpirationDate;
+      const tokenExpirationDate =
+        userData.tokenExpirationDate ||
+        new Date(new Date().getTime() + 1000 * 60 * 60 * 12); // 1000 * 60 * 60 * 12
+      // state.user.tokenExpirationDate = tokenExpirationDate; // old
+      state.user.tokenExpirationDate = tokenExpirationDate.toISOString(); // new
 
       localStorage.setItem(
         "userData",
@@ -35,10 +38,10 @@ const uiSlice = createSlice({
       );
     },
     logout(state) {
-      state.user.username = undefined;
-      // state.user.password = undefined;
-      state.user.token = undefined;
-      state.user.tokenExpirationDate = undefined;
+      state.user.username = null;
+      // state.user.password = null;
+      state.user.token = null;
+      state.user.tokenExpirationDate = null;
 
       state.isLogged = false;
 

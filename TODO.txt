@@ -1,0 +1,9 @@
+1) load total cart count in Home.js and display on NavBar && properly change that number
+2) cart and favorites are not updated on delete button
+3) still an issue with non-serializable tokenExpirationDate in redux store
+4) code cleanup
+5) Add RecommendedProducts slider in ProductDetail.js
+6) Products List in Admin.js
+7)
+8)
+9) translate to TypeScript

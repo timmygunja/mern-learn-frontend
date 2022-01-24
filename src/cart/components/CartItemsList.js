@@ -1,7 +1,12 @@
 // import classes from "./CartItemsList.module.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart-slice";
 import CartItem from "./CartItem";
 
 const CartItemsList = (props) => {
+  const dispatch = useDispatch();
+  
   return (
     <>
       {props.cartItems.map((cartItem) => {

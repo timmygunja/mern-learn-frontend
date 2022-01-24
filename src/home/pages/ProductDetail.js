@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Button from "../../shared/UIElements/Button";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
+import { cartActions } from "../../store/cart-slice";
 import BuyButton from "../components/BuyButton";
 import LikeButton from "../components/LikeButton";
 import classes from "./ProductDetail.module.css";
@@ -16,6 +17,7 @@ const ProductDetail = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
   const user = useSelector((state) => state.ui.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -43,17 +45,23 @@ const ProductDetail = (props) => {
         Authorization: "Bearer " + user.token,
         Username: user.username,
       });
+
+      dispatch(cartActions.addToCart());
     } catch (err) {}
   };
 
   const addToFavoritesHandler = async (e) => {
     e.preventDefault();
     try {
-      await sendRequest(`http://localhost:5000/api/favorites/${productId}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
+      await sendRequest(
+        `http://localhost:5000/api/favorites/${productId}`,
+        "POST",
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        }
+      );
     } catch (err) {}
   };
 
@@ -99,7 +107,9 @@ const ProductDetail = (props) => {
               </div>
               <div className={classes["product-buttons"]}>
                 <BuyButton onClick={addToCartHandler}>Add To Cart</BuyButton>
-                <LikeButton onClick={addToFavoritesHandler}>Add To Favorites</LikeButton>
+                <LikeButton onClick={addToFavoritesHandler}>
+                  Add To Favorites
+                </LikeButton>
               </div>
             </div>
           </div>

@@ -3,8 +3,12 @@ import ProductsList from "../components/ProductsList";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { cartActions } from "../../store/cart-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.ui.user);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProducts, setLoadedProducts] = useState(null);
 
@@ -25,6 +29,26 @@ const Home = () => {
     };
     loadProducts();
   }, [sendRequest]);
+
+  // useEffect(() => {
+  //   // async lower because useEffect async is a bad practice
+  //   const getCartLength = async () => {
+  //     try {
+  //       const responseData = await sendRequest(
+  //         "http://localhost:5000/api/cart/getCartLength",
+  //         "GET",
+  //         {
+  //           "Content-Type": "application/json",
+  //           Authorization: "Bearer " + user.token,
+  //           Username: user.username,
+  //         }
+  //       );
+
+  //       dispatch(cartActions.setTotalCartCount(responseData.cartLength));
+  //     } catch (err) {}
+  //   };
+  //   getCartLength();
+  // }, [sendRequest]);
 
   return (
     <>

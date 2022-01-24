@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
@@ -7,20 +7,29 @@ let logoutTimer;
 export const useAuth = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.ui.user.token);
-  const tokenExpirationDate = useSelector(
-    (state) => state.ui.user.tokenExpirationDate
+
+  // const tokenExpirationDate = useSelector(
+  //   (state) => state.ui.user.tokenExpirationDate // old
+  // );
+  const tokenExpirationDate = new Date(
+    useSelector((state) => state.ui.user.tokenExpirationDate) // new
   );
+
+  const logout = useCallback(() => {
+    dispatch(uiActions.logout());
+    localStorage.removeItem("userData");
+  }, []);
 
   useEffect(() => {
     if (token && tokenExpirationDate) {
       const remainingTime =
         tokenExpirationDate.getTime() - new Date().getTime();
 
-      logoutTimer = setTimeout(uiActions.logout, remainingTime);
+      logoutTimer = setTimeout(logout, remainingTime);
     } else {
       clearTimeout(logoutTimer);
     }
-  }, [token, uiActions.logout, tokenExpirationDate]);
+  }, [token, logout, tokenExpirationDate]);
 
   useEffect(() => {
     const userStorageData = JSON.parse(localStorage.getItem("userData"));
@@ -43,5 +52,5 @@ export const useAuth = () => {
     }
   }, []);
 
-  return { token }
+  return { token };
 };

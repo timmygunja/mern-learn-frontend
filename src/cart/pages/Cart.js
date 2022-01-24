@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
+import { cartActions } from "../../store/cart-slice";
 import CartItem from "../components/CartItem";
 import CartItemsList from "../components/CartItemsList";
 import EmptyCartCard from "../components/EmptyCartCard";
@@ -14,9 +15,9 @@ const Cart = () => {
   // const totalPrice = useSelector((state) => state.cart.totalPrice);
   // const cartIsEmpty = useSelector((state) => state.cart.totalCount) === 0;
   const user = useSelector((state) => state.ui.user);
-
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedCartItems, setLoadedCartItems] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
