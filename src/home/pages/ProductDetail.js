@@ -17,7 +17,6 @@ const ProductDetail = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
   const user = useSelector((state) => state.ui.user);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -45,8 +44,6 @@ const ProductDetail = (props) => {
         Authorization: "Bearer " + user.token,
         Username: user.username,
       });
-
-      dispatch(cartActions.addToCart());
     } catch (err) {}
   };
 

@@ -1,13 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
-import { cartActions } from "../../store/cart-slice";
 import classes from "./FavItem.module.css";
 
 const FavItem = (props) => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.ui.user);
   const { id, name, firm, price, image } = props.item;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -32,8 +30,6 @@ const FavItem = (props) => {
         Authorization: "Bearer " + user.token,
         Username: user.username,
       });
-
-      dispatch(cartActions.addToCart());
     } catch (err) {}
   };
 

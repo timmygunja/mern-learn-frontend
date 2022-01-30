@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -10,12 +9,8 @@ const cartSlice = createSlice({
     setTotalCartCount(state, action) {
       state.totalCount = action.payload;
     },
-    addToCart(state) {
-      state.totalCount++;
-    },
-    removeFromCart(state) {
-      state.totalCount--;
-    },
+    addToCart(state) {},
+    removeFromCart(state) {},
   },
 });
 
