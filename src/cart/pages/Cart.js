@@ -38,6 +38,12 @@ const Cart = () => {
     loadCartItems();
   }, [sendRequest]);
 
+  const deleteItemHandler = (itemId) => {
+    setLoadedCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== itemId)
+    );
+  };
+
   return (
     <>
       {isLoading && <LoadingSpinner asOverlay />}
@@ -49,7 +55,12 @@ const Cart = () => {
             {loadedCartItems && loadedCartItems.length === 0 && (
               <EmptyCartCard />
             )}
-            {loadedCartItems && <CartItemsList cartItems={loadedCartItems} />}
+            {loadedCartItems && (
+              <CartItemsList
+                cartItems={loadedCartItems}
+                onClickDelete={deleteItemHandler}
+              />
+            )}
           </div>
         </div>
       </Section>

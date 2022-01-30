@@ -7,7 +7,6 @@ import { cartActions } from "../../store/cart-slice";
 import classes from "./FavItem.module.css";
 
 const FavItem = (props) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.ui.user);
   const { id, name, firm, price, image } = props.item;
@@ -21,7 +20,7 @@ const FavItem = (props) => {
         Authorization: "Bearer " + user.token,
         Username: user.username,
       });
-      history.push("/favorites");
+      props.onClickDelete(id);
     } catch (err) {}
   };
 
@@ -34,8 +33,7 @@ const FavItem = (props) => {
         Username: user.username,
       });
 
-      dispatch(cartActions.addToCart())
-      history.push("/favorites");
+      dispatch(cartActions.addToCart());
     } catch (err) {}
   };
 

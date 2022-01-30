@@ -21,7 +21,7 @@ const CartItem = (props) => {
 
   const decreaseQuantity = async (event) => {
     event.preventDefault();
-    
+
     if (quantity === 1) {
       try {
         await sendRequest(`http://localhost:5000/api/cart/${id}`, "DELETE", {
@@ -29,11 +29,12 @@ const CartItem = (props) => {
           Authorization: "Bearer " + user.token,
           Username: user.username,
         });
+
+        props.onClickDelete(id);
       } catch (err) {}
     }
 
     dispatch(cartActions.removeFromCart());
-    history.push("/cart");
   };
 
   return (

@@ -31,6 +31,12 @@ const Favorites = () => {
     loadFavorites();
   }, [sendRequest]);
 
+  const deleteItemHandler = (itemId) => {
+    setLoadedFavItems((prevItems) =>
+      prevItems.filter((item) => item.id !== itemId)
+    );
+  };
+
   return (
     <>
       {isLoading && <LoadingSpinner asOverlay />}
@@ -39,7 +45,12 @@ const Favorites = () => {
       <Section name="Favorites">
         <div className={classes.favorites}>
           {loadedFavItems && loadedFavItems.length === 0 && <EmptyFavCard />}
-          {loadedFavItems && <FavItemsList favItems={loadedFavItems} />}
+          {loadedFavItems && (
+            <FavItemsList
+              favItems={loadedFavItems}
+              onClickDelete={deleteItemHandler}
+            />
+          )}
         </div>
       </Section>
     </>

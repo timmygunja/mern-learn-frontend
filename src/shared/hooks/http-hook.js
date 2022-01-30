@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const activeHttpRequests = useRef([]);
+  const history = useHistory();
 
   const sendRequest = useCallback(
     async (url, method = "GET", headers = {}, body = null) => {

@@ -8,6 +8,7 @@ const FavItemsList = (props) => {
         return (
           <FavItem
             key={item.id}
+            onClickDelete={props.onClickDelete}
             item={{
               id: item.id,
               name: item.name,

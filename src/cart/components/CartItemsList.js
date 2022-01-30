@@ -6,13 +6,14 @@ import CartItem from "./CartItem";
 
 const CartItemsList = (props) => {
   const dispatch = useDispatch();
-  
+
   return (
     <>
       {props.cartItems.map((cartItem) => {
         return (
           <CartItem
             key={cartItem.id}
+            onClickDelete={props.onClickDelete}
             item={{
               id: cartItem.id,
               name: cartItem.name,
