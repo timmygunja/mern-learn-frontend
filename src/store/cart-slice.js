@@ -9,8 +9,12 @@ const cartSlice = createSlice({
     setTotalCartCount(state, action) {
       state.totalCount = action.payload;
     },
-    addToCart(state) {},
-    removeFromCart(state) {},
+    addToCart(state) {
+      state.totalCount += 1;
+    },
+    removeFromCart(state) {
+      state.totalCount -= 1;
+    },
   },
 });
 

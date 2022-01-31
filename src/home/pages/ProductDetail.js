@@ -13,6 +13,7 @@ import classes from "./ProductDetail.module.css";
 // import SizeForm from "../components/SizeForm";
 
 const ProductDetail = (props) => {
+  const dispatch = useDispatch();
   const productId = useParams().productId;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
@@ -44,6 +45,7 @@ const ProductDetail = (props) => {
         Authorization: "Bearer " + user.token,
         Username: user.username,
       });
+      dispatch(cartActions.addToCart())
     } catch (err) {}
   };
 
