@@ -10,8 +10,7 @@ import classes from "./CartItem.module.css";
 const CartItem = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  let quantity = 1;
-  const { id, name, firm, price, image } = props.item;
+  const { id, name, firm, price, image, quantity } = props.item;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
 

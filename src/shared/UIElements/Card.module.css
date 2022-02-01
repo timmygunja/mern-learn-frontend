@@ -1,8 +1,6 @@
 .card {
-  width: fit-content;
-  margin: 20px;
-  padding: 20px 5%;
   border-radius: 8px;
+  padding: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }

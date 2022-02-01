@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import BuyButton from "../../home/components/BuyButton";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import Card from "../../shared/UIElements/Card";
 import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
 import { cartActions } from "../../store/cart-slice";
-import CartItem from "../components/CartItem";
 import CartItemsList from "../components/CartItemsList";
 import EmptyCartCard from "../components/EmptyCartCard";
+import EmptyPaycard from "../components/EmptyPaycard";
+import Paycard from "../components/Paycard";
+import PaycardItemsList from "../components/PaycardItemsList";
 import classes from "./Cart.module.css";
 
 const Cart = () => {
@@ -17,7 +21,7 @@ const Cart = () => {
   const user = useSelector((state) => state.ui.user);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedCartItems, setLoadedCartItems] = useState(null);
-  const dispatch = useDispatch();
+  const [totalPrice, setTotalPrice] = useState(null);
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -33,6 +37,7 @@ const Cart = () => {
           }
         );
         setLoadedCartItems(responseData.cartItems);
+        setTotalPrice(responseData.cartTotalPrice);
       } catch (error) {}
     };
     loadCartItems();
@@ -50,8 +55,8 @@ const Cart = () => {
       {<ErrorModal error={error} onClear={clearError} />}
 
       <Section name="cart">
-        <div className={classes.cart}>
-          <div className={classes.mainbar}>
+        <div className={classes["cart"]}>
+          <div className={classes["mainbar"]}>
             {loadedCartItems && loadedCartItems.length === 0 && (
               <EmptyCartCard />
             )}
@@ -60,6 +65,14 @@ const Cart = () => {
                 cartItems={loadedCartItems}
                 onClickDelete={deleteItemHandler}
               />
+            )}
+          </div>
+          <div className={classes["sidebar"]}>
+            {loadedCartItems && loadedCartItems.length === 0 && (
+              <EmptyPaycard />
+            )}
+            {loadedCartItems && totalPrice && (
+              <Paycard cartItems={loadedCartItems} totalPrice={totalPrice} />
             )}
           </div>
         </div>

@@ -1,0 +1,24 @@
+.paycard {
+  display: grid;
+  grid-template-areas:
+    "total"
+    "paycarditems";
+  grid-gap: 20px;
+  padding: 20px;
+  margin: 15px 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.total {
+  grid-area: total;
+  text-align: center;
+  font-size: 18px;
+}
+
+.paycard-items {
+  grid-area: paycarditems;
+  display: grid;
+  grid-gap: 10px;
+}

@@ -1,19 +1,18 @@
 // import classes from "./CartItemsList.module.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { cartActions } from "../../store/cart-slice";
 import CartItem from "./CartItem";
+import PaycardItem from "./PaycardItem";
 
-const CartItemsList = (props) => {
+const PaycardItemsList = (props) => {
   const dispatch = useDispatch();
 
   return (
     <>
       {props.cartItems.map((cartItem) => {
         return (
-          <CartItem
+          <PaycardItem
             key={cartItem.product.id}
-            onClickDelete={props.onClickDelete}
             item={{
               id: cartItem.product.id,
               name: cartItem.product.name,
@@ -30,4 +29,4 @@ const CartItemsList = (props) => {
   );
 };
 
-export default CartItemsList;
+export default PaycardItemsList;

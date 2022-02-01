@@ -6,4 +6,9 @@
 6) products List in Admin.js
 7) fix duplicates in cart and favorites server-side
 8) complete cart page
-9) translate project to TypeScript
+9) 
+10)
+11)
+12)
+13)
+14) translate project to TypeScript
