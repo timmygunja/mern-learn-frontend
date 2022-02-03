@@ -5,7 +5,7 @@
 5) add RecommendedProducts slider in ProductDetail.js
 6) products List in Admin.js
 7) fix duplicates in cart and favorites server-side
-8) complete cart page
+8) complete cart page, fix cart items' quantity management
 9) 
 10)
 11)

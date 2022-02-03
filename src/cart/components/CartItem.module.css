@@ -70,29 +70,31 @@
 .prod-content button {
   cursor: pointer;
   border-radius: 7px;
-  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.15);
   transition: all 0.2s linear;
 }
 
 .prod-add {
   grid-area: prod-add;
+  background-color: rgb(81, 202, 132, 0.2);
 }
 
 .prod-add:hover {
-  box-shadow: 0px 0px 50px 1px rgba(0, 255, 76, 0.438) inset;
+  background-color: rgb(64, 228, 132);
 }
 
 .prod-quantity {
   grid-area: prod-quantity;
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .prod-remove {
   grid-area: prod-remove;
+  background-color: rgba(207, 44, 44, 0.2);
 }
 
 .prod-remove:hover {
-  box-shadow: 0px 0px 50px 1px rgba(255, 0, 0, 0.438) inset;
+  background-color: rgb(240, 40, 40);
 }

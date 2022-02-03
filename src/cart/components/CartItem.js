@@ -10,30 +10,46 @@ import classes from "./CartItem.module.css";
 const CartItem = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const cartItemId = props.cartItemId;
   const { id, name, firm, price, image, quantity } = props.item;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
+  // const []
 
-  const increaseQuantity = async () => {
-    dispatch(cartActions.addToCart());
+  const increaseQuantity = async (event) => {
+    event.preventDefault();
+
+    try {
+      await sendRequest(`http://localhost:5000/api/cart/${id}`, "POST", {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + user.token,
+        Username: user.username,
+      });
+
+      dispatch(cartActions.addToCart());
+    } catch (err) {}
   };
 
   const decreaseQuantity = async (event) => {
     event.preventDefault();
 
-    if (quantity === 1) {
-      try {
-        await sendRequest(`http://localhost:5000/api/cart/${id}`, "DELETE", {
+    try {
+      await sendRequest(
+        `http://localhost:5000/api/cart/${cartItemId}`,
+        "DELETE",
+        {
           "Content-Type": "application/json",
           Authorization: "Bearer " + user.token,
           Username: user.username,
-        });
+        }
+      );
 
-        props.onClickDelete(id);
-      } catch (err) {}
+      dispatch(cartActions.removeFromCart());
+    } catch (err) {}
+
+    if (quantity <= 1) {
+      props.onClickDelete(cartItemId);
     }
-
-    dispatch(cartActions.removeFromCart());
   };
 
   return (

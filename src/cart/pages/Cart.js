@@ -14,6 +14,8 @@ import Paycard from "../components/Paycard";
 import PaycardItemsList from "../components/PaycardItemsList";
 import classes from "./Cart.module.css";
 
+let deletedItem;
+
 const Cart = () => {
   // const cartItems = useSelector((state) => state.cart.items);
   // const totalPrice = useSelector((state) => state.cart.totalPrice);
@@ -22,6 +24,7 @@ const Cart = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedCartItems, setLoadedCartItems] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
+  const cartTotalCount = useSelector((state) => state.cart.totalCount);
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -41,12 +44,19 @@ const Cart = () => {
       } catch (error) {}
     };
     loadCartItems();
-  }, [sendRequest]);
+  }, [sendRequest, cartTotalCount]);
 
   const deleteItemHandler = (itemId) => {
+    loadedCartItems.map((item) => {
+      if (item.id === itemId) {
+        deletedItem = item;
+      }
+    });
+
     setLoadedCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== itemId)
+      prevItems.filter((item) => item !== deletedItem)
     );
+    setTotalPrice(totalPrice - deletedItem.product.price);
   };
 
   return (

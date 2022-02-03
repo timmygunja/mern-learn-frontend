@@ -7,7 +7,7 @@ const PaycardItem = (props) => {
     <div className={classes["item"]}>
       <p className={classes["title"]}>{name}</p>
       <p className={classes["quantity"]}>{`x${quantity}`}</p>
-      <p className={classes["price"]}>{`${price} ₽`}</p>
+      <p className={classes["price"]}>{`${price * quantity} ₽`}</p>
     </div>
   );
 };

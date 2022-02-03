@@ -12,7 +12,8 @@ const CartItemsList = (props) => {
       {props.cartItems.map((cartItem) => {
         return (
           <CartItem
-            key={cartItem.product.id}
+            key={cartItem.id}
+            cartItemId={cartItem.id}
             onClickDelete={props.onClickDelete}
             item={{
               id: cartItem.product.id,
