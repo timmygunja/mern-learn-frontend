@@ -1,0 +1,7 @@
+.slider-list {
+    display: flex;
+}
+
+.slider-list:nth-child(1) {
+    background-color: red;
+}

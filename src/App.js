@@ -10,7 +10,6 @@ import NavBar from "./shared/components/navigation/NavBar";
 import { useAuth } from "./shared/hooks/auth-hook";
 import Auth from "./user/pages/Auth";
 
-
 function App() {
   const isLogged = useSelector((state) => state.ui.isLogged);
   const username = useSelector((state) => state.ui.user.username);

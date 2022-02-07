@@ -1,0 +1,80 @@
+.product {
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  display: grid;
+  grid-template-areas:
+    "prod-pic"
+    "prod-text";
+  grid-template-rows: 80% 20%;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.11);
+  padding: 12px;
+  margin: 0 10px;
+  min-width: 20rem;
+}
+
+.prod-pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.prod-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin: 10px 10px 0 10px;
+  grid-template-areas:
+    "prod-name prod-name prod-price"
+    "prod-firm prod-firm prod-like";
+}
+
+.prod-name {
+  grid-area: prod-name;
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: left;
+}
+
+.prod-firm {
+  grid-area: prod-firm;
+  text-align: left;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.prod-price {
+  grid-area: prod-price;
+  color: black;
+  /* text-align: right; */
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.prod-like,
+.prod-like-active {
+  grid-area: prod-like;
+  font-size: 12px;
+  font-weight: 300;
+  background-color: white;
+  border: 1px solid rgba(100, 58, 58, 0.4);
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.prod-like:hover {
+  background: rgb(255, 0, 64);
+  cursor: pointer;
+  color: white;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.prod-like-active {
+  background: rgb(255, 0, 64);
+  color: white;
+}

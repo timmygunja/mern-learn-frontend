@@ -1,0 +1,7 @@
+.slider-content {
+    margin: 10px -10px;
+    background-color: whitesmoke;
+    padding: 20px;
+    /* padding-right: 100px; */
+    overflow-x: scroll;
+}

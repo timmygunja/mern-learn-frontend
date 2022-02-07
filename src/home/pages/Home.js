@@ -5,6 +5,7 @@ import ErrorModal from "../../shared/UIElements/ErrorModal";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { cartActions } from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
+import RecommendSlider from "../components/RecommendSlider";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ const Home = () => {
       {isLoading && <LoadingSpinner asOverlay />}
       {<ErrorModal error={error} onClear={clearError} />}
       {loadedProducts && <ProductsList products={loadedProducts} />}
+      {loadedProducts && <RecommendSlider products={loadedProducts} />}
     </>
   );
 };
