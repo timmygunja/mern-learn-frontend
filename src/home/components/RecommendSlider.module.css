@@ -1,7 +1,73 @@
+.slider {
+  width: 100vw;
+  background-color: whitesmoke;
+  display: grid;
+  grid-template-areas:
+    "toolbox"
+    "slidercontent";
+  grid-template-rows: 1fr 4fr;
+}
+
+.tool-box {
+  grid-area: toolbox;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-template-areas: "groups buttons";
+  margin: 0 10px;
+  padding: 15px 10px;
+}
+
+.group-box {
+  grid-area: groups;
+  display: flex;
+  align-items: center;
+}
+
+.select-box {
+  height: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  background: none;
+  background-color: white;
+}
+
+.select-box option {
+  display: inline-block;
+}
+
+.button-box {
+  grid-area: buttons;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: whitesmoke;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  margin: 0 10px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  transition: border 0.3s ease;
+}
+
+.arrow-button:hover {
+  border: 2px solid rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+.btn-hidden {
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
 .slider-content {
-    margin: 10px -10px;
-    background-color: whitesmoke;
-    padding: 20px;
-    /* padding-right: 100px; */
-    overflow-x: scroll;
+  grid-area: slidercontent;
+  margin: 0 -10px;
+  padding: 10px;
+  padding-top: 0;
+  overflow-x: scroll;
+  display: grid;
 }

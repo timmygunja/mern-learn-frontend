@@ -1,7 +1,5 @@
 .slider-list {
     display: flex;
+    transition: all 0.3s ease;
 }
 
-.slider-list:nth-child(1) {
-    background-color: red;
-}

@@ -10,7 +10,7 @@
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.11);
   padding: 12px;
-  margin: 0 10px;
+  margin: 0 15px;
   min-width: 20rem;
 }
 
@@ -38,13 +38,17 @@
   font-weight: 500;
   font-size: 20px;
   text-align: left;
+  display: flex;
+  align-self: center;
 }
 
 .prod-firm {
   grid-area: prod-firm;
   text-align: left;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
+  display: flex;
+  align-self: center;
 }
 
 .prod-price {
@@ -53,11 +57,16 @@
   /* text-align: right; */
   font-weight: 400;
   font-size: 18px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
 
 .prod-like,
 .prod-like-active {
   grid-area: prod-like;
+  margin: 0;
+  padding: 0;
   font-size: 12px;
   font-weight: 300;
   background-color: white;
