@@ -23,8 +23,8 @@ const ProductItem = (props) => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />}
+      {/* {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />} */}
 
       <div className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>

@@ -67,8 +67,8 @@ const ProductDetail = (props) => {
   if (loadedProduct) {
     return (
       <>
-        {isLoading && <LoadingSpinner asOverlay />}
-        {<ErrorModal error={error} onClear={clearError} />}
+        {/* {isLoading && <LoadingSpinner asOverlay />}
+        {<ErrorModal error={error} onClear={clearError} />} */}
         <Section name="Product">
           <div className={classes.product}>
             <div className={classes.mainbar}>

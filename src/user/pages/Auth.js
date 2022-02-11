@@ -92,8 +92,8 @@ const Auth = () => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />}
+      {/* {isLoading && <LoadingSpinner asOverlay />} */}
+      {/* {<ErrorModal error={error} onClear={clearError} />} */}
 
       <Section name={"Log in"}>
         <div className={"hard-centered"}>

@@ -47,8 +47,8 @@ const AddProductForm = () => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />}
+      {/* {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />} */}
       <Card>
         <form className={classes.form}>
           <TextField

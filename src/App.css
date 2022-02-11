@@ -11,6 +11,7 @@ a {
 
 .content { 
   padding: 5px;
+  min-height: 35vw;
 }
 
 .centered {

@@ -39,8 +39,8 @@ const Favorites = () => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />}
+      {/* {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />} */}
 
       <Section name="Favorites">
         <div className={classes.favorites}>

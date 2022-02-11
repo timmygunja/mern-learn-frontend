@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
+    isLoading: false,
+    error: null,
     isLogged: false,
     user: {
       username: undefined,
@@ -12,6 +14,12 @@ const uiSlice = createSlice({
     },
   },
   reducers: {
+    setIsLoading(state, action) {
+      state.isLoading = action.payload;
+    },
+    setError(state, action) {
+      state.error = action.payload;
+    },
     login(state, action) {
       const userData = action.payload.user;
 

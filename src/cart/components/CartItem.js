@@ -54,8 +54,8 @@ const CartItem = (props) => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />}
+      {/* {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />} */}
 
       <li className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>

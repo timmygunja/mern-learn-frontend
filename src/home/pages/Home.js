@@ -55,10 +55,11 @@ const Home = () => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />}
-      {loadedProducts && <ProductsList products={loadedProducts} />}
+      {/* {isLoading && <LoadingSpinner asOverlay />}
+      {<ErrorModal error={error} onClear={clearError} />} */}
+      {loadedProducts && <ProductsList products={loadedProducts.slice(0, 4)} />}
       {loadedProducts && <RecommendSlider products={loadedProducts} />}
+      {loadedProducts && <ProductsList products={loadedProducts.slice(4)} />}
     </>
   );
 };
