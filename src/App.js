@@ -6,6 +6,7 @@ import Cart from "./cart/pages/Cart";
 import Favourite from "./favourite/pages/Favorites";
 import Home from "./home/pages/Home";
 import ProductDetail from "./home/pages/ProductDetail";
+import Footer from "./shared/components/footer/Footer";
 import NavBar from "./shared/components/navigation/NavBar";
 import { useAuth } from "./shared/hooks/auth-hook";
 import Auth from "./user/pages/Auth";
@@ -54,6 +55,10 @@ function App() {
           <Redirect to="/"></Redirect>
         </Switch>
       </div>
+
+      <Route path="/">
+        <Footer />
+      </Route>
     </div>
   );
 }
