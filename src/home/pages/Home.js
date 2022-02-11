@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import ProductsList from "../components/ProductsList";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { cartActions } from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +9,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.ui.user);
   const isLogged = useSelector((state) => state.ui.isLogged);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const [loadedProducts, setLoadedProducts] = useState(null);
 
   useEffect(() => {
@@ -55,8 +53,6 @@ const Home = () => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
       {loadedProducts && <ProductsList products={loadedProducts.slice(0, 4)} />}
       {loadedProducts && <RecommendSlider products={loadedProducts} />}
       {loadedProducts && <ProductsList products={loadedProducts.slice(4)} />}

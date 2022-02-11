@@ -1,8 +1,8 @@
 import classes from "./PaycardItem.module.css";
 
 const PaycardItem = (props) => {
-  const { id, name, firm, price, image, quantity } = props.item;
-  
+  const { name, price, quantity } = props.item;
+
   return (
     <div className={classes["item"]}>
       <p className={classes["title"]}>{name}</p>

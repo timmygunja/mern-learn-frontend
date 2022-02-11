@@ -59,14 +59,6 @@
   font-size: 20px;
 }
 
-/* .prod-size {
-  grid-area: prod-size;
-  color: black;
-  text-align: right;
-  font-weight: 500;
-  font-size: 18px;
-} */
-
 .prod-content button {
   cursor: pointer;
   border-radius: 7px;

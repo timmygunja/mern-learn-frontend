@@ -1,20 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import { cartActions } from "../../store/cart-slice";
 import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const cartItemId = props.cartItemId;
   const { id, name, firm, price, image, quantity } = props.item;
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
-  // const []
 
   const increaseQuantity = async (event) => {
     event.preventDefault();
@@ -54,9 +49,6 @@ const CartItem = (props) => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
-
       <li className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
           <img src={`http://localhost:5000/${image}`} alt="" />

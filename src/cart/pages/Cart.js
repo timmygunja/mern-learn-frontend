@@ -1,27 +1,18 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import BuyButton from "../../home/components/BuyButton";
+import { useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import Card from "../../shared/UIElements/Card";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
-import { cartActions } from "../../store/cart-slice";
 import CartItemsList from "../components/CartItemsList";
 import EmptyCartCard from "../components/EmptyCartCard";
 import EmptyPaycard from "../components/EmptyPaycard";
 import Paycard from "../components/Paycard";
-import PaycardItemsList from "../components/PaycardItemsList";
 import classes from "./Cart.module.css";
 
 let deletedItem;
 
 const Cart = () => {
-  // const cartItems = useSelector((state) => state.cart.items);
-  // const totalPrice = useSelector((state) => state.cart.totalPrice);
-  // const cartIsEmpty = useSelector((state) => state.cart.totalCount) === 0;
   const user = useSelector((state) => state.ui.user);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const [loadedCartItems, setLoadedCartItems] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
@@ -61,9 +52,6 @@ const Cart = () => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
-
       <Section name="cart">
         <div className={classes["cart"]}>
           <div className={classes["mainbar"]}>

@@ -1,12 +1,7 @@
 // import classes from "./CartItemsList.module.css";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import CartItem from "./CartItem";
 import PaycardItem from "./PaycardItem";
 
 const PaycardItemsList = (props) => {
-  const dispatch = useDispatch();
-
   return (
     <>
       {props.cartItems.map((cartItem) => {
@@ -20,7 +15,6 @@ const PaycardItemsList = (props) => {
               price: cartItem.product.price,
               image: cartItem.product.image,
               quantity: cartItem.quantity,
-              // size: cartItem.size,
             }}
           />
         );

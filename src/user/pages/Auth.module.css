@@ -9,14 +9,6 @@
     "submit";
 }
 
-/* .username-logo {
-    grid-area: logo;
-    display: flex;
-    justify-content: center;
-    align-items:flex-end;
-    padding: 0 0 5px 0;
-} */
-
 .username-input {
   grid-area: username;
 }

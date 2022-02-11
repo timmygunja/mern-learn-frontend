@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import { cartActions } from "../../store/cart-slice";
 import classes from "./FavItem.module.css";
 
@@ -10,7 +8,7 @@ const FavItem = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.ui.user);
   const { id, name, firm, price, image } = props.item;
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
 
   const removeFromFavoritesHandler = async (e) => {
     e.preventDefault();
@@ -38,8 +36,6 @@ const FavItem = (props) => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
       <li className={classes.product}>
         <button
           type="sumbit"

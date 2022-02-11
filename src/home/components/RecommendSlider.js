@@ -41,12 +41,6 @@ const RecommendSlider = (props) => {
     <div className={classes["slider"]}>
       <div className={classes["tool-box"]}>
         <div className={classes["group-box"]}>
-          {/* <select className={classes["select-box"]}>
-            <option>Popular</option>
-            <option>Newest</option>
-            <option>Oldest</option>
-            <option>Most liked</option>
-          </select> */}
           <SelectBoxHorizontal />
         </div>
         <div className={classes["button-box"]}>

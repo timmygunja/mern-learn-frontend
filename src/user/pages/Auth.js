@@ -3,12 +3,9 @@ import classes from "./Auth.module.css";
 import TextField from "@material-ui/core/TextField";
 import Card from "../../shared/UIElements/Card";
 import Button from "@material-ui/core/Button";
-// import AccountCircle from "@material-ui/icons/AccountCircle";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { uiActions } from "../../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
@@ -16,7 +13,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogged = useSelector((state) => state.ui.isLogged);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
 
   const user = useSelector((state) => state.ui.user);
 
@@ -82,8 +79,7 @@ const Auth = () => {
       );
 
       history.push("/");
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   const logoutHandler = () => {
@@ -92,9 +88,6 @@ const Auth = () => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />} */}
-      {/* {<ErrorModal error={error} onClear={clearError} />} */}
-
       <Section name={"Log in"}>
         <div className={"hard-centered"}>
           <Card>
@@ -113,9 +106,6 @@ const Auth = () => {
 
             {!isLogged && (
               <form className={classes.form}>
-                {/* <div className={classes["username-logo"]}>
-                <AccountCircle />
-              </div> */}
                 <TextField
                   className={classes["username-input"]}
                   label="Username"
@@ -147,9 +137,6 @@ const Auth = () => {
           <div className={"hard-centered"}>
             <Card>
               <form className={classes.form}>
-                {/* <div className={classes["username-logo"]}>
-            <AccountCircle />
-          </div> */}
                 <TextField
                   className={classes["username-input"]}
                   label="Username"

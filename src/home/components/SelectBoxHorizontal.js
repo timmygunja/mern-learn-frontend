@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import classes from "./SelectBoxHorizontal.module.css";
 
 const SelectBoxHorizontal = (props) => {

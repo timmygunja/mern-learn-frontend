@@ -2,19 +2,15 @@ import { Button, Card, TextField } from "@material-ui/core";
 import { useRef } from "react";
 import ImageUpload from "../../shared/components/formElements/ImageUpload";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import classes from "./AddProductForm.module.css";
 
 const AddProductForm = () => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
 
   const nameRef = useRef("");
   const firmRef = useRef("");
   const descriptionRef = useRef("");
   const priceRef = useRef("");
-  // const sizeRef = useRef("");
-  // const quantityRef = useRef("");
   let image;
 
   const submitHandler = async (e) => {
@@ -47,8 +43,6 @@ const AddProductForm = () => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
       <Card>
         <form className={classes.form}>
           <TextField
@@ -80,18 +74,6 @@ const AddProductForm = () => {
             type="number"
           />
           <ImageUpload id="image" center onInput={fileUploadHandler} />
-          {/* <TextField
-          className={classes["size-input"]}
-          label="Size"
-          variant="outlined"
-          inputRef={sizeRef}
-        />
-        <TextField
-          className={classes["quantity-input"]}
-          label="Quantity"
-          variant="outlined"
-          inputRef={quantityRef}
-        /> */}
           <Button
             className={classes["submit-button"]}
             onClick={submitHandler}

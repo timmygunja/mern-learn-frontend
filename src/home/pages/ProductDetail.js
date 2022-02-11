@@ -2,20 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import Button from "../../shared/UIElements/Button";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import Section from "../../shared/UIElements/Section";
 import { cartActions } from "../../store/cart-slice";
 import BuyButton from "../components/BuyButton";
 import LikeButton from "../components/LikeButton";
 import classes from "./ProductDetail.module.css";
-// import SizeForm from "../components/SizeForm";
 
 const ProductDetail = (props) => {
   const dispatch = useDispatch();
   const productId = useParams().productId;
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
   const user = useSelector((state) => state.ui.user);
 
@@ -45,7 +41,7 @@ const ProductDetail = (props) => {
         Authorization: "Bearer " + user.token,
         Username: user.username,
       });
-      dispatch(cartActions.addToCart())
+      dispatch(cartActions.addToCart());
     } catch (err) {}
   };
 
@@ -67,8 +63,6 @@ const ProductDetail = (props) => {
   if (loadedProduct) {
     return (
       <>
-        {/* {isLoading && <LoadingSpinner asOverlay />}
-        {<ErrorModal error={error} onClear={clearError} />} */}
         <Section name="Product">
           <div className={classes.product}>
             <div className={classes.mainbar}>

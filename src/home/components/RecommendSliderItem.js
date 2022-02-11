@@ -1,12 +1,10 @@
 import classes from "./RecommendSliderItem.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
+import { useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const RecommendSliderItem = (props) => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const { id, name, firm, price, image, isFavourite } = props;
   const user = useSelector((state) => state.ui.user);
 
@@ -23,9 +21,6 @@ const RecommendSliderItem = (props) => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
-
       <div className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
           <img src={`http://localhost:5000/${image}`} alt="" />

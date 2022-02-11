@@ -5,11 +5,9 @@ import Section from "../../shared/UIElements/Section";
 import EmptyFavCard from "../components/EmptyFavCard";
 import classes from "./Favorites.module.css";
 import FavItemsList from "../components/FavItemsList";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
 
 const Favorites = () => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
   const [loadedFavItems, setLoadedFavItems] = useState(null);
 
@@ -39,9 +37,6 @@ const Favorites = () => {
 
   return (
     <>
-      {/* {isLoading && <LoadingSpinner asOverlay />}
-      {<ErrorModal error={error} onClear={clearError} />} */}
-
       <Section name="Favorites">
         <div className={classes.favorites}>
           {loadedFavItems && loadedFavItems.length === 0 && <EmptyFavCard />}
