@@ -11,12 +11,35 @@ const Home = () => {
   const isLogged = useSelector((state) => state.ui.isLogged);
   const { sendRequest } = useHttpClient();
   const [loadedProducts, setLoadedProducts] = useState(null);
+  const [loadedFavorites, setLoadedFavorites] = useState(null);
+  let responseData;
 
   useEffect(() => {
-    // async lower because useEffect async is a bad practice
+    const loadFavorites = async () => {
+      try {
+        responseData = await sendRequest(
+          "http://localhost:5000/api/favorites/ids",
+          "GET",
+          {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + user.token,
+            Username: user.username,
+          }
+        );
+
+        responseData.favItemsIds.length > 0
+          ? setLoadedFavorites(responseData.favItemsIds)
+          : setLoadedFavorites([]);
+      } catch (error) {}
+    };
+
+    isLogged && loadFavorites();
+  }, [sendRequest, isLogged]);
+
+  useEffect(() => {
     const loadProducts = async () => {
       try {
-        const responseData = await sendRequest(
+        responseData = await sendRequest(
           "http://localhost:5000/api/products",
           "GET",
           {
@@ -27,11 +50,11 @@ const Home = () => {
         setLoadedProducts(responseData.products);
       } catch (err) {}
     };
+
     loadProducts();
   }, [sendRequest]);
 
   useEffect(() => {
-    // async lower because useEffect async is a bad practice
     const getCartLength = async () => {
       try {
         const responseData = await sendRequest(
@@ -49,13 +72,28 @@ const Home = () => {
     };
 
     isLogged && getCartLength();
-  }, [sendRequest, user]);
+  }, [sendRequest, isLogged]);
 
   return (
     <>
-      {loadedProducts && <ProductsList products={loadedProducts.slice(0, 4)} />}
-      {loadedProducts && <RecommendSlider products={loadedProducts} />}
-      {loadedProducts && <ProductsList products={loadedProducts.slice(4)} />}
+      {loadedProducts && loadedFavorites && (
+        <ProductsList
+          products={loadedProducts.slice(0, 4)}
+          favorites={loadedFavorites}
+        />
+      )}
+      {loadedProducts && loadedFavorites && (
+        <RecommendSlider
+          products={loadedProducts}
+          favorites={loadedFavorites}
+        />
+      )}
+      {loadedProducts && loadedFavorites && (
+        <ProductsList
+          products={loadedProducts.slice(4)}
+          favorites={loadedFavorites}
+        />
+      )}
     </>
   );
 };

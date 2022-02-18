@@ -5,7 +5,7 @@ const uiSlice = createSlice({
   initialState: {
     isLoading: false,
     error: null,
-    isLogged: false,
+    isLogged: undefined,
     user: {
       username: undefined,
       token: undefined,

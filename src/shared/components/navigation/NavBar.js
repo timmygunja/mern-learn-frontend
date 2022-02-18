@@ -14,7 +14,7 @@ const NavBar = () => {
             <img className={"logopic"} src={"airplane.svg"} alt="" />
           </div>
         </Link>
-        <div className={"logotext"}>E-Shop</div>
+        <div className={"logotext"}>E-Commerce</div>
       </div>
 
       <div className={"mainbar"}>

@@ -2,21 +2,57 @@ import classes from "./ProductItem.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { useState } from "react";
 
 const ProductItem = (props) => {
   const { sendRequest } = useHttpClient();
-  const { id, name, firm, price, image, isFavourite } = props;
+  const { id, name, firm, price, image } = props;
+  let { isFavorite } = props;
   const user = useSelector((state) => state.ui.user);
+
+  const [likeClass, setLikeClass] = useState(
+    isFavorite ? classes["prod-like-active"] : classes["prod-like"]
+  );
+
+    console.log("PRODUCT RENDERED");
+
+  // console.log(name);
+  // console.log("is favorite:", isFavorite);
+  // console.log("className", likeClass);
+  // console.log();
 
   const onLikeHandler = async (event) => {
     event.preventDefault();
-    try {
-      await sendRequest(`http://localhost:5000/api/favorites/${id}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
-    } catch (error) {}
+    if (!isFavorite) {
+      try {
+        await sendRequest(`http://localhost:5000/api/favorites/${id}`, "POST", {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        });
+
+        setLikeClass(classes["prod-like-active"]);
+        isFavorite = true;
+        console.log("LIKED PRODUCT");
+      } catch (error) {}
+    } else {
+      try {
+        await sendRequest(
+          `http://localhost:5000/api/favorites/${id}`,
+          "DELETE",
+          {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + user.token,
+            Username: user.username,
+          }
+        );
+
+        setLikeClass(classes["prod-like"]);
+        isFavorite = false;
+        console.log("DISLIKED");
+      } catch (error) {}
+    }
+    console.log(isFavorite);
   };
 
   return (
@@ -30,9 +66,10 @@ const ProductItem = (props) => {
           <p className={classes["prod-firm"]}>{firm}</p>
           <p className={classes["prod-price"]}>{price} ₽</p>
           <button
-            className={
-              isFavourite ? classes["prod-like-active"] : classes["prod-like"]
-            }
+            // className={
+            //   isFavorite ? classes["prod-like-active"] : classes["prod-like"]
+            // }
+            className={likeClass}
             onClick={onLikeHandler}
           >
             Like

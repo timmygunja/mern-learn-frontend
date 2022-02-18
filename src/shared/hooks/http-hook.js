@@ -4,19 +4,15 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { uiActions } from "../../store/ui-slice";
 
 export const useHttpClient = () => {
-  // const [isLoading, setIsLoading] = useState(false);
   const isLoading = useSelector((state) => state.ui.isLoading);
   const dispatch = useDispatch();
 
-  // const [error, setError] = useState(null);
   const error = useSelector((state) => state.ui.error);
 
   const activeHttpRequests = useRef([]);
-  const history = useHistory();
 
   const sendRequest = useCallback(
     async (url, method = "GET", headers = {}, body = null) => {
-      // setIsLoading(true);
       dispatch(uiActions.setIsLoading(true));
 
       const httpAbortCtrl = new AbortController();
@@ -40,15 +36,10 @@ export const useHttpClient = () => {
           throw new Error(responseData.message);
         }
 
-        // setIsLoading(false);
         dispatch(uiActions.setIsLoading(false));
-
         return responseData;
       } catch (err) {
-        // setIsLoading(false);
         dispatch(uiActions.setIsLoading(false));
-
-        // setError(err.message);
         dispatch(uiActions.setError(err.message));
 
         throw err;
@@ -58,7 +49,6 @@ export const useHttpClient = () => {
   );
 
   const clearError = () => {
-    // setError(null);
     dispatch(uiActions.setError(null));
   };
 
