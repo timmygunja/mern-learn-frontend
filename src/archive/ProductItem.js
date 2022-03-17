@@ -1,34 +1,56 @@
 import classes from "./ProductItem.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useState } from "react";
-import {
-  addToFavoritesIds,
-  deleteFromFavoritesIds,
-  favoritesActions,
-} from "../../store/favorites-slice";
 
 const ProductItem = (props) => {
-  const dispatch = useDispatch();
   const { sendRequest } = useHttpClient();
+  const { id, name, firm, price, image } = props;
+  let { isFavorite } = props;
   const user = useSelector((state) => state.ui.user);
-  const { id, name, firm, price, image, isFavorite } = props;
+
   const [likeClass, setLikeClass] = useState(
     isFavorite ? classes["prod-like-active"] : classes["prod-like"]
   );
 
+  // console.log(name);
+  // console.log("is favorite:", isFavorite);
+  // console.log("className", likeClass);
+  // console.log();
+
   const onLikeHandler = async (event) => {
     event.preventDefault();
     if (!isFavorite) {
-      await dispatch(addToFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
-      setLikeClass(classes["prod-like-active"]);
+      try {
+        await sendRequest(`http://localhost:5000/api/favorites/${id}`, "POST", {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        });
+
+        setLikeClass(classes["prod-like-active"]);
+        props.isFavorite = true;
+        console.log("LIKED PRODUCT");
+      } catch (error) {}
     } else {
-      await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
-      setLikeClass(classes["prod-like"]);
+      try {
+        await sendRequest(
+          `http://localhost:5000/api/favorites/${id}`,
+          "DELETE",
+          {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + user.token,
+            Username: user.username,
+          }
+        );
+
+        setLikeClass(classes["prod-like"]);
+        props.isFavorite = false;
+        console.log("DISLIKED");
+      } catch (error) {}
     }
+    console.log(isFavorite);
   };
 
   return (

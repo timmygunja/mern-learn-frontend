@@ -1,22 +1,35 @@
 import classes from "./RecommendSliderItem.module.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import {
+  addToFavoritesIds,
+  deleteFromFavoritesIds,
+  favoritesActions,
+} from "../../store/favorites-slice";
+import { useState } from "react";
+import { productsActions } from "../../store/products-slice";
 
 const RecommendSliderItem = (props) => {
+  const dispatch = useDispatch();
   const { sendRequest } = useHttpClient();
-  const { id, name, firm, price, image, isFavourite } = props;
+  const { id, name, firm, price, image, isFavorite } = props;
   const user = useSelector((state) => state.ui.user);
+  const [likeClass, setLikeClass] = useState(
+    isFavorite ? classes["prod-like-active"] : classes["prod-like"]
+  );
 
   const onLikeHandler = async (event) => {
     event.preventDefault();
-    try {
-      await sendRequest(`http://localhost:5000/api/favorites/${id}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
-    } catch (error) {}
+    if (!isFavorite) {
+      await dispatch(addToFavoritesIds(sendRequest, user, id));
+      await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
+      setLikeClass(classes["prod-like-active"]);
+    } else {
+      await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
+      await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
+      setLikeClass(classes["prod-like"]);
+    }
   };
 
   return (
@@ -30,9 +43,10 @@ const RecommendSliderItem = (props) => {
           <p className={classes["prod-firm"]}>{firm}</p>
           <p className={classes["prod-price"]}>{price} ₽</p>
           <button
-            className={
-              isFavourite ? classes["prod-like-active"] : classes["prod-like"]
-            }
+            // className={
+            //   isFavorite ? classes["prod-like-active"] : classes["prod-like"]
+            // }
+            className={likeClass}
             onClick={onLikeHandler}
           >
             Like

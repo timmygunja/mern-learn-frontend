@@ -9,7 +9,7 @@ const CartItemsList = (props) => {
           <CartItem
             key={cartItem.id}
             cartItemId={cartItem.id}
-            onClickDelete={props.onClickDelete}
+            // onClickDelete={props.onClickDelete}
             item={{
               id: cartItem.product.id,
               name: cartItem.product.name,

@@ -67,6 +67,7 @@ const RecommendSlider = (props) => {
       <div className={classes["slider-content"]}>
         <RecommendSliderList
           products={props.products}
+          favorites={props.favorites}
           style={style}
           className={classes["slider-list"]}
         />

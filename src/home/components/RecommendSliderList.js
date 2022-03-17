@@ -1,14 +1,16 @@
 import RecommendSliderItem from "./RecommendSliderItem";
 import classes from "./RecommendSliderList.module.css";
 
-const RecommendSliderList = (props) => {
+let isFavorite;
 
+const RecommendSliderList = (props) => {
   return (
-    <div
-      className={classes["slider-list"]}
-      style={props.style}
-    >
+    <div className={classes["slider-list"]} style={props.style}>
       {props.products.map((product) => {
+        if (props.favorites) {
+          isFavorite = props.favorites.includes(product.id);
+        }
+
         return (
           <RecommendSliderItem
             key={product.id}
@@ -18,7 +20,7 @@ const RecommendSliderList = (props) => {
             description={product.description}
             price={product.price}
             image={product.image}
-            isFavourite={product.isFavourite}
+            isFavorite={isFavorite}
           />
         );
       })}

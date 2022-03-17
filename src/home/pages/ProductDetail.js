@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Section from "../../shared/UIElements/Section";
-import { cartActions } from "../../store/cart-slice";
+import { addProductToCart, cartActions } from "../../store/cart-slice";
+import {
+  addToFavoritesIds,
+  favoritesActions,
+} from "../../store/favorites-slice";
 import BuyButton from "../components/BuyButton";
 import LikeButton from "../components/LikeButton";
 import classes from "./ProductDetail.module.css";
@@ -36,27 +40,16 @@ const ProductDetail = (props) => {
   const addToCartHandler = async (e) => {
     e.preventDefault();
     try {
-      await sendRequest(`http://localhost:5000/api/cart/${productId}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
-      dispatch(cartActions.addToCart());
+      await dispatch(addProductToCart(sendRequest, user, productId));
+      await dispatch(cartActions.setCartChanged(true));
     } catch (err) {}
   };
 
-  const addToFavoritesHandler = async (e) => {
+  const addToFavoritesIdsHandler = async (e) => {
     e.preventDefault();
     try {
-      await sendRequest(
-        `http://localhost:5000/api/favorites/${productId}`,
-        "POST",
-        {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + user.token,
-          Username: user.username,
-        }
-      );
+      await dispatch(addToFavoritesIds(sendRequest, user, productId));
+      await dispatch(favoritesActions.setFavoritesChanged(true));
     } catch (err) {}
   };
 
@@ -100,7 +93,7 @@ const ProductDetail = (props) => {
               </div>
               <div className={classes["product-buttons"]}>
                 <BuyButton onClick={addToCartHandler}>Add To Cart</BuyButton>
-                <LikeButton onClick={addToFavoritesHandler}>
+                <LikeButton onClick={addToFavoritesIdsHandler}>
                   Add To Favorites
                 </LikeButton>
               </div>

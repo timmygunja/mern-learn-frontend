@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import { cartActions } from "../../store/cart-slice";
+import { addProductToCart } from "../../store/cart-slice";
+import {
+  deleteFromFavoritesIds,
+  favoritesActions,
+} from "../../store/favorites-slice";
 import classes from "./FavItem.module.css";
 
 const FavItem = (props) => {
@@ -10,27 +14,34 @@ const FavItem = (props) => {
   const { id, name, firm, price, image } = props.item;
   const { sendRequest } = useHttpClient();
 
+  // console.log(name);
+
+  // const removeFromFavoritesHandler = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await sendRequest(`http://localhost:5000/api/favorites/${id}`, "DELETE", {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + user.token,
+  //       Username: user.username,
+  //     });
+  //     props.onClickDelete(id);
+  //   } catch (err) {}
+  // };
+
   const removeFromFavoritesHandler = async (e) => {
     e.preventDefault();
     try {
-      await sendRequest(`http://localhost:5000/api/favorites/${id}`, "DELETE", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
-      props.onClickDelete(id);
+      await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
+      await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
+      await dispatch(favoritesActions.setFavoritesChanged(true));
     } catch (err) {}
   };
 
   const addToCartHandler = async (e) => {
     e.preventDefault();
     try {
-      await sendRequest(`http://localhost:5000/api/cart/${id}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
-      dispatch(cartActions.addToCart());
+      await dispatch(addProductToCart(sendRequest, user, id));
+      await dispatch(favoritesActions.setFavoritesChanged(true));
     } catch (err) {}
   };
 

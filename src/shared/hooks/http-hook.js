@@ -13,6 +13,7 @@ export const useHttpClient = () => {
 
   const sendRequest = useCallback(
     async (url, method = "GET", headers = {}, body = null) => {
+      !isLoading && dispatch(uiActions.setIsLoading(true));
       dispatch(uiActions.setIsLoading(true));
 
       const httpAbortCtrl = new AbortController();
