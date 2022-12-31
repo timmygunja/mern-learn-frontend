@@ -27,6 +27,7 @@ const Home = () => {
     }
   }, [isLogged]);
 
+  // Rerender products on like
   useEffect(() => {
     loadedFavoritesIds && dispatch(loadProducts(sendRequest));
     console.log("reloaded products");
@@ -38,19 +39,19 @@ const Home = () => {
 
   return (
     <>
-      {loadedProducts && loadedFavoritesIds && (
+      {loadedProducts && (loadedFavoritesIds || !isLogged) && (
         <ProductsList
           products={loadedProducts.slice(0, 4)}
           favorites={loadedFavoritesIds}
         />
       )}
-      {loadedProducts && loadedFavoritesIds && (
+      {loadedProducts && (loadedFavoritesIds || !isLogged) && (
         <RecommendSlider
           products={loadedProducts}
           favorites={loadedFavoritesIds}
         />
       )}
-      {loadedProducts && loadedFavoritesIds && (
+      {loadedProducts && (loadedFavoritesIds || !isLogged) && (
         <ProductsList
           products={loadedProducts.slice(4)}
           favorites={loadedFavoritesIds}

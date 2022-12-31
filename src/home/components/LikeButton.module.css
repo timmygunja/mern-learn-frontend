@@ -22,3 +22,8 @@
     border: 0.125em solid rgb(240, 40, 40);
     box-shadow: 0 0 0.7em 0.1em rgb(240, 40, 40);
 }
+
+ul {
+    color: #e3cfff;
+    color: #fa46a6;
+}

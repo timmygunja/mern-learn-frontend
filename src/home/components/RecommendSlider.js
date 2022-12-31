@@ -5,7 +5,7 @@ import SelectBoxHorizontal from "./SelectBoxHorizontal";
 
 let currentIndex = 0;
 let leftConstraint = 0;
-let rightConstraint = 2;
+let rightConstraint = 4;
 
 const RecommendSlider = (props) => {
   const [leftButtonHidden, setLeftButtonHidden] = useState(true);

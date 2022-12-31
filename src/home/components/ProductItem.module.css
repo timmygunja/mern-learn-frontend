@@ -6,7 +6,9 @@
   grid-template-areas:
     "prod-pic"
     "prod-text";
-  grid-template-rows: 80% 20%;
+  /* grid-template-rows: 80% 20%; */
+  /* grid-template-rows: 70% 30%; */
+  grid-template-rows: calc(83% - 1.1vw) calc(17% + 1.1vw);
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.11);
   padding: 12px;
@@ -33,7 +35,8 @@
   grid-area: prod-name;
   font-family: sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: var(--h7-font-size);
   text-align: left;
   display: flex;
   align-self: center;
@@ -43,7 +46,8 @@
   grid-area: prod-firm;
   text-align: left;
   font-weight: 400;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: var(--h8-font-size);
   display: flex;
   align-self: center;
 }
@@ -53,7 +57,8 @@
   color: black;
   /* text-align: right; */
   font-weight: 400;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: var(--h8-font-size);
   display: flex;
   align-self: center;
   justify-content: center;
@@ -64,7 +69,8 @@
   grid-area: prod-like;
   margin: 0;
   padding: 0;
-  font-size: 12px;
+  /* font-size: 12px; */
+  font-size: var(--h9-font-size);
   font-weight: 300;
   background-color: white;
   border: 1px solid rgba(100, 58, 58, 0.4);
