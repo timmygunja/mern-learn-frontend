@@ -8,6 +8,8 @@ import { uiActions } from "../../store/ui-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { loadProducts } from "../../store/products-slice";
+import { favoritesActions } from "../../store/favorites-slice";
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -82,8 +84,10 @@ const Auth = () => {
     } catch (error) {}
   };
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
     dispatch(uiActions.logout());
+    dispatch(favoritesActions.setloadedFavoritesIds([]));
+    await dispatch(loadProducts(sendRequest));
   };
 
   return (

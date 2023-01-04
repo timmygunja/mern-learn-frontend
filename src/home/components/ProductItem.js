@@ -48,7 +48,7 @@ const ProductItem = (props) => {
             className={likeClass}
             onClick={onLikeHandler}
           >
-            Like
+            <img src="heart.svg" />
           </button>
         </div>
       </div>

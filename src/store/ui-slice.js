@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
+    readyToRender: false,
     isLoading: false,
     error: null,
     isLogged: undefined,
@@ -14,6 +14,9 @@ const uiSlice = createSlice({
     },
   },
   reducers: {
+    setReadyToTender(state, action) {
+      state.isLoading = action.payload;
+    },
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
@@ -30,7 +33,7 @@ const uiSlice = createSlice({
 
       const tokenExpirationDate =
         userData.tokenExpirationDate ||
-        new Date(new Date().getTime() + 1000 * 60 * 60 * 12); // 1000 * 60 * 60 * 12
+        new Date(new Date().getTime() + 1000 * 60 * 60 * 12); // 1000 * 60 * 60 * 12 = 12 hours || 1000 * 5 = 5 seconds
       state.user.tokenExpirationDate = tokenExpirationDate.toISOString();
 
       localStorage.setItem(

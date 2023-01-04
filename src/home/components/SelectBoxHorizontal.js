@@ -31,7 +31,7 @@ const SelectBoxHorizontal = (props) => {
         className={classes["select-option-chosen"]}
         onClick={showOptionHandler}
       >
-        <h4 className={classes["select-option-text"]}>{chosenOption}</h4>
+        <p className={classes["select-option-text"]}>{chosenOption}</p>
         <div className={classes[arrowClass]}>
           <img src="select arrow.svg" />
         </div>

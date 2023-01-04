@@ -7,7 +7,8 @@
     "prod-pic"
     "prod-text";
   /* grid-template-rows: 80% 20%; */
-  grid-template-rows: calc(83% - 1.1vw) calc(17% + 1.1vw);
+  grid-template-rows: calc(83% - 2.3vw) calc(17% + 2.3vw);
+  /* grid-template-rows: calc(83% - 1.1vw) calc(17% + 1.1vw); */
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.11);
   padding: 12px;
@@ -79,6 +80,12 @@
   border-radius: 5px;
   transition: all 0.2s linear;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.prod-like img,
+.prod-like-active img {
+  width: 20%;
+  transform: scale(1.2);
 }
 
 .prod-like:hover {
