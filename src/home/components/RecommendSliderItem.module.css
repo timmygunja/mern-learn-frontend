@@ -13,7 +13,25 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.11);
   padding: 12px;
   margin: 0 15px;
-  min-width: 20vw;
+  min-width: 22vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .product {
+    min-width: 28vw;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .product {
+    min-width: 38vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .product {
+    min-width: 70vw;
+  }
 }
 
 .prod-pic img {
