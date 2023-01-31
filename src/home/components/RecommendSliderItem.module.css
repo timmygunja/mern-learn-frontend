@@ -57,7 +57,7 @@
   font-family: sans-serif;
   font-weight: 500;
   /* font-size: 20px; */
-  font-size: var(--h7-font-size);
+  font-size: var(--h8-font-size);
   text-align: left;
   display: flex;
   align-self: center;
@@ -68,7 +68,7 @@
   text-align: left;
   font-weight: 400;
   /* font-size: 20px; */
-  font-size: var(--h8-font-size);
+  font-size: var(--h9-font-size);
   display: flex;
   align-self: center;
 }
@@ -79,7 +79,7 @@
   /* text-align: right; */
   font-weight: 400;
   /* font-size: 18px; */
-  font-size: var(--h8-font-size);
+  font-size: var(--h9-font-size);
   display: flex;
   align-self: center;
   justify-content: center;
@@ -91,7 +91,7 @@
   margin: 0;
   padding: 0;
   /* font-size: 12px; */
-  font-size: var(--h9-font-size);
+  font-size: var(--h10-font-size);
   font-weight: 300;
   background-color: white;
   border: 1px solid rgba(100, 58, 58, 0.4);

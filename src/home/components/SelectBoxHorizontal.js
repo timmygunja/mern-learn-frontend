@@ -45,9 +45,6 @@ const SelectBoxHorizontal = (props) => {
       <div className={classes[selectClass]} onClick={optionHandler}>
         Liked
       </div>
-      <div className={classes[selectClass]} onClick={optionHandler}>
-        Season
-      </div>
     </div>
   );
 };

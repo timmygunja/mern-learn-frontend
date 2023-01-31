@@ -1,17 +1,36 @@
 :root {
-    --h1-font-size: calc(20px + 1.4vw);
-    --h2-font-size: calc(28px + 1.3vw);
-    --h3-font-size: calc(16px + 1.2vw);
-    --h4-font-size: calc(14px + 1.1vw);
-    --h5-font-size: calc(12px + 1vw);
-    --h6-font-size: calc(10px + 0.9vw);
-    --h7-font-size: calc(8px + 0.8vw);
-    --h8-font-size: calc(6px + 0.7vw);
-    --h9-font-size: calc(4px + 0.6vw);
-    --h10-font-size: calc(2px + 0.5vw);
+  --h1-font-size: calc(26px + 1.4vw);
+  --h2-font-size: calc(24px + 1.3vw);
+  --h3-font-size: calc(22px + 1.2vw);
+  --h4-font-size: calc(20px + 1.1vw);
+  --h5-font-size: calc(18px + 1vw);
+  --h6-font-size: calc(16px + 0.9vw);
+  --h7-font-size: calc(14px + 0.8vw);
+  --h8-font-size: calc(12px + 0.7vw);
+  --h9-font-size: calc(10px + 0.6vw);
+  --h10-font-size: calc(8px + 0.5vw);
+  --h11-font-size: calc(6px + 0.4vw);
+  --h12-font-size: calc(5px + 0.3vw);
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --h1-font-size: calc(17px + 3vw);
+    --h2-font-size: calc(16px + 2.8vw);
+    --h3-font-size: calc(15px + 2.6vw);
+    --h4-font-size: calc(14px + 2.4vw);
+    --h5-font-size: calc(13px + 2.2vw);
+    --h6-font-size: calc(12px + 2vw);
+    --h7-font-size: calc(11px + 1.8vw);
+    --h8-font-size: calc(9px + 1.6vw);
+    --h9-font-size: calc(7px + 1.4vw);
+    --h10-font-size: calc(5px + 1.2vw);
+    --h11-font-size: calc(3px + 1vw);
+    --h12-font-size: calc(2px + 0.8vw);
   }
+}
 
 .body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }

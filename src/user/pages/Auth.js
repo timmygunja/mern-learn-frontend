@@ -93,7 +93,7 @@ const Auth = () => {
   return (
     <>
       <Section name={"Log in"}>
-        <div className={"hard-centered"}>
+        <div className={classes.auth + " hard-centered"}>
           <Card>
             {isLogged && (
               <div className={classes["logged-centered"]}>
@@ -138,7 +138,7 @@ const Auth = () => {
 
       {!isLogged && (
         <Section name={"Register"}>
-          <div className={"hard-centered"}>
+          <div className={classes.auth + " hard-centered"}>
             <Card>
               <form className={classes.form}>
                 <TextField

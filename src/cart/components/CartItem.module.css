@@ -40,7 +40,8 @@
   grid-area: prod-name;
   font-family: sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: var(--h7-font-size);
   text-align: left;
 }
 
@@ -48,7 +49,8 @@
   grid-area: prod-firm;
   text-align: left;
   font-weight: 400;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: var(--h8-font-size);
 }
 
 .prod-price {
@@ -56,7 +58,9 @@
   color: black;
   text-align: right;
   font-weight: 500;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: var(--h8-font-size);
+  padding: 5px 0;
 }
 
 .prod-content button {
@@ -80,6 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--h9-font-size);
 }
 
 .prod-remove {

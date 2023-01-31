@@ -8,8 +8,10 @@ import {
   deleteFromFavoritesIds,
   favoritesActions,
 } from "../../store/favorites-slice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const ProductItem = (props) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { sendRequest } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
@@ -20,14 +22,18 @@ const ProductItem = (props) => {
 
   const onLikeHandler = async (event) => {
     event.preventDefault();
-    if (!isFavorite) {
-      await dispatch(addToFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
-      setLikeClass(classes["prod-like-active"]);
+    if (user.username) {
+      if (!isFavorite) {
+        await dispatch(addToFavoritesIds(sendRequest, user, id));
+        await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
+        setLikeClass(classes["prod-like-active"]);
+      } else {
+        await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
+        await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
+        setLikeClass(classes["prod-like"]);
+      }
     } else {
-      await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
-      setLikeClass(classes["prod-like"]);
+      history.push("/auth");
     }
   };
 
@@ -41,6 +47,7 @@ const ProductItem = (props) => {
           <h1 className={classes["prod-name"]}>{name}</h1>
           <p className={classes["prod-firm"]}>{firm}</p>
           <p className={classes["prod-price"]}>{price} ₽</p>
+
           <button
             // className={
             //   isFavorite ? classes["prod-like-active"] : classes["prod-like"]

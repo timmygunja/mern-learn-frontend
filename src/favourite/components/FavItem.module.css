@@ -1,13 +1,14 @@
 .product {
   background-color: white;
   display: grid;
-  grid-template-columns: 1fr 12fr 1fr;
+  grid-template-columns: 1fr 16fr 1fr;
   grid-template-areas: "delete content add";
   grid-gap: 10px;
-  border-radius: 24px;
+  border-radius: 18px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 10px 40px;
+  /* margin: 10px 40px; */
+  margin: 10px 5%;
 }
 
 .prod-delete-from-favorites {
@@ -21,10 +22,12 @@
 .prod-content {
   grid-area: content;
   display: grid;
-  grid-template-columns: 3fr 13fr;
+  grid-template-columns: 3fr 12fr;
   grid-template-areas: "pic info";
-  grid-gap: 40px;
-  padding: 15px 20px;
+  /* grid-gap: 40px; */
+  grid-gap: 3%;
+  /* padding: 15px 20px; */
+  padding: 2% 5%;
 }
 
 .prod-add-to-cart {
@@ -37,11 +40,15 @@
 
 .prod-pic {
   grid-area: pic;
+  min-width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .prod-pic img {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -51,19 +58,19 @@
   display: grid;
   padding: 10px;
   justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 5px;
   grid-template-areas:
-    "prod-name prod-name prod-price"
-    "prod-firm prod-firm prod-size"
-    "prod-remove . prod-add";
+    "prod-name prod-price"
+    "prod-firm prod-size";
 }
 
 .prod-name {
   grid-area: prod-name;
   font-family: sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: var(--h8-font-size);
   text-align: left;
 }
 
@@ -71,7 +78,8 @@
   grid-area: prod-firm;
   text-align: left;
   font-weight: 400;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: var(--h9-font-size);
 }
 
 .prod-price {
@@ -79,12 +87,15 @@
   color: black;
   text-align: right;
   font-weight: 500;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: var(--h9-font-size);
+  padding: 5px 0;
 }
 
 .prod-add-to-cart,
 .prod-delete-from-favorites {
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: var(--h6-font-size);
   border: none;
   margin: 0;
   transition: all 200ms linear;

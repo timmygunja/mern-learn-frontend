@@ -1,4 +1,10 @@
 .favorites {
   display: grid;
-  padding: 0 10%;
+  padding: 3% 10%;
+}
+
+@media screen and (max-width: 1000px) {
+  .favorites {
+    padding: 2% 0;
+  }
 }

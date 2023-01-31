@@ -4,7 +4,8 @@
     margin: 10px 0;
     padding: 0.25em 1em;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
+    font-size: var(--h8-font-size);
     font-family: "Balsamiq Sans", cursive;
     letter-spacing: 1px;
     background-color: rgb(207, 44, 44);

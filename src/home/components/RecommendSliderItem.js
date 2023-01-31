@@ -9,8 +9,10 @@ import {
 } from "../../store/favorites-slice";
 import { useState } from "react";
 import { productsActions } from "../../store/products-slice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const RecommendSliderItem = (props) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { sendRequest } = useHttpClient();
   const { id, name, firm, price, image, isFavorite } = props;
@@ -21,14 +23,18 @@ const RecommendSliderItem = (props) => {
 
   const onLikeHandler = async (event) => {
     event.preventDefault();
-    if (!isFavorite) {
-      await dispatch(addToFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
-      setLikeClass(classes["prod-like-active"]);
+    if (user.username) {
+      if (!isFavorite) {
+        await dispatch(addToFavoritesIds(sendRequest, user, id));
+        await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
+        setLikeClass(classes["prod-like-active"]);
+      } else {
+        await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
+        await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
+        setLikeClass(classes["prod-like"]);
+      }
     } else {
-      await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
-      setLikeClass(classes["prod-like"]);
+      history.push("/auth");
     }
   };
 
