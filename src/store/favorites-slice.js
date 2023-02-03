@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import env from "../env";
 
 const favoritesSlice = createSlice({
   name: "favorites",
@@ -33,7 +34,8 @@ export const loadFavorites = (sendRequest, user) => {
   return async (dispatch) => {
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/favorites",
+        // "http://localhost:5000/api/favorites",
+        env.BASE_URL + "/api/favorites",
         "GET",
         {
           "Content-Type": "application/json",
@@ -53,7 +55,8 @@ export const loadFavoritesIds = (sendRequest, user) => {
   return async (dispatch) => {
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/favorites/ids",
+        // "http://localhost:5000/api/favorites/ids",
+        env.BASE_URL + "/api/favorites/ids",
         "GET",
         {
           "Content-Type": "application/json",
@@ -75,7 +78,8 @@ export const addToFavoritesIds = (sendRequest, user, productId) => {
   return async (dispatch) => {
     try {
       await sendRequest(
-        `http://localhost:5000/api/favorites/${productId}`,
+        // `http://localhost:5000/api/favorites/${productId}`,
+        env.BASE_URL + `/api/favorites/${productId}`,
         "POST",
         {
           "Content-Type": "application/json",
@@ -93,7 +97,8 @@ export const deleteFromFavoritesIds = (sendRequest, user, productId) => {
   return async (dispatch) => {
     try {
       await sendRequest(
-        `http://localhost:5000/api/favorites/${productId}`,
+        // `http://localhost:5000/api/favorites/${productId}`,
+        env.BASE_URL + `/api/favorites/${productId}`,
         "DELETE",
         {
           "Content-Type": "application/json",

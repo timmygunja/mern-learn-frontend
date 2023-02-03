@@ -9,6 +9,7 @@ import {
   favoritesActions,
 } from "../../store/favorites-slice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import env from "../../env";
 
 const ProductItem = (props) => {
   const history = useHistory();
@@ -41,7 +42,11 @@ const ProductItem = (props) => {
     <>
       <div className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
-          <img src={`http://localhost:5000/${image}`} alt="" />
+          <img
+            // src={`http://localhost:5000/${image}`}
+            src={env.BASE_URL + `/${image}`}
+            alt=""
+          />
         </Link>
         <div className={classes["prod-content"]}>
           <h1 className={classes["prod-name"]}>{name}</h1>

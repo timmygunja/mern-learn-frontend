@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { favoritesActions } from "./favorites-slice";
+import env from "../env";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -35,7 +36,8 @@ export const loadCartItems = (sendRequest, user) => {
   return async (dispatch) => {
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/cart",
+        // "http://localhost:5000/api/cart",
+        env.BASE_URL + "/api/cart",
         "GET",
         {
           "Content-Type": "application/json",
@@ -44,7 +46,7 @@ export const loadCartItems = (sendRequest, user) => {
         }
       );
 
-      console.log("here", responseData.cartItems);
+      // console.log("here", responseData.cartItems);
 
       responseData.cartItems.length > 0
         ? dispatch(cartActions.setLoadedCartItems(responseData.cartItems))
@@ -59,7 +61,8 @@ export const getCartLength = (sendRequest, user) => {
   return async (dispatch) => {
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/cart/getCartLength",
+        // "http://localhost:5000/api/cart/getCartLength",
+        env.BASE_URL + "/api/cart/getCartLength",
         "GET",
         {
           "Content-Type": "application/json",
@@ -76,11 +79,16 @@ export const getCartLength = (sendRequest, user) => {
 export const increaseCartItemQuantity = (sendRequest, user, productId) => {
   return async (dispatch) => {
     try {
-      await sendRequest(`http://localhost:5000/api/cart/${productId}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
+      await sendRequest(
+        // `http://localhost:5000/api/cart/${productId}`,
+        env.BASE_URL + `/api/cart/${productId}`,
+        "POST",
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        }
+      );
 
       dispatch(cartActions.addToCart());
       dispatch(cartActions.setCartChanged(true));
@@ -92,7 +100,8 @@ export const decreaseCartItemQuantity = (sendRequest, user, cartItemId) => {
   return async (dispatch) => {
     try {
       await sendRequest(
-        `http://localhost:5000/api/cart/${cartItemId}`,
+        // `http://localhost:5000/api/cart/${cartItemId}`,
+        env.BASE_URL + `/api/cart/${cartItemId}`,
         "DELETE",
         {
           "Content-Type": "application/json",
@@ -110,12 +119,17 @@ export const decreaseCartItemQuantity = (sendRequest, user, cartItemId) => {
 export const addProductToCart = (sendRequest, user, productId) => {
   return async (dispatch) => {
     try {
-      await sendRequest(`http://localhost:5000/api/cart/${productId}`, "POST", {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + user.token,
-        Username: user.username,
-      });
-      
+      await sendRequest(
+        // `http://localhost:5000/api/cart/${productId}`,
+        env.BASE_URL + `/api/cart/${productId}`,
+        "POST",
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        }
+      );
+
       dispatch(cartActions.addToCart());
       dispatch(cartActions.setCartChanged(true));
     } catch (err) {}

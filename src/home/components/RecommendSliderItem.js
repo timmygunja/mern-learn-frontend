@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { productsActions } from "../../store/products-slice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import env from "../../env";
 
 const RecommendSliderItem = (props) => {
   const history = useHistory();
@@ -42,7 +43,11 @@ const RecommendSliderItem = (props) => {
     <>
       <div className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
-          <img src={`http://localhost:5000/${image}`} alt="" />
+          <img
+            // src={`http://localhost:5000/${image}`}
+            src={env.BASE_URL + `/${image}`}
+            alt=""
+          />
         </Link>
         <div className={classes["prod-content"]}>
           <h1 className={classes["prod-name"]}>{name}</h1>

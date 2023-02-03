@@ -18,7 +18,7 @@ const Home = () => {
     (state) => state.favorites.loadedFavoritesIds
   );
 
-  // console.log("HOME PAGE LOADED");
+  console.log("HOME PAGE LOADED");
 
   useEffect(() => {
     if (isLogged) {

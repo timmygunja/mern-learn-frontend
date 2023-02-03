@@ -7,6 +7,7 @@ import {
   increaseCartItemQuantity,
 } from "../../store/cart-slice";
 import classes from "./CartItem.module.css";
+import env from "../../env";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
@@ -71,7 +72,11 @@ const CartItem = (props) => {
     <>
       <li className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
-          <img src={`http://localhost:5000/${image}`} alt="" />
+          <img
+            // src={`http://localhost:5000/${image}`}
+            src={env.BASE_URL + `/${image}`}
+            alt=""
+          />
         </Link>
         <div className={classes["prod-content"]}>
           <h1 className={classes["prod-name"]}>{name}</h1>

@@ -7,6 +7,7 @@ import {
   favoritesActions,
 } from "../../store/favorites-slice";
 import classes from "./FavItem.module.css";
+import env from "../../env";
 
 const FavItem = (props) => {
   const dispatch = useDispatch();
@@ -58,7 +59,11 @@ const FavItem = (props) => {
 
         <Link to={`/products/${id}`} className={classes["prod-content"]}>
           <div className={classes["prod-pic"]}>
-            <img src={`http://localhost:5000/${image}`} alt="" />
+            <img
+              // src={`http://localhost:5000/${image}`}
+              src={env.BASE_URL + `/${image}`}
+              alt=""
+            />
           </div>
           <div className={classes["prod-info"]}>
             <h1 className={classes["prod-name"]}>{name}</h1>

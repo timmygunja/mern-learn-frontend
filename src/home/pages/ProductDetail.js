@@ -11,6 +11,7 @@ import {
 import BuyButton from "../components/BuyButton";
 import LikeButton from "../components/LikeButton";
 import classes from "./ProductDetail.module.css";
+import env from "../../env";
 
 const ProductDetail = (props) => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const ProductDetail = (props) => {
     const loadProduct = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/products/${productId}`,
+          // `http://localhost:5000/api/products/${productId}`,
+          env.BASE_URL + `/api/products/${productId}`,
           "GET",
           {
             "Content-Type": "application/json",
@@ -61,22 +63,26 @@ const ProductDetail = (props) => {
             <div className={classes.mainbar}>
               <img
                 className={classes["product-img"]}
-                src={`http://localhost:5000/${loadedProduct.image}`}
+                // src={`http://localhost:5000/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
-                src={`http://localhost:5000/${loadedProduct.image}`}
+                // src={`http://localhost:5000/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
-                src={`http://localhost:5000/${loadedProduct.image}`}
+                // src={`http://localhost:5000/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
-                src={`http://localhost:5000/${loadedProduct.image}`}
+                // src={`http://localhost:5000/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image}`}
                 alt=""
               />
             </div>

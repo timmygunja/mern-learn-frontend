@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { loadProducts } from "../../store/products-slice";
 import { favoritesActions } from "../../store/favorites-slice";
+import env from "../../env";
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,8 @@ const Auth = () => {
 
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/users/login",
+        // "http://localhost:5000/api/users/login",
+        env.BASE_URL + "/api/users/login",
         "POST",
         {
           "Content-Type": "application/json",
@@ -59,7 +61,8 @@ const Auth = () => {
 
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/users/signup",
+        // "http://localhost:5000/api/users/signup",
+        env.BASE_URL + "/api/users/signup",
         "POST",
         {
           "Content-Type": "application/json",

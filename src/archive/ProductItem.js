@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useState } from "react";
+import env from "../env";
 
 const ProductItem = (props) => {
   const { sendRequest } = useHttpClient();
@@ -23,11 +24,16 @@ const ProductItem = (props) => {
     event.preventDefault();
     if (!isFavorite) {
       try {
-        await sendRequest(`http://localhost:5000/api/favorites/${id}`, "POST", {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + user.token,
-          Username: user.username,
-        });
+        await sendRequest(
+          // `http://localhost:5000/api/favorites/${id}`,
+          env.BASE_URL + `/api/favorites/${id}`,
+          "POST",
+          {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + user.token,
+            Username: user.username,
+          }
+        );
 
         setLikeClass(classes["prod-like-active"]);
         props.isFavorite = true;
@@ -36,7 +42,8 @@ const ProductItem = (props) => {
     } else {
       try {
         await sendRequest(
-          `http://localhost:5000/api/favorites/${id}`,
+          // `http://localhost:5000/api/favorites/${id}`,
+          env.BASE_URL + `/api/favorites/${id}`,
           "DELETE",
           {
             "Content-Type": "application/json",
@@ -57,7 +64,11 @@ const ProductItem = (props) => {
     <>
       <div className={classes.product}>
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
-          <img src={`http://localhost:5000/${image}`} alt="" />
+          <img
+            // src={`http://localhost:5000/${image}`}
+            src={env.BASE_URL + `${image}`}
+            alt=""
+          />
         </Link>
         <div className={classes["prod-content"]}>
           <h1 className={classes["prod-name"]}>{name}</h1>

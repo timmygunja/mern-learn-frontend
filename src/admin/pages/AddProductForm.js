@@ -3,6 +3,7 @@ import { useRef } from "react";
 import ImageUpload from "../../shared/components/formElements/ImageUpload";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import classes from "./AddProductForm.module.css";
+import env from "../../env";
 
 const AddProductForm = () => {
   const { sendRequest } = useHttpClient();
@@ -25,7 +26,8 @@ const AddProductForm = () => {
       formData.append("image", image);
 
       const responseData = await sendRequest(
-        "http://localhost:5000/api/products",
+        // "http://localhost:5000/api/products",
+        env.BASE_URL + "/api/products",
         "POST",
         {},
         formData

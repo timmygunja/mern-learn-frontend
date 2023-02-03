@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import env from "../env";
 
 const productsSlice = createSlice({
   name: "products",
@@ -20,7 +21,8 @@ export const loadProducts = (sendRequest) => {
   return async (dispatch) => {
     try {
       const responseData = await sendRequest(
-        "http://localhost:5000/api/products",
+        // "http://localhost:5000/api/products",
+        env.BASE_URL + "/api/products",
         "GET",
         {
           "Content-Type": "application/json",
