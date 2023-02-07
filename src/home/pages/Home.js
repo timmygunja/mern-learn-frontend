@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from "react";
 import ProductsList from "../components/ProductsList";
 import { useHttpClient } from "../../shared/hooks/http-hook";

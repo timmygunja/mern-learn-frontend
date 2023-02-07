@@ -1,3 +1,4 @@
+import React from 'react';
 import RecommendSliderItem from "./RecommendSliderItem";
 import classes from "./RecommendSliderList.module.css";
 

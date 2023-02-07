@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import Button from "../../UIElements/Button";
 import classes from "./ImageUpload.module.css";

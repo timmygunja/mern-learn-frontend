@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './BuyButton.module.css';
 
 const BuyButton = props => {

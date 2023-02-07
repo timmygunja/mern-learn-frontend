@@ -1,3 +1,4 @@
+import React from 'react';
 // import classes from "./CartItemsList.module.css";
 import CartItem from "./CartItem";
 

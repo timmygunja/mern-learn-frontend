@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from "./PaycardItem.module.css";
 
 const PaycardItem = (props) => {

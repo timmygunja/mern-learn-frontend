@@ -1,3 +1,4 @@
+import React from 'react';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import BuyButton from "../../home/components/BuyButton";
 import classes from "./EmptyPaycard.module.css";

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import classes from "./RecommendSlider.module.css";
 import RecommendSliderList from "./RecommendSliderList";

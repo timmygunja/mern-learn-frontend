@@ -1,3 +1,4 @@
+import React from 'react';
 // import classes from "./FavItemsList.module.css";
 import FavItem from "./FavItem";
 
