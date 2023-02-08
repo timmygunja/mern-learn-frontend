@@ -1,6 +1,6 @@
 import React from 'react';
 import Section from "../../shared/UIElements/Section";
-import AddProductForm from "./AddProductForm";
+import AddProductForm from "../components/AddProductForm";
 import classes from "./Admin.module.css";
 
 const Admin = () => {
