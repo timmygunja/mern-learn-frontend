@@ -26,13 +26,11 @@ const AddProductForm = () => {
       formData.append("price", priceRef.current.value);
       formData.append("image", image);
 
-      console.log(env.BASE_URL + "/api/products");
-
       const responseData = await sendRequest(
         // "http://localhost:5000/api/products",
         env.BASE_URL + "/api/products",
         "POST",
-        { "Access-Control-Allow-Credentials": "true" },
+        {},
         formData
       );
 
