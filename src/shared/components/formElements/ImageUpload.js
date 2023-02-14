@@ -23,7 +23,7 @@ const ImageUpload = (props) => {
 
   const pickedHandler = (event) => {
     let pickedFile;
-    let fileIsValid = isValid; // cause of useState batching
+    let fileIsValid = isValid; // because of useState batching
 
     if (event.target.files && event.target.files.length !== 0) {
       pickedFile = event.target.files[0];
