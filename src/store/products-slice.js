@@ -29,6 +29,9 @@ export const loadProducts = (sendRequest) => {
         }
       );
 
+      console.log("Products in loadProducts");
+      console.log(responseData.products);
+
       dispatch(productsActions.setLoadedProducts(responseData.products));
     } catch (err) {}
   };
