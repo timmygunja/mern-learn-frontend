@@ -45,8 +45,8 @@ const ProductItem = (props) => {
         <Link to={`/products/${id}`} className={classes["prod-pic"]}>
           <img
             // src={`http://localhost:5000/${image}`}
-            // src={env.BASE_URL + `/${image}`}
-            src={env.BASE_URL + "/uploads/images/airforce.png"}
+            src={env.BASE_URL + `/${image}`}
+            // src={env.BASE_URL + "/uploads/images/airforce.png"}
             alt=""
           />
         </Link>
