@@ -20,6 +20,8 @@
 }
 
 .select-option {
+  /* For some odd reason doesn't work on Safari */
+  /* Tried fixing with prefix - didn't work either */
   animation: slidein 0.7s;
   transition: border 200ms ease-out;
 }
@@ -29,24 +31,64 @@
   border: 2px solid rgba(0, 0, 0, 0.7);
 }
 
+@keyframes slidein {
+  0% {
+    opacity: 0;
+    -moz-opacity: 0; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=0); /* For IE8 and earlier */
+
+    transform: translateX(-500%);
+    -ms-transform: translateX(-500%);
+    -webkit-transform: translateX(-500%);
+    -moz-transform: translateX(-500%);
+    -o-transform: translateX(-500%);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-opacity: 1; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 1; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+  }
+}
+
 .select-option-hidden {
   pointer-events: none;
   opacity: 0;
+  -moz-opacity: 0; /* Firefox and Mozilla browsers */
+  -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+  filter: alpha(opacity=0); /* For IE8 and earlier */
   animation: slideout 0.7s;
 }
 
 @keyframes slideout {
   0% {
-    opacity: 100;
+    opacity: 1;
+    -moz-opacity: 1; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 1; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=100); /* For IE8 and earlier */
   }
 
-  40% {
+  50% {
     opacity: 0;
+    -moz-opacity: 0; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=0); /* For IE8 and earlier */
   }
 
   100% {
     opacity: 0;
+    opacity: 0;
+    -moz-opacity: 0; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=0); /* For IE8 and earlier */
+
     transform: translateX(-500%);
+    -ms-transform: translateX(-500%);
+    -webkit-transform: translateX(-500%);
+    -moz-transform: translateX(-500%);
+    -o-transform: translateX(-500%);
   }
 }
 
@@ -74,31 +116,31 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  min-width: 25px;
+}
+
+.select-arrow-hidden img,
+.select-arrow-open img {
+  width: 40%;
+  transition: transform 200ms ease-out;
 }
 
 .select-arrow-hidden img {
-  width: 50%;
   transform: rotate(90deg);
-  transition: all 200ms ease-out;
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
 }
 
 .select-arrow-open img {
-  width: 50%;
   transform: rotate(0deg);
-  transition: all 200ms ease-out;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
 }
 
 .select-option {
   z-index: 1;
-}
-
-@keyframes slidein {
-  0% {
-    opacity: 0;
-    transform: translateX(-500%);
-  }
-
-  100% {
-    opacity: 100;
-  }
 }

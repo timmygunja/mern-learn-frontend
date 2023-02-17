@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -72,7 +72,10 @@ const CartItem = (props) => {
   return (
     <>
       <li className={classes.product}>
-        <Link to={`/products/${id}`} className={classes["prod-pic"]}>
+        <Link
+          to={`/products/${id}`}
+          className={classes["prod-pic"] + " hard-centered"}
+        >
           <img
             // src={`http://localhost:5000/${image}`}
             src={env.BASE_URL + `/${image}`}

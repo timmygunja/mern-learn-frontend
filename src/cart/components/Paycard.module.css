@@ -1,8 +1,8 @@
 .paycard {
   display: grid;
-  grid-template-areas:
+  /* grid-template-areas:
     "total"
-    "paycarditems";
+    "paycarditems"; */
   grid-gap: 20px;
   padding: 20px;
   margin: 15px 10px;
@@ -12,14 +12,21 @@
 }
 
 .total {
-  grid-area: total;
+  /* grid-area: total; */
   text-align: center;
   /* font-size: 18px; */
   font-size: var(--h9-font-size);
 }
 
-.paycard-items {
+@media screen and (max-width: 500px) {
+  .paycard {
+    grid-gap: 15px;
+    padding: 15px 10px;
+  }
+}
+
+/* .paycard-items {
   grid-area: paycarditems;
   display: grid;
-  grid-gap: 10px;
-}
+  grid-gap: 1px;
+} */

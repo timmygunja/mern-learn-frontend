@@ -101,7 +101,7 @@ const Auth = () => {
           <Card>
             {isLogged && (
               <div className={classes["logged-centered"]}>
-                <p>You are logged in, {user.username}</p>
+                <p>You are logged in as {user.username}</p>
                 <Button
                   className={classes["logout-button"]}
                   onClick={logoutHandler}

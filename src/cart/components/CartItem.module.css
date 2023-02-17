@@ -29,7 +29,7 @@
   padding: 15px;
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 10px;
   grid-template-areas:
     "prod-name prod-name prod-price"
     "prod-firm prod-firm prod-size"
@@ -94,4 +94,49 @@
 
 .prod-remove:hover {
   background-color: rgb(240, 40, 40);
+}
+
+@media screen and (max-width: 500px) {
+  .product {
+    grid-gap: 5px;
+    margin: 10px 2px;
+    padding: 5px;
+  }
+
+  .prod-pic img {
+    width: 90%;
+    border-radius: 8px;
+  }
+
+  .prod-content {
+    padding: 10px;
+    grid-gap: 5px;
+    grid-template-areas:
+      "prod-name prod-name prod-add"
+      "prod-firm prod-firm prod-quantity"
+      "prod-price - prod-remove";
+  }
+
+  .prod-name {
+    font-size: var(--h10-font-size);
+  }
+
+  .prod-firm {
+    font-size: var(--h11-font-size);
+  }
+
+  .prod-price {
+    font-size: var(--h11-font-size);
+    text-align: left;
+    padding: 0;
+  }
+
+  .prod-quantity {
+    font-size: var(--h11-font-size);
+  }
+
+  .prod-add,
+  .prod-remove {
+    padding: 5px;
+  }
 }

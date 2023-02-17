@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect } from "react";
 import ProductsList from "../components/ProductsList";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -18,6 +18,14 @@ const Home = () => {
   const loadedFavoritesIds = useSelector(
     (state) => state.favorites.loadedFavoritesIds
   );
+  const screenWidth = window.innerWidth;
+  let sliceNumber = 4;
+
+  if (750 < screenWidth && screenWidth < 1000) {
+    sliceNumber = 3;
+  } else if (screenWidth < 751) {
+    sliceNumber = 2;
+  }
 
   console.log("HOME PAGE LOADED");
 
@@ -42,7 +50,7 @@ const Home = () => {
     <>
       {loadedProducts && (loadedFavoritesIds || !isLogged) && (
         <ProductsList
-          products={loadedProducts.slice(0, 4)}
+          products={loadedProducts.slice(0, sliceNumber)}
           favorites={loadedFavoritesIds}
         />
       )}
@@ -54,7 +62,7 @@ const Home = () => {
       )}
       {loadedProducts && (loadedFavoritesIds || !isLogged) && (
         <ProductsList
-          products={loadedProducts.slice(4)}
+          products={loadedProducts.slice(sliceNumber)}
           favorites={loadedFavoritesIds}
         />
       )}

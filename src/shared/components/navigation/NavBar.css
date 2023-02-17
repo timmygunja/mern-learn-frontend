@@ -103,6 +103,7 @@
   justify-content: right;
   align-items: center;
   padding: 0 25px;
+  z-index: 100;
 }
 
 .menu img,
@@ -123,10 +124,21 @@
 @keyframes fadeOut {
   0% {
     opacity: 1;
+    -moz-opacity: 1; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 1; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=100); /* For IE8 and earlier */
   }
   99% {
     opacity: 0;
+    -moz-opacity: 0; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=0); /* For IE8 and earlier */
+
     transform: translate(50px);
+    -ms-transform: translate(50px);
+    -webkit-transform: translate(50px);
+    -moz-transform: translate(50px);
+    -o-transform: translate(50px);
   }
   100% {
     display: none;
@@ -137,8 +149,7 @@
   display: block;
   position: absolute;
   right: 0%;
-  /* top: 12%; */
-  top: max(5vw + 25px, 60px);
+  top: max(5vw + 25px, 56px);
   background-color: white;
   border-bottom: 2px solid #dadada;
   border-left: 2px solid #dadada;
@@ -150,10 +161,16 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    -moz-opacity: 0; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=0); /* For IE8 and earlier */
     transform: translate(50px);
   }
   100% {
     opacity: 1;
+    -moz-opacity: 1; /* Firefox and Mozilla browsers */
+    -webkit-opacity: 1; /* WebKit browser e.g. Safari */
+    filter: alpha(opacity=100); /* For IE8 and earlier */
   }
 }
 

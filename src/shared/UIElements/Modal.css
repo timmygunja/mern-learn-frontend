@@ -37,21 +37,33 @@
 .modal-enter {
   transform: translateY(-10rem);
   opacity: 0;
+  -moz-opacity: 0; /* Firefox and Mozilla browsers */
+  -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+  filter: alpha(opacity=0); /* For IE8 and earlier */
 }
 
 .modal-enter-active {
   transform: translateY(0);
   opacity: 1;
+  -moz-opacity: 1; /* Firefox and Mozilla browsers */
+  -webkit-opacity: 1; /* WebKit browser e.g. Safari */
+  filter: alpha(opacity=100); /* For IE8 and earlier */
   transition: all 200ms;
 }
 
 .modal-exit {
   transform: translateY(0);
   opacity: 1;
+  -moz-opacity: 1; /* Firefox and Mozilla browsers */
+  -webkit-opacity: 1; /* WebKit browser e.g. Safari */
+  filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
 .modal-exit-active {
   transform: translateY(-10rem);
   opacity: 0;
+  -moz-opacity: 0; /* Firefox and Mozilla browsers */
+  -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+  filter: alpha(opacity=0); /* For IE8 and earlier */
   transition: all 200ms;
 }

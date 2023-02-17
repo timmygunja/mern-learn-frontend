@@ -13,3 +13,19 @@
   grid-area: sidebar;
   border-left: 1px solid gray;
 }
+
+@media screen and (max-width: 800px) {
+  .cart {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "mainbar"
+      "sidebar";
+    grid-gap: 10px;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    border-left: none;
+    border-top: 1px solid gray;
+  }
+}
