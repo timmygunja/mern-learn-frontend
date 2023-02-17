@@ -35,8 +35,8 @@ const NavBar = () => {
     <div className={"navbar"}>
       <Link to="/">
         <div className={"logo"}>
-          <div>
-            <img className={"logopic"} src={"airplane.svg"} alt="" />
+          <div className={"logopic hard-centered"}>
+            <img src={"airplane.svg"} alt="" />
           </div>
 
           <div className={"logotext"}>E-Commerce</div>
