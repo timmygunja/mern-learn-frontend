@@ -7,13 +7,20 @@
     "prod-pic"
     "prod-text";
   /* grid-template-rows: 80% 20%; */
-  grid-template-rows: calc(83% - 2.3vw) calc(17% + 2.3vw);
+  grid-template-rows: calc(83% - 1.1vw) calc(17% + 1.1vw);
   /* grid-template-rows: calc(83% - 1.1vw) calc(17% + 1.1vw); */
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.11);
   padding: 12px;
   margin: 0 15px;
   min-width: 22vw;
+
+  transition: 0.2s ease-in;
+}
+
+.product:hover {
+  transform: scale(1.01);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 9px 9px rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (max-width: 1000px) {
@@ -34,19 +41,28 @@
   }
 }
 
+.prod-pic {
+  grid-area: prod-pic;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+
 .prod-pic img {
   width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-height: 100%;
   pointer-events: none;
+  border-radius: 16px;
 }
 
 .prod-content {
+  grid-area: prod-text;
+  background-color: white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
-  margin: 10px 10px 0 10px;
+  grid-template-rows: 5fr 4fr;
+  /* grid-gap: 5px; */
+  /* margin: 10px 10px 0 10px; */
+  /* padding: 5%; */
   grid-template-areas:
     "prod-name prod-name prod-price"
     "prod-firm prod-firm prod-like";
@@ -57,7 +73,7 @@
   font-family: sans-serif;
   font-weight: 500;
   /* font-size: 20px; */
-  font-size: var(--h8-font-size);
+  font-size: var(--h9-font-size);
   text-align: left;
   display: flex;
   align-self: center;
@@ -85,10 +101,12 @@
   justify-content: center;
 }
 
+
 .prod-like,
+.prod-like-numb,
 .prod-like-active {
   grid-area: prod-like;
-  margin: 0;
+  /* margin: 10px; */
   padding: 0;
   /* font-size: 12px; */
   font-size: var(--h10-font-size);
@@ -101,12 +119,14 @@
 }
 
 .prod-like img,
+.prod-like-numb img,
 .prod-like-active img {
   width: 20%;
   transform: scale(1.2);
 }
 
-.prod-like:hover {
+.prod-like:hover,
+.prod-like-active:hover {
   background: rgb(255, 0, 64);
   cursor: pointer;
   color: white;
@@ -117,3 +137,9 @@
   background: rgb(255, 0, 64);
   color: white;
 }
+
+.prod-like-numb {
+  background: rgb(155, 109, 121);
+  color: white;
+}
+

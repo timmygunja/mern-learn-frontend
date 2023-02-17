@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import classes from "./RecommendSliderItem.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,7 +43,10 @@ const RecommendSliderItem = (props) => {
   return (
     <>
       <div className={classes.product}>
-        <Link to={`/products/${id}`} className={classes["prod-pic"]}>
+        <Link
+          to={`/products/${id}`}
+          className={classes["prod-pic"] + " hard-centered"}
+        >
           <img
             // src={`http://localhost:5000/${image}`}
             src={env.BASE_URL + `/${image}`}
