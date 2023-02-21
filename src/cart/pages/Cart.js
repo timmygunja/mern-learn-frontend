@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -46,7 +46,6 @@ const Cart = () => {
   useEffect(async () => {
     await dispatch(loadCartItems(sendRequest, user));
     await dispatch(cartActions.setCartChanged(false));
-    console.log(loadedCartItems);
   }, [cartChanged]);
 
   // const deleteItemHandler = (itemId) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Section from "../../shared/UIElements/Section";
 import classes from "./Auth.module.css";
 import TextField from "@material-ui/core/TextField";

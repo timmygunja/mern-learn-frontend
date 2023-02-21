@@ -35,6 +35,21 @@ const cartSlice = createSlice({
 export const loadCartItems = (sendRequest, user) => {
   return async (dispatch) => {
     try {
+      // console.log("default username: ", user.username);
+      // console.log("default token: ", user.token);
+
+      // let encodedUsername = unescape(encodeURIComponent(user.username));
+      // let encodedToken = unescape(encodeURIComponent(user.token));
+
+      // console.log("username encoded: ", encodedUsername);
+      // console.log("token encoded: ", encodedToken);
+
+      // let decodedUsername = decodeURIComponent(escape(encodedUsername));
+      // let decodedToken = decodeURIComponent(escape(encodedToken));
+
+      // console.log("username decoded: ", decodedUsername);
+      // console.log("token decoded: ", decodedToken);
+
       const responseData = await sendRequest(
         // "http://localhost:5000/api/cart",
         env.BASE_URL + "/api/cart",

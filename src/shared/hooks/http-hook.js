@@ -20,6 +20,12 @@ export const useHttpClient = () => {
       activeHttpRequests.current.push(httpAbortCtrl);
 
       try {
+        // Applying utf-8 encoding so Cyrrilic symbols
+        // can be transferred through http headers object
+        for (let key in headers) {
+          headers[key] = unescape(encodeURIComponent(headers[key]));
+        }
+
         const response = await fetch(url, {
           method,
           headers,
