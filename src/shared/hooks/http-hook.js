@@ -40,6 +40,8 @@ export const useHttpClient = () => {
           signal: httpAbortCtrl.signal,
         });
 
+        console.log("fetch sent with headers:", headers);
+
         const responseData = await response.json();
 
         activeHttpRequests.current = activeHttpRequests.current.filter(
