@@ -10,6 +10,7 @@ export const useHttpClient = () => {
   const error = useSelector((state) => state.ui.error);
 
   const activeHttpRequests = useRef([]);
+  const headersToEncode = ["Username"];
 
   const sendRequest = useCallback(
     async (url, method = "GET", headers = {}, body = null) => {
@@ -20,12 +21,15 @@ export const useHttpClient = () => {
       activeHttpRequests.current.push(httpAbortCtrl);
 
       try {
-        const headersToEncode = ["Username"];
         // Applying utf-8 encoding so Cyrrilic symbols
         // can be transferred through http headers object
         for (let key in headers) {
+          console.log("flag 1");
           if (headersToEncode.includes(key)) {
+            console.log("flag 2");
+            console.log("username was: ", headers[key]);
             headers[key] = unescape(encodeURIComponent(headers[key]));
+            console.log("username became: ", headers[key]);
           }
         }
 
