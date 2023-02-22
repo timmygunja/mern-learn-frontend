@@ -10,7 +10,7 @@ export const useHttpClient = () => {
   const error = useSelector((state) => state.ui.error);
 
   const activeHttpRequests = useRef([]);
-  const headersToEncode = ["Username"];
+  const headersToEncode = ["Username", "username"];
 
   const sendRequest = useCallback(
     async (url, method = "GET", headers = {}, body = null) => {
