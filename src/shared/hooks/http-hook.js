@@ -24,16 +24,16 @@ export const useHttpClient = () => {
         // Applying utf-8 encoding so Cyrrilic symbols
         // can be transferred through http headers object
         for (let key in headers) {
-          console.log("flag 1");
+          // console.log("flag 1");
           if (headersToEncode.includes(key)) {
-            console.log("flag 2");
-            console.log("username was: ", headers[key]);
+            // console.log("flag 2");
+            // console.log("username was: ", headers[key]);
             headers[key] = unescape(encodeURIComponent(headers[key]));
-            console.log("username became: ", headers[key]);
+            // console.log("username became: ", headers[key]);
           }
         }
 
-        console.log("fetch sent with headers:", headers);
+        // console.log("fetch sent with headers:", headers);
 
         const response = await fetch(url, {
           method,

@@ -20,7 +20,7 @@ const Auth = () => {
   const { sendRequest } = useHttpClient();
 
   const user = useSelector((state) => state.ui.user);
-  const username = decodeURIComponent(escape(user.username));
+  const username = unescape(encodeURIComponent(user.username));
 
   const registerUsernameRef = useRef("");
   const registerPasswordRef = useRef("");
