@@ -33,14 +33,14 @@ export const useHttpClient = () => {
           }
         }
 
+        console.log("fetch sent with headers:", headers);
+
         const response = await fetch(url, {
           method,
           headers,
           body,
           signal: httpAbortCtrl.signal,
         });
-
-        console.log("fetch sent with headers:", headers);
 
         const responseData = await response.json();
 
