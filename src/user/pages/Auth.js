@@ -20,6 +20,7 @@ const Auth = () => {
   const { sendRequest } = useHttpClient();
 
   const user = useSelector((state) => state.ui.user);
+  const username = decodeURIComponent(escape(user.username));
 
   const registerUsernameRef = useRef("");
   const registerPasswordRef = useRef("");
@@ -101,7 +102,7 @@ const Auth = () => {
           <Card>
             {isLogged && (
               <div className={classes["logged-centered"]}>
-                <p>You are logged in as {user.username}</p>
+                <p>You are logged in as {username}</p>
                 <Button
                   className={classes["logout-button"]}
                   onClick={logoutHandler}
