@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import { loadFilteredProducts } from "../../store/products-slice";
 import classes from "./SelectBoxHorizontal.module.css";
 
 const SelectBoxHorizontal = (props) => {
   const [chosenOption, setChosenOption] = useState("Popular");
   const [selectClass, setSelectClass] = useState("select-option-hidden");
   const [arrowClass, setArrowClass] = useState("select-arrow-hidden");
+  const dispatch = useDispatch();
+  const { sendRequest } = useHttpClient();
 
   const showOptionHandler = (props) => {
     if (selectClass === "select-option") {
@@ -22,6 +27,7 @@ const SelectBoxHorizontal = (props) => {
 
   const optionHandler = (props) => {
     setChosenOption(props.target.innerText);
+    dispatch(loadFilteredProducts(sendRequest, props.target.innerText));
     setSelectClass("select-option-hidden");
     setArrowClass("select-arrow-hidden");
   };
@@ -41,10 +47,10 @@ const SelectBoxHorizontal = (props) => {
         Popular
       </div>
       <div className={classes[selectClass]} onClick={optionHandler}>
-        Newest
+        Liked
       </div>
       <div className={classes[selectClass]} onClick={optionHandler}>
-        Liked
+        Bestseller
       </div>
     </div>
   );

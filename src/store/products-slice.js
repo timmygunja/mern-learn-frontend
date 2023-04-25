@@ -6,6 +6,8 @@ const productsSlice = createSlice({
   initialState: {
     loadedProducts: undefined,
     changed: false,
+    filteredProducts: undefined,
+    filterChanged: false
   },
   reducers: {
     setLoadedProducts(state, action) {
@@ -14,10 +16,16 @@ const productsSlice = createSlice({
     setProductsChanged(state, action) {
       state.changed = action.payload;
     },
+    setFilteredProducts(state, action) {
+      state.filteredProducts = action.payload;
+    },
+    setFilterChanged(state, action) {
+      state.filterChanged = action.payload;
+    },
   },
 });
 
-export const loadProducts = (sendRequest) => {
+export const loadProducts = (sendRequest, filter) => {
   return async (dispatch) => {
     try {
       const responseData = await sendRequest(
@@ -30,6 +38,23 @@ export const loadProducts = (sendRequest) => {
       );
 
       dispatch(productsActions.setLoadedProducts(responseData.products));
+    } catch (err) {}
+  };
+};
+
+export const loadFilteredProducts = (sendRequest, filter) => {
+  return async (dispatch) => {
+    try {
+      const responseData = await sendRequest(
+        env.BASE_URL + "/api/products",
+        "GET",
+        {
+          "Content-Type": "application/json",
+          "productfilter": filter,
+        }
+      );
+
+      dispatch(productsActions.setFilteredProducts(responseData.products));
     } catch (err) {}
   };
 };

@@ -5,7 +5,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { getCartLength } from "../../store/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 import RecommendSlider from "../components/RecommendSlider";
-import { loadProducts } from "../../store/products-slice";
+import { loadFilteredProducts, loadProducts } from "../../store/products-slice";
 import { loadFavoritesIds } from "../../store/favorites-slice";
 
 const Home = () => {
@@ -14,6 +14,9 @@ const Home = () => {
   const user = useSelector((state) => state.ui.user);
   const isLogged = useSelector((state) => state.ui.isLogged);
   const loadedProducts = useSelector((state) => state.products.loadedProducts);
+  const filteredProducts = useSelector(
+    (state) => state.products.filteredProducts
+  );
   // const productsChanged = useSelector((state) => state.products.changed);
   const loadedFavoritesIds = useSelector(
     (state) => state.favorites.loadedFavoritesIds
@@ -38,12 +41,15 @@ const Home = () => {
 
   // Rerender products on like
   useEffect(() => {
-    loadedFavoritesIds && dispatch(loadProducts(sendRequest));
+    loadedFavoritesIds &&
+      dispatch(loadProducts(sendRequest)) &&
+      dispatch(loadFilteredProducts(sendRequest, "popular"));
     console.log("reloaded products");
   }, [loadedFavoritesIds]);
 
   useEffect(() => {
     dispatch(loadProducts(sendRequest));
+    dispatch(loadFilteredProducts(sendRequest, "popular"));
   }, []);
 
   return (
@@ -54,9 +60,9 @@ const Home = () => {
           favorites={loadedFavoritesIds}
         />
       )}
-      {loadedProducts && (loadedFavoritesIds || !isLogged) && (
+      {filteredProducts && (loadedFavoritesIds || !isLogged) && (
         <RecommendSlider
-          products={loadedProducts}
+          products={filteredProducts}
           favorites={loadedFavoritesIds}
         />
       )}

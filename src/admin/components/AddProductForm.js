@@ -5,9 +5,12 @@ import ImageUpload from "../../shared/components/formElements/ImageUpload";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import classes from "./AddProductForm.module.css";
 import env from "../../env";
+import { useSelector } from "react-redux";
 
 const AddProductForm = () => {
   const { sendRequest } = useHttpClient();
+  
+  const user = useSelector((state) => state.ui.user);
 
   const nameRef = useRef("");
   const firmRef = useRef("");
@@ -30,7 +33,10 @@ const AddProductForm = () => {
         // "http://localhost:5000/api/products",
         env.BASE_URL + "/api/products",
         "POST",
-        {},
+        {
+          Authorization: "Bearer " + user.token,
+          Username: user.username,
+        },
         formData
       );
 
