@@ -1,9 +1,9 @@
 // LOCAL
 const PORT = 5000;
-// const BASE_URL = "http://localhost:" + PORT;
+const BASE_URL = "http://localhost:" + PORT;
 
 // PUBLIC
-const BASE_URL = "https://mern-timmygunja-api.vercel.app";
+// const BASE_URL = "https://mern-timmygunja-api.vercel.app";
 
 const env = {
   BASE_URL,

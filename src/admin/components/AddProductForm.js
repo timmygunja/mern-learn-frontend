@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const AddProductForm = () => {
   const { sendRequest } = useHttpClient();
-  
+
   const user = useSelector((state) => state.ui.user);
 
   const nameRef = useRef("");
@@ -17,6 +17,7 @@ const AddProductForm = () => {
   const descriptionRef = useRef("");
   const priceRef = useRef("");
   let image;
+  // let image2;
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ const AddProductForm = () => {
       formData.append("description", descriptionRef.current.value);
       formData.append("price", priceRef.current.value);
       formData.append("image", image);
+      // formData.append("image2", image2);
 
       const responseData = await sendRequest(
         // "http://localhost:5000/api/products",
@@ -83,6 +85,7 @@ const AddProductForm = () => {
             type="number"
           />
           <ImageUpload id="image" center onInput={fileUploadHandler} />
+          {/* <ImageUpload id="image2" center onInput={fileUploadHandler} /> */}
           <Button
             className={classes["submit-button"]}
             onClick={submitHandler}

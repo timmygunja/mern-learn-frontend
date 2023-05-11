@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import classes from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,6 +6,22 @@ import { useSelector } from "react-redux";
 const Footer = () => {
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
   const token = useSelector((state) => state.ui.user.token);
+
+  const telegramLink = "";
+  const WhatsLink = "";
+  const instaLink = "";
+
+  const redirectToTg = () => {
+    // window.location.assign(telegramLink);
+  };
+
+  const redirectToWhats = () => {
+    // window.location.assign(WhatsLink);
+  };
+
+  const redirectToInsta = () => {
+    // window.location.assign(instaLink);
+  };
 
   return (
     <div className={classes["footer"]}>
@@ -38,11 +54,27 @@ const Footer = () => {
           <h4>Russia, Moscow.</h4>
           {/* <h4>E-shop inc., No rights reserved.</h4> */}
         </div>
-        <div className={classes["socials"]}>
+
+        {/* <div className={classes["socials"]}>
           <Link className={classes["bottom-content-link"]}>Insta</Link>
           <Link className={classes["bottom-content-link"]}>Vk</Link>
           <Link className={classes["bottom-content-link"]}>WhatsApp</Link>
+        </div> */}
+
+        <div className={classes["socials"]}>
+          <div className={classes["social-test"]}>
+            <div className={classes["hard-centered"]} onClick={redirectToWhats}>
+              <i className="fa fa-whatsapp" aria-hidden="true"></i>
+            </div>
+            <div className={classes["hard-centered"]} onClick={redirectToTg}>
+              <i className="fa fa-telegram" aria-hidden="true"></i>
+            </div>
+            <div className={classes["hard-centered"]} onClick={redirectToInsta}>
+              <i className="fa fa-instagram" aria-hidden="true"></i>
+            </div>
+          </div>
         </div>
+
         <div className={classes["info"]}>
           <Link className={classes["bottom-content-link"]}>Catalogue</Link>
           <Link className={classes["bottom-content-link"]}>Rules of use</Link>
