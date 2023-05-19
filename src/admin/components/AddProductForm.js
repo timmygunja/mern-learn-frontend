@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, Card, TextField } from "@material-ui/core";
 import { useRef } from "react";
-import ImageUpload from "../../shared/components/formElements/ImageUpload";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import classes from "./AddProductForm.module.css";
 import env from "../../env";
 import { useSelector } from "react-redux";
+import ImageUpload from "../../shared/components/formElements/ImageUpload";
 
 const AddProductForm = () => {
   const { sendRequest } = useHttpClient();
@@ -58,28 +58,28 @@ const AddProductForm = () => {
         <form className={classes.form}>
           <TextField
             className={classes["name-input"]}
-            label="Name"
+            label="Название"
             variant="outlined"
             inputRef={nameRef}
             type="text"
           />
           <TextField
             className={classes["firm-input"]}
-            label="Firm"
+            label="Фирма"
             variant="outlined"
             inputRef={firmRef}
             type="text"
           />
           <TextField
             className={classes["description-input"]}
-            label="Description"
+            label="Описание"
             variant="outlined"
             inputRef={descriptionRef}
             type="text"
           />
           <TextField
             className={classes["price-input"]}
-            label="Price"
+            label="Цена"
             variant="outlined"
             inputRef={priceRef}
             type="number"
@@ -92,7 +92,7 @@ const AddProductForm = () => {
             type={"submit"}
             variant="outlined"
           >
-            Submit
+            Подтвердить
           </Button>
         </form>
       </Card>

@@ -6,11 +6,12 @@ import { loadFilteredProducts } from "../../store/products-slice";
 import classes from "./SelectBoxHorizontal.module.css";
 
 const SelectBoxHorizontal = (props) => {
-  const [chosenOption, setChosenOption] = useState("Popular");
+  const [chosenOption, setChosenOption] = useState("Популярное");
   const [selectClass, setSelectClass] = useState("select-option-hidden");
   const [arrowClass, setArrowClass] = useState("select-arrow-hidden");
   const dispatch = useDispatch();
   const { sendRequest } = useHttpClient();
+  let opt;
 
   const showOptionHandler = (props) => {
     if (selectClass === "select-option") {
@@ -26,8 +27,18 @@ const SelectBoxHorizontal = (props) => {
   };
 
   const optionHandler = (props) => {
-    setChosenOption(props.target.innerText);
-    dispatch(loadFilteredProducts(sendRequest, props.target.innerText));
+    opt = props.target.innerText;
+    setChosenOption(opt);
+
+    if (opt === "Популярное") {
+      opt = "Popular";
+    } else if (opt === "Лучшее") {
+      opt = "Liked";
+    } else if (opt === "Бестселлер") {
+      opt = "Bestseller";
+    }
+
+    dispatch(loadFilteredProducts(sendRequest, opt));
     setSelectClass("select-option-hidden");
     setArrowClass("select-arrow-hidden");
   };
@@ -44,13 +55,16 @@ const SelectBoxHorizontal = (props) => {
         </div>
       </div>
       <div className={classes[selectClass]} onClick={optionHandler}>
-        Popular
+        {/* Popular */}
+        Популярное
       </div>
       <div className={classes[selectClass]} onClick={optionHandler}>
-        Liked
+        {/* Liked */}
+        Лучшее
       </div>
       <div className={classes[selectClass]} onClick={optionHandler}>
-        Bestseller
+        {/* Bestseller */}
+        Бестселлер
       </div>
     </div>
   );

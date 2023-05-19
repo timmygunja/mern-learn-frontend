@@ -63,7 +63,7 @@ const Cart = () => {
 
   return (
     <>
-      <Section name="cart">
+      <Section name="Корзина">
         <div className={classes["cart"]}>
           <div className={classes["mainbar"]}>
             {loadedCartItems && loadedCartItems.length === 0 && (

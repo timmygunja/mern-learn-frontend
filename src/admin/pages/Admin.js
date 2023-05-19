@@ -7,8 +7,8 @@ const Admin = () => {
   return (
     <div className={classes.admin}>
       <div className={classes["section-stats"]}>
-        <Section name="Statistics">
-          <h3 className="hard-centered">Place for some statistics</h3>
+        <Section name="Статистика">
+          <h3 className="hard-centered">Место статистики</h3>
         </Section>
       </div>
 

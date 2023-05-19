@@ -89,7 +89,7 @@ const CartItem = (props) => {
           <button className={classes["prod-remove"]} onClick={decreaseQuantity}>
             -
           </button>
-          <p className={classes["prod-quantity"]}>Quantity: {quantity}</p>
+          <p className={classes["prod-quantity"]}>Количество: {quantity}</p>
           <button className={classes["prod-add"]} onClick={increaseQuantity}>
             +
           </button>

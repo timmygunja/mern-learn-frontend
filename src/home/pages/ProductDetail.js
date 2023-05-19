@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -59,7 +59,7 @@ const ProductDetail = (props) => {
   if (loadedProduct) {
     return (
       <>
-        <Section name="Product">
+        <Section name="Товар">
           <div className={classes.product}>
             <div className={classes.mainbar}>
               <img
@@ -99,9 +99,11 @@ const ProductDetail = (props) => {
                 </div>
               </div>
               <div className={classes["product-buttons"]}>
-                <BuyButton onClick={addToCartHandler}>Add To Cart</BuyButton>
+                <BuyButton onClick={addToCartHandler}>
+                  В корзину
+                </BuyButton>
                 <LikeButton onClick={addToFavoritesIdsHandler}>
-                  Add To Favorites
+                  В избранное
                 </LikeButton>
               </div>
             </div>

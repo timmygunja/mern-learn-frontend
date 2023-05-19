@@ -12,8 +12,8 @@ const EmptyPaycard = (props) => {
 
   return (
     <div className={classes["paycard"]}>
-      <p className={classes["total"]}>{"Total amount: 0₽"}</p>
-      <BuyButton onClick={buttonHandler}>See products</BuyButton>
+      <p className={classes["total"]}>{"Итог: 0₽"}</p>
+      <BuyButton onClick={buttonHandler}>Перейти в каталог</BuyButton>
     </div>
   );
 };

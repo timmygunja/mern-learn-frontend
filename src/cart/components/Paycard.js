@@ -15,12 +15,12 @@ const Paycard = (props) => {
 
   return (
     <div className={classes["paycard"]}>
-      <p className={classes["total"]}>{`Total amount: ${totalPrice} ₽`}</p>
+      <p className={classes["total"]}>{`Итог: ${totalPrice} ₽`}</p>
       <PaycardItemsList
         cartItems={props.cartItems}
         className={classes["paycard-items"]}
       />
-      <BuyButton>Proceed to buy</BuyButton>
+      <BuyButton>Оформить заказ</BuyButton>
     </div>
   );
 };

@@ -44,14 +44,14 @@ const NavBar = () => {
       </Link>
 
       <div className={mainbarClass}>
-        <Link to={"a"}>
-          <span>Sort</span>
+        <Link to={"#"}>
+          <span>Сортировать</span>
         </Link>
-        <Link to={"#"}>By</Link>
-        {token && <Link to={"/cart"}>Cart: {cartTotalCount}</Link>}
-        {token && <Link to={"/favorites"}>Favorites</Link>}
-        {user == "admin" && <Link to={"/admin"}>Admin</Link>}
-        <Link to={"/auth"}>Auth</Link>
+        <Link to={"#"}>По</Link>
+        {token && <Link to={"/cart"}>Корзина: {cartTotalCount}</Link>}
+        {token && <Link to={"/favorites"}>Избранное</Link>}
+        {user == "admin" && <Link to={"/admin"}>Админ</Link>}
+        <Link to={"/auth"}>Авторизация</Link>
       </div>
 
       <div className="mainbar-mobile">
@@ -61,30 +61,30 @@ const NavBar = () => {
         <div className={menuContentClass}>
           <ul onClick={closeMenuHandler}>
             <li>
-              <Link to={"a"}>
-                <span>Sort</span>
+              <Link to={"#"}>
+                <span>Сортировать</span>
               </Link>
             </li>
             <li>
-              <Link to={"#"}>By</Link>
+              <Link to={"#"}>По</Link>
             </li>
             {token && (
               <li>
-                <Link to={"/cart"}>Cart: {cartTotalCount}</Link>
+                <Link to={"/cart"}>Корзина: {cartTotalCount}</Link>
               </li>
             )}
             {token && (
               <li>
-                <Link to={"/favorites"}>Favorites</Link>
+                <Link to={"/favorites"}>Избранное</Link>
               </li>
             )}
             {user == "admin" && (
               <li>
-                <Link to={"/admin"}>Admin</Link>
+                <Link to={"/admin"}>Админ</Link>
               </li>
             )}
             <li>
-              <Link to={"/auth"}>Auth</Link>
+              <Link to={"/auth"}>Авторизация</Link>
             </li>
           </ul>
         </div>

@@ -49,7 +49,7 @@ const Favorites = () => {
 
   return (
     <>
-      <Section name="Favorites">
+      <Section name="Избранное">
         <div className={classes.favorites}>
           {loadedFavorites && loadedFavorites.length === 0 && <EmptyFavCard />}
           {loadedFavorites && (

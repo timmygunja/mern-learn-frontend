@@ -97,18 +97,18 @@ const Auth = () => {
 
   return (
     <>
-      <Section name={"Log in"}>
+      <Section name={"Авторизация"}>
         <div className={classes.auth + " hard-centered"}>
           <Card>
             {isLogged && (
               <div className={classes["logged-centered"]}>
-                <p>You are logged in as {username}</p>
+                <p>Вы авторизованы как: {username}</p>
                 <Button
                   className={classes["logout-button"]}
                   onClick={logoutHandler}
                   variant="outlined"
                 >
-                  Log out
+                  Выйти
                 </Button>
               </div>
             )}
@@ -117,13 +117,13 @@ const Auth = () => {
               <form className={classes.form}>
                 <TextField
                   className={classes["username-input"]}
-                  label="Username"
+                  label="Логин"
                   variant="outlined"
                   inputRef={loginUsernameRef}
                 />
                 <TextField
                   className={classes["password-input"]}
-                  label="Password"
+                  label="Пароль"
                   variant="outlined"
                   inputRef={loginPasswordRef}
                 />
@@ -133,7 +133,7 @@ const Auth = () => {
                   type={"submit"}
                   variant="outlined"
                 >
-                  Submit
+                  Войти
                 </Button>
               </form>
             )}
@@ -142,19 +142,19 @@ const Auth = () => {
       </Section>
 
       {!isLogged && (
-        <Section name={"Register"}>
+        <Section name={"Регистрация"}>
           <div className={classes.auth + " hard-centered"}>
             <Card>
               <form className={classes.form}>
                 <TextField
                   className={classes["username-input"]}
-                  label="Username"
+                  label="Логин"
                   variant="outlined"
                   inputRef={registerUsernameRef}
                 />
                 <TextField
                   className={classes["password-input"]}
-                  label="Password"
+                  label="Пароль"
                   variant="outlined"
                   inputRef={registerPasswordRef}
                 />
@@ -164,7 +164,7 @@ const Auth = () => {
                   type={"submit"}
                   variant="outlined"
                 >
-                  Submit
+                  Войти
                 </Button>
               </form>
             </Card>
