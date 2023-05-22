@@ -1,0 +1,26 @@
+:root {
+  --btn-edit-color: rgb(212, 171, 59);
+}
+
+.button {
+  width: 80%;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--h10-font-size);
+  letter-spacing: 1px;
+  background-color: var(--btn-edit-color);
+  border: 0.125em solid var(--btn-edit-color);
+  border-radius: 4px;
+  box-shadow: 0 0 0.5em 0 var(--btn-edit-color);
+  transition: all 200ms linear;
+}
+
+.button:hover,
+.button:focus {
+  cursor: pointer;
+  color: white;
+  background-color: var(--btn-edit-color);
+  border: 0.125em solid var(--btn-edit-color);
+  box-shadow: 0 0 0.7em 0.1em var(--btn-edit-color);
+}

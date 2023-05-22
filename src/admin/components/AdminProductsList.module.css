@@ -1,0 +1,24 @@
+.maingrid {
+  /* margin: 20px; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+/* @media screen and (max-width: 1000px) {
+  .maingrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .maingrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .maingrid {
+    grid-template-columns: 1fr;
+  }
+} */

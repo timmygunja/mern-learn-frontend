@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -36,10 +36,14 @@ const NavBar = () => {
       <Link to="/">
         <div className={"logo"}>
           <div className={"logopic hard-centered"}>
-            <img src={"airplane.svg"} alt="" />
+            {/* <img src={"airplane.svg"} alt="" /> */}
+            <img src={"logo.png"} alt="" />
           </div>
 
-          <div className={"logotext"}>E-Commerce</div>
+          <div className={"logotext"}>
+            <p>Планета</p>
+            <p>напитков</p> 
+          </div>
         </div>
       </Link>
 
