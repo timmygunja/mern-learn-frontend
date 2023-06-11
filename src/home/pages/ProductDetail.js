@@ -71,19 +71,19 @@ const ProductDetail = (props) => {
               <img
                 className={classes["product-img"]}
                 // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image2}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
                 // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image3}`}
                 alt=""
               />
               <img
                 className={classes["product-img"]}
                 // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image}`}
+                src={env.BASE_URL + `/${loadedProduct.image4}`}
                 alt=""
               />
             </div>

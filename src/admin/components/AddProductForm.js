@@ -17,7 +17,9 @@ const AddProductForm = () => {
   const descriptionRef = useRef("");
   const priceRef = useRef("");
   let image;
-  // let image2;
+  let image2;
+  let image3;
+  let image4;
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -28,8 +30,13 @@ const AddProductForm = () => {
       formData.append("firm", firmRef.current.value);
       formData.append("description", descriptionRef.current.value);
       formData.append("price", priceRef.current.value);
-      formData.append("image", image);
+      // formData.append("image", image);
       // formData.append("image2", image2);
+
+      formData.append("image", image);
+      formData.append("image", image2);
+      formData.append("image", image3);
+      formData.append("image", image4);
 
       const responseData = await sendRequest(
         // "http://localhost:5000/api/products",
@@ -50,6 +57,18 @@ const AddProductForm = () => {
 
   const fileUploadHandler = (pickedFile) => {
     image = pickedFile;
+  };
+
+  const fileUploadHandler2 = (pickedFile) => {
+    image2 = pickedFile;
+  };
+
+  const fileUploadHandler3 = (pickedFile) => {
+    image3 = pickedFile;
+  };
+
+  const fileUploadHandler4 = (pickedFile) => {
+    image4 = pickedFile;
   };
 
   return (
@@ -84,8 +103,11 @@ const AddProductForm = () => {
             inputRef={priceRef}
             type="number"
           />
+          {/* <ImageUpload id="image" center onInput={fileUploadHandler} /> */}
           <ImageUpload id="image" center onInput={fileUploadHandler} />
-          {/* <ImageUpload id="image2" center onInput={fileUploadHandler} /> */}
+          <ImageUpload id="image" center onInput={fileUploadHandler2} />
+          <ImageUpload id="image" center onInput={fileUploadHandler3} />
+          <ImageUpload id="image" center onInput={fileUploadHandler4} />
           <Button
             className={classes["submit-button"]}
             onClick={submitHandler}

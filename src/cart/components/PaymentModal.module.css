@@ -1,0 +1,119 @@
+.form {
+  display: grid;
+  grid-template-areas:
+    "methods"
+    "content";
+  grid-gap: 1rem;
+}
+
+.methods {
+  grid-area: methods;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  padding: 0.8rem;
+  height: 100%;
+}
+
+.methods div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.methods div:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.method-active {
+  background-color: whitesmoke;
+  /* border-bottom: 1px solid rgb(5, 157, 67); */
+  box-shadow: inset 0 -20px 40px -30px rgba(0, 249, 100);
+  transition: all 0.1s linear;
+}
+
+.form-content {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "title title "
+    "name name"
+    "number number"
+    "date cvv"
+    "submit submit";
+  grid-gap: 1rem;
+}
+
+.title {
+  grid-area: title;
+  font-size: var(--h10-font-size);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .field {
+  margin: 1rem;
+} */
+
+.name {
+  grid-area: name;
+}
+
+.name-icon {
+  grid-area: name;
+}
+
+.number {
+  grid-area: number;
+}
+
+.number-icon {
+  grid-area: number;
+}
+
+.date {
+  grid-area: date;
+}
+
+.date-icon {
+  grid-area: date;
+}
+
+.cvv {
+  grid-area: cvv;
+}
+
+.cvv-icon {
+  grid-area: cvv;
+}
+
+.name-icon,
+.number-icon,
+.date-icon,
+.cvv-icon {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+}
+
+.name-icon,
+.number-icon {
+  left: 91.9%;
+}
+
+.date-icon,
+.cvv-icon {
+  left: 83%;
+}
+
+.submit-button {
+  grid-area: submit;
+}

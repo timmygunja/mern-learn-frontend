@@ -20,6 +20,9 @@ const ProductsList = (props) => {
             description={product.description}
             price={product.price}
             image={product.image}
+            image2={product.image2}
+            image3={product.image3}
+            image4={product.image4}
             isFavorite={isFavorite}
           />
         );

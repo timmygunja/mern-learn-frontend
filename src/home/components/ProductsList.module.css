@@ -1,8 +1,10 @@
 .maingrid {
-  margin: 20px;
+  /* margin: 20px; */
+  margin: 1%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+  /* grid-gap: 20px; */
+  grid-gap: 1.5%;
 }
 
 @media screen and (max-width: 1000px) {

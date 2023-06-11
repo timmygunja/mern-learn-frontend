@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useRef, useState } from "react";
 import Button from "../../UIElements/Button";
 import classes from "./ImageUpload.module.css";
@@ -46,12 +46,14 @@ const ImageUpload = (props) => {
     <div className={classes["form-control"]}>
       <input
         id={props.id}
+        name={props.id}
         type="file"
         style={{ display: "none" }}
         accept=".jpg, .jpeg, .png"
         ref={filePickerRef}
         onChange={pickedHandler}
       />
+
       <div className={classes[`image-upload ${props.center && "center"}`]}>
         <div className={classes["image-upload__preview"]}>
           {!previewUrl && <p>Выберите картинку</p>}
