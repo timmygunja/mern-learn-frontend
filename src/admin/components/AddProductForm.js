@@ -104,10 +104,30 @@ const AddProductForm = () => {
             type="number"
           />
           {/* <ImageUpload id="image" center onInput={fileUploadHandler} /> */}
-          <ImageUpload id="image" center onInput={fileUploadHandler} />
-          <ImageUpload id="image" center onInput={fileUploadHandler2} />
-          <ImageUpload id="image" center onInput={fileUploadHandler3} />
-          <ImageUpload id="image" center onInput={fileUploadHandler4} />
+          <ImageUpload
+            id="image"
+            className={[classes["image"]]}
+            center
+            onInput={fileUploadHandler}
+          />
+          <ImageUpload
+            id="image"
+            className={[classes["image2"]]}
+            center
+            onInput={fileUploadHandler2}
+          />
+          <ImageUpload
+            id="image"
+            className={[classes["image3"]]}
+            center
+            onInput={fileUploadHandler3}
+          />
+          <ImageUpload
+            id="image"
+            className={[classes["image4"]]}
+            center
+            onInput={fileUploadHandler4}
+          />
           <Button
             className={classes["submit-button"]}
             onClick={submitHandler}

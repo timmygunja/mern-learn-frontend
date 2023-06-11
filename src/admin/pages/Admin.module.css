@@ -1,14 +1,22 @@
 .admin {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    grid-template-areas: 
-        "stats addform";
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  grid-template-areas: "stats addform";
+}
+
+@media screen and (max-width: 1000px) {
+  .admin {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "addform"
+      "stats";
+  }
 }
 
 .section-stats {
-    grid-area: stats;
+  grid-area: stats;
 }
 
 .section-add-form {
-    grid-area: addform;
+  grid-area: addform;
 }
