@@ -19,8 +19,6 @@
 
 .product-img {
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
 }
 
 .mainbar {
@@ -29,6 +27,11 @@
   grid-template-columns: 1fr 1fr;
   row-gap: 16px;
   column-gap: 20px;
+}
+
+.mainbar div {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 .sidebar {

@@ -62,30 +62,38 @@ const ProductDetail = (props) => {
         <Section name="Товар">
           <div className={classes.product}>
             <div className={classes.mainbar}>
-              <img
-                className={classes["product-img"]}
-                // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image}`}
-                alt=""
-              />
-              <img
-                className={classes["product-img"]}
-                // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image2}`}
-                alt=""
-              />
-              <img
-                className={classes["product-img"]}
-                // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image3}`}
-                alt=""
-              />
-              <img
-                className={classes["product-img"]}
-                // src={`http://localhost:5000/${loadedProduct.image}`}
-                src={env.BASE_URL + `/${loadedProduct.image4}`}
-                alt=""
-              />
+              <div className="hard-centered">
+                <img
+                  className={classes["product-img"]}
+                  // src={`http://localhost:5000/${loadedProduct.image}`}
+                  src={env.BASE_URL + `/${loadedProduct.image}`}
+                  alt=""
+                />
+              </div>
+              <div className="hard-centered">
+                <img
+                  className={classes["product-img"]}
+                  // src={`http://localhost:5000/${loadedProduct.image}`}
+                  src={env.BASE_URL + `/${loadedProduct.image2}`}
+                  alt=""
+                />
+              </div>
+              <div className="hard-centered">
+                <img
+                  className={classes["product-img"]}
+                  // src={`http://localhost:5000/${loadedProduct.image}`}
+                  src={env.BASE_URL + `/${loadedProduct.image3}`}
+                  alt=""
+                />
+              </div>
+              <div className="hard-centered">
+                <img
+                  className={classes["product-img"]}
+                  // src={`http://localhost:5000/${loadedProduct.image}`}
+                  src={env.BASE_URL + `/${loadedProduct.image4}`}
+                  alt=""
+                />
+              </div>
             </div>
             <div className={classes.sidebar}>
               <div className={classes["product-info"]}>
@@ -99,9 +107,7 @@ const ProductDetail = (props) => {
                 </div>
               </div>
               <div className={classes["product-buttons"]}>
-                <BuyButton onClick={addToCartHandler}>
-                  В корзину
-                </BuyButton>
+                <BuyButton onClick={addToCartHandler}>В корзину</BuyButton>
                 <LikeButton onClick={addToFavoritesIdsHandler}>
                   В избранное
                 </LikeButton>
