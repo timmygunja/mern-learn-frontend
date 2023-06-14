@@ -114,6 +114,18 @@
   left: 83%;
 }
 
+@media screen and (max-width: 600px) {
+  .name-icon,
+  .number-icon {
+    left: 88%;
+  }
+
+  .date-icon,
+  .cvv-icon {
+    left: 74.4%;
+  }
+}
+
 .submit-button {
   grid-area: submit;
 }

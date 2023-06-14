@@ -102,6 +102,9 @@ const Auth = () => {
           <Card>
             {isLogged && (
               <div className={classes["logged-centered"]}>
+                <div className="hard-centered">
+                  <img className={classes["userlogo"]} src="/user.png"></img>
+                </div>
                 <p>Вы авторизованы как: {username}</p>
                 <Button
                   className={classes["logout-button"]}

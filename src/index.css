@@ -15,18 +15,18 @@
 
 @media screen and (max-width: 500px) {
   :root {
-    --h1-font-size: calc(22px + 3vw);
-    --h2-font-size: calc(20px + 2.8vw);
-    --h3-font-size: calc(19px + 2.6vw);
-    --h4-font-size: calc(18px + 2.4vw);
-    --h5-font-size: calc(17px + 2.2vw);
-    --h6-font-size: calc(16px + 2vw);
-    --h7-font-size: calc(14px + 2vw);
-    --h8-font-size: calc(12px + 2vw);
-    --h9-font-size: calc(10px + 1.8vw);
-    --h10-font-size: calc(6px + 1.7vw);
-    --h11-font-size: calc(4px + 1.45vw);
-    --h12-font-size: calc(3px + 1.3vw);
+    --h1-font-size: calc(20px + 2.8vw);
+    --h2-font-size: calc(18px + 2.6vw);
+    --h3-font-size: calc(17px + 2.4vw);
+    --h4-font-size: calc(16px + 2.2vw);
+    --h5-font-size: calc(15px + 2.1vw);
+    --h6-font-size: calc(14px + 2vw);
+    --h7-font-size: calc(12px + 2vw);
+    --h8-font-size: calc(10px + 2vw);
+    --h9-font-size: calc(8px + 1.8vw);
+    --h10-font-size: calc(5px + 1.7vw);
+    --h11-font-size: calc(3px + 1.45vw);
+    --h12-font-size: calc(2px + 1.3vw);
   }
 }
 

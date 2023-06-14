@@ -1,7 +1,7 @@
 .outer-box {
   display: flex;
   overflow: hidden;
-  font-size: var(--h9-font-size);
+  font-size: var(--h10-font-size);
 }
 
 .select-option,

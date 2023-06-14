@@ -9,7 +9,7 @@ a {
   color: black;
 }
 
-.content { 
+.content {
   padding: 5px;
   min-height: 35vw;
 
@@ -18,9 +18,15 @@ a {
   background: linear-gradient(0deg, rgba(34,193,195,0.15) 0%, rgba(253,187,45,0.15) 100%); */
 }
 
+@media screen and (max-width: 600px) {
+  .content {
+    min-height: 95vw;
+  }
+}
+
 .centered {
-    text-align: center;
-    margin: 50px;
+  text-align: center;
+  margin: 50px;
 }
 
 .hard-centered {
@@ -31,7 +37,6 @@ a {
 
 .low-centered {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   align-items: flex-end;
 }
-

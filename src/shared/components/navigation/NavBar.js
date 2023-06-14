@@ -64,14 +64,14 @@ const NavBar = () => {
         </div>
         <div className={menuContentClass}>
           <ul onClick={closeMenuHandler}>
-            <li>
+            {/* <li>
               <Link to={"#"}>
                 <span>Сортировать</span>
               </Link>
             </li>
             <li>
               <Link to={"#"}>По</Link>
-            </li>
+            </li> */}
             {token && (
               <li>
                 <Link to={"/cart"}>Корзина: {cartTotalCount}</Link>

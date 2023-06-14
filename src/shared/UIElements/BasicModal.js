@@ -9,7 +9,7 @@ let padding = 3;
 if (screenWidth < 700) {
   width = screenWidth - screenWidth / 3;
 } else if (screenWidth < 500) {
-  width = screenWidth - screenWidth / 6;
+  width = screenWidth - screenWidth / 10;
   padding = 1;
 }
 

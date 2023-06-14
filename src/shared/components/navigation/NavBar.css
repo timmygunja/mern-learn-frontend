@@ -136,7 +136,7 @@
   justify-content: right;
   align-items: center;
   padding: 0 25px;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .menu img,
@@ -189,6 +189,8 @@
   border-bottom-left-radius: 10px;
 
   animation: fadeIn 0.3s;
+  z-index: 1000;
+  background-color: white;
 }
 
 @keyframes fadeIn {
