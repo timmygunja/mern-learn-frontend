@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./AdminProductItem.module.css";
 import { Link } from "react-router-dom";
 import env from "../../env";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import EditModal from "./EditModal";
 
 const AdminProductItem = (props) => {
   const { sendRequest } = useHttpClient();
@@ -19,7 +20,12 @@ const AdminProductItem = (props) => {
     purchasedCount,
   } = props;
 
-  const editHandler = () => {};
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleClose = () => setModalOpen(false);
+
+  const editHandler = () => {
+    setModalOpen(true);
+  };
 
   const deleteHandler = async () => {
     try {
@@ -52,6 +58,7 @@ const AdminProductItem = (props) => {
           </p>
           <div className={classes["btn-edit"]}>
             <EditButton onClick={editHandler}>Редактировать</EditButton>
+            <EditModal open={modalOpen} onClose={handleClose} product={props} />
           </div>
           <div className={classes["btn-delete"]}>
             <DeleteButton onClick={deleteHandler}>Удалить</DeleteButton>

@@ -1,0 +1,68 @@
+.form {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem 0.7rem;
+  grid-template-areas:
+    "name name name name"
+    "firm firm firm firm"
+    "description description description description"
+    "price price price price"
+    "image image2 image3 image4"
+    "submit submit submit submit";
+
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 1000px) {
+  .form {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "name"
+      "firm"
+      "description"
+      "price"
+      "image"
+      "image2"
+      "image3"
+      "image4"
+      "submit";
+  }
+}
+
+.name-input {
+  grid-area: name;
+}
+
+.firm-input {
+  grid-area: firm;
+}
+
+.description-input {
+  grid-area: description;
+}
+
+.price-input {
+  grid-area: price;
+}
+
+.image {
+  grid-area: image;
+}
+
+.image2 {
+  grid-area: image2;
+}
+
+.image3 {
+  grid-area: image3;
+}
+
+.image4 {
+  grid-area: image4;
+}
+
+.submit-button {
+  grid-area: submit;
+}

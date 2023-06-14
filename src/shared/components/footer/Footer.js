@@ -51,7 +51,7 @@ const Footer = () => {
           <svg height="12px" width="12px" fill="white" viewBox="0 0 42 58">
             <path d="M21 0C9.4 0 0 9.5 0 21.2 0 39.9 21 58 21 58s21-18.1 21-36.8C42 9.5 32.6 0 21 0zm0 31c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z"></path>
           </svg>
-          <h4>Россия, Москва</h4>
+          <h4>Россия</h4>
           {/* <h4>E-shop inc., No rights reserved.</h4> */}
         </div>
 
