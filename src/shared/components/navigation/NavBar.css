@@ -77,13 +77,21 @@
   /* margin-left: 30%; */
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
+  /* grid-template-columns: 2fr; */
+  grid-template-areas: ". . auth";
   /* font-size: 22px; */
   font-size: var(--h8-font-size);
   font-weight: 300;
 }
 
 .logged {
-  grid-template-columns: 3fr 5fr 5fr 4fr 5fr 5fr;
+  /* grid-template-columns: 3fr 5fr 5fr 4fr 5fr 5fr; */
+  grid-template-columns: 5fr 4fr 5fr 5fr;
+  grid-template-areas: ". . . auth";
+}
+
+.auth {
+  grid-area: auth;
 }
 
 .mainbar a {

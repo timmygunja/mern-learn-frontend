@@ -48,14 +48,14 @@ const NavBar = () => {
       </Link>
 
       <div className={mainbarClass}>
-        <Link to={"#"}>
+        {/* <Link to={"#"}>
           <span>Сортировать</span>
         </Link>
-        <Link to={"#"}>По</Link>
+        <Link to={"#"}>По</Link> */}
         {token && <Link to={"/cart"}>Корзина: {cartTotalCount}</Link>}
         {token && <Link to={"/favorites"}>Избранное</Link>}
         {user == "admin" && <Link to={"/admin"}>Админ</Link>}
-        <Link to={"/auth"}>Авторизация</Link>
+        <Link className="auth" to={"/auth"}>Авторизация</Link>
       </div>
 
       <div className="mainbar-mobile">
