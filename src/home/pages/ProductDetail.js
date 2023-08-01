@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Section from "../../shared/UIElements/Section";
 import { addProductToCart, cartActions } from "../../store/cart-slice";
@@ -20,6 +20,7 @@ const ProductDetail = (props) => {
   const { sendRequest } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
   const user = useSelector((state) => state.ui.user);
+  const history = useHistory();
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -42,22 +43,26 @@ const ProductDetail = (props) => {
 
   const addToCartHandler = async (e) => {
     e.preventDefault();
+
+    if (user.username == undefined) {
+      window.location.replace("/auth");
+    }
+
     try {
       await dispatch(addProductToCart(sendRequest, user, productId));
       await dispatch(cartActions.setCartChanged(true));
-    } catch (err) {
-      window.location.href = env.BASE_URL + "/auth";
-    }
+    } catch (err) {} 
   };
 
   const addToFavoritesIdsHandler = async (e) => {
     e.preventDefault();
+    if (user.username == undefined) {
+      window.location.replace("/auth");
+    }
     try {
       await dispatch(addToFavoritesIds(sendRequest, user, productId));
       await dispatch(favoritesActions.setFavoritesChanged(true));
-    } catch (err) {
-      window.location.href = env.BASE_URL + "/auth";
-    }
+    } catch (err) {} 
   };
 
   if (loadedProduct) {
