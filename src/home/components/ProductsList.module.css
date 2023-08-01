@@ -1,6 +1,6 @@
 .maingrid {
-  /* margin: 20px; */
-  margin: 5%;
+  margin: 20px;
+  /* margin: 5%; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1.2rem;
