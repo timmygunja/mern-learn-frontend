@@ -12,21 +12,17 @@ a {
 .content {
   padding: 5px;
   min-height: 35vw;
-  
-  /* background: -moz-linear-gradient(0deg, rgba(34,193,195,0.15) 0%, rgba(253,187,45,0.15) 100%);
-  background: -webkit-linear-gradient(0deg, rgba(34,193,195,0.15) 0%, rgba(253,187,45,0.15) 100%);
-  background: linear-gradient(0deg, rgba(34,193,195,0.15) 0%, rgba(253,187,45,0.15) 100%); */
-}
-
-@media screen and (max-width: 600px) {
-  .content {
-    min-height: 95vw;
-  }
 }
 
 @media screen and (max-width: 1200px) {
   .content {
     min-height: 95vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    min-height: 93vw;
   }
 }
 
