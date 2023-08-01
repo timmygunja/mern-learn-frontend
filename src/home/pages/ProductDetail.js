@@ -45,7 +45,9 @@ const ProductDetail = (props) => {
     try {
       await dispatch(addProductToCart(sendRequest, user, productId));
       await dispatch(cartActions.setCartChanged(true));
-    } catch (err) {}
+    } catch (err) {
+      window.location.href = env.BASE_URL + "/auth";
+    }
   };
 
   const addToFavoritesIdsHandler = async (e) => {
@@ -53,7 +55,9 @@ const ProductDetail = (props) => {
     try {
       await dispatch(addToFavoritesIds(sendRequest, user, productId));
       await dispatch(favoritesActions.setFavoritesChanged(true));
-    } catch (err) {}
+    } catch (err) {
+      window.location.href = env.BASE_URL + "/auth";
+    }
   };
 
   if (loadedProduct) {
