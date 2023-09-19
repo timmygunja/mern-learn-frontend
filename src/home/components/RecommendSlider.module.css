@@ -1,6 +1,6 @@
 .slider {
   /* width: 100vw; */
-  background-color: whitesmoke;
+  background-color: var(--secondary-color);
   display: grid;
   grid-template-areas:
     "toolbox"

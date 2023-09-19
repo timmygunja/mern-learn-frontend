@@ -3,6 +3,7 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import SearchBox from "./SearchBox";
 
 const NavBar = () => {
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
@@ -33,29 +34,45 @@ const NavBar = () => {
 
   return (
     <div className={"navbar"}>
-      <Link to="/">
+      <Link to="/" className="hard-centered">
         <div className={"logo"}>
           <div className={"logopic hard-centered"}>
-            {/* <img src={"airplane.svg"} alt="" /> */}
             <img src={"logo.png"} alt="" />
           </div>
 
-          <div className={"logotext"}>
-            <p>Планета</p>
-            <p>напитков</p> 
+          <div className={"logotext hard-centered"}>
+            <div>
+              <p>Планета</p>
+              <p>напитков</p>
+            </div>
+            <p></p>
           </div>
         </div>
       </Link>
 
       <div className={mainbarClass}>
-        {/* <Link to={"#"}>
-          <span>Сортировать</span>
+        {/* <SearchBox /> */}
+        <Link to={token ? "/cart" : "/auth"} className="cart hard-centered">
+          {/* Корзина: {cartTotalCount} */}
+          <img src="shopping-bag.png" />
+          <span>{cartTotalCount}</span>
         </Link>
-        <Link to={"#"}>По</Link> */}
-        {token && <Link to={"/cart"}>Корзина: {cartTotalCount}</Link>}
-        {token && <Link to={"/favorites"}>Избранное</Link>}
-        {user == "admin" && <Link to={"/admin"}>Админ</Link>}
-        <Link className="auth" to={"/auth"}>Авторизация</Link>
+        <Link
+          to={token ? "/favorites" : "/auth"}
+          className="favorites hard-centered"
+        >
+          {/* Избранное */}
+          <img src="heart.png" />
+        </Link>
+        {user == "admin" && (
+          <Link to={"/admin"} className="admin hard-centered">
+            Админ
+          </Link>
+        )}
+        <Link to={"/auth"} className="auth hard-centered">
+          {/* Авторизация */}
+          <img src="user.png" />
+        </Link>
       </div>
 
       <div className="mainbar-mobile">
@@ -64,24 +81,14 @@ const NavBar = () => {
         </div>
         <div className={menuContentClass}>
           <ul onClick={closeMenuHandler}>
-            {/* <li>
-              <Link to={"#"}>
-                <span>Сортировать</span>
+            <li>
+              <Link to={token ? "/cart" : "/auth"}>
+                Корзина: {cartTotalCount}
               </Link>
             </li>
             <li>
-              <Link to={"#"}>По</Link>
-            </li> */}
-            {token && (
-              <li>
-                <Link to={"/cart"}>Корзина: {cartTotalCount}</Link>
-              </li>
-            )}
-            {token && (
-              <li>
-                <Link to={"/favorites"}>Избранное</Link>
-              </li>
-            )}
+              <Link to={token ? "/favorites" : "/auth"}>Избранное</Link>
+            </li>
             {user == "admin" && (
               <li>
                 <Link to={"/admin"}>Админ</Link>
