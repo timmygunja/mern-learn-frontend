@@ -3,8 +3,8 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import SearchBox from "./SearchBox";
-import MobileMenuModal from "./MobileMenuModal";
+// import SearchBox from "./SearchBox";
+// import MobileMenuModal from "./MobileMenuModal";
 
 const NavBar = () => {
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
