@@ -1,6 +1,7 @@
 .navbar {
   position: fixed;
-  width: 100%;
+  /* width: 100%; */
+  width: 100vw;
   height: 70px;
   z-index: 1000;
   display: flex;
@@ -103,7 +104,7 @@
   }
 
   .mainbar-mobile {
-    display: block;
+    display: flex;
   }
 }
 
@@ -114,7 +115,7 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  padding: 0 25px;
+  padding: 0 1.65rem;
   z-index: 1000;
 }
 
@@ -160,7 +161,7 @@
   display: block;
   position: absolute;
   right: 0%;
-  top: max(5vw + 25px, 56px);
+  top: 70px;
   background-color: white;
   border-bottom: 2px solid #dadada;
   border-left: 2px solid #dadada;

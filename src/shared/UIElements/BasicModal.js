@@ -24,7 +24,7 @@ const style = {
   borderRadius: 10,
   boxShadow: 24,
   p: padding,
-  outline: "none"
+  outline: "none",
 };
 
 export default function BasicModal(props) {
@@ -44,7 +44,7 @@ export default function BasicModal(props) {
         }}
       >
         <Fade in={props.open}>
-          <Box sx={style}>{props.children}</Box>
+          <Box sx={props.style ? props.style : style}>{props.children}</Box>
         </Fade>
       </Modal>
     </div>

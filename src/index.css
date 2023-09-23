@@ -13,16 +13,8 @@
   --h12-font-size: calc(6px + 0.4vw);
 
   --main-color: white;
-  --primary-color: white;
+  --primary-color: rgb(250, 250, 250);
   --secondary-color: rgb(240, 240, 240);
-
-  /* --main-color: #99c9e1;
-  --primary-color: #294d61;
-  --secondary-color: #6da5c0;
-  --accent-main-color: #0f969f;
-  --accent-light-color: #0c7075;
-  --accent-dark-color: #072e33;
-  --accent-black-color: #05161a; */
 
   --text-light-color: #99c9e1;
   --text-dark-color: #072e33;

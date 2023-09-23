@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
 
         <div className={classes["info"]}>
-          <Link className={classes["bottom-content-link"]}>Каталог</Link>
+          {/* <Link className={classes["bottom-content-link"]}>Каталог</Link> */}
           <Link className={classes["bottom-content-link"]}>Правила пользования</Link>
         </div>
       </div>

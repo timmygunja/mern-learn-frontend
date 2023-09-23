@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import SearchBox from "./SearchBox";
+import MobileMenuModal from "./MobileMenuModal";
 
 const NavBar = () => {
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
@@ -31,6 +32,10 @@ const NavBar = () => {
   if (user == "admin") {
     mainbarClass += " admin";
   }
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpen = () => setModalOpen(true);
+  const handleClose = () => setModalOpen(false);
 
   return (
     <div className={"navbar"}>
@@ -75,8 +80,11 @@ const NavBar = () => {
         </Link>
       </div>
 
+      {/* <MobileMenuModal open={modalOpen} onClose={handleClose} /> */}
+
       <div className="mainbar-mobile">
         <div className={menuClass} onClick={menuHandler}>
+        {/* <div className={menuClass} onClick={handleOpen}> */}
           <img src={"menu-mobile.svg"} alt="" />
         </div>
         <div className={menuContentClass}>
