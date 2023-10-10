@@ -1,6 +1,6 @@
 import React from "react";
 import { Backdrop, Box, Fade, Modal, styled } from "@material-ui/core";
-import classes from "./BasicModal.module.css";
+// import classes from "./BasicModal.module.css";
 
 const screenWidth = window.innerWidth;
 let width = undefined;

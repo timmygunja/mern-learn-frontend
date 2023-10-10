@@ -4,38 +4,44 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 // import SearchBox from "./SearchBox";
-// import MobileMenuModal from "./MobileMenuModal";
+import MobileMenuModal from "./MobileMenuModal";
 
 const NavBar = () => {
   const cartTotalCount = useSelector((state) => state.cart.totalCount);
   const token = useSelector((state) => state.ui.user.token);
   const user = useSelector((state) => state.ui.user.username);
   const [menuClass, setMenuClass] = useState("menu");
-  const [menuContentClass, setMenuContentClass] = useState("menu-content");
+  // const [menuContentClass, setMenuContentClass] = useState("menu-content");
 
-  const menuHandler = () => {
-    menuClass == "menu" ? setMenuClass("menu-open") : setMenuClass("menu");
-    menuContentClass == "menu-content"
-      ? setMenuContentClass("menu-content-active")
-      : setMenuContentClass("menu-content");
-  };
+  // const menuHandler = () => {
+  //   menuClass == "menu" ? setMenuClass("menu-open") : setMenuClass("menu");
+  //   menuContentClass == "menu-content"
+  //     ? setMenuContentClass("menu-content-active")
+  //     : setMenuContentClass("menu-content");
+  // };
 
-  const closeMenuHandler = () => {
-    setMenuClass("menu");
-    setMenuContentClass("menu-content");
-  };
+  // const closeMenuHandler = () => {
+  //   setMenuClass("menu");
+  //   setMenuContentClass("menu-content");
+  // };
 
-  let mainbarClass = "mainbar";
-  if (token) {
-    mainbarClass += " logged";
-  }
-  if (user == "admin") {
-    mainbarClass += " admin";
-  }
+  // let mainbarClass = "mainbar";
+  // if (token) {
+  //   mainbarClass += " logged";
+  // }
+  // if (user == "admin") {
+  //   mainbarClass += " admin";
+  // }
 
   const [modalOpen, setModalOpen] = useState(false);
-  const handleOpen = () => setModalOpen(true);
-  const handleClose = () => setModalOpen(false);
+  const handleOpen = () => {
+    setMenuClass("menu-open");
+    setModalOpen(true);
+  };
+  const handleClose = () => {
+    setMenuClass("menu");
+    setModalOpen(false);
+  };
 
   return (
     <div className={"navbar"}>
@@ -55,10 +61,9 @@ const NavBar = () => {
         </div>
       </Link>
 
-      <div className={mainbarClass}>
+      <div className="mainbar">
         {/* <SearchBox /> */}
         <Link to={token ? "/cart" : "/auth"} className="cart hard-centered">
-          {/* Корзина: {cartTotalCount} */}
           <img src="shopping-bag.png" />
           <span>{cartTotalCount}</span>
         </Link>
@@ -66,7 +71,6 @@ const NavBar = () => {
           to={token ? "/favorites" : "/auth"}
           className="favorites hard-centered"
         >
-          {/* Избранное */}
           <img src="heart.png" />
         </Link>
         {user == "admin" && (
@@ -75,19 +79,16 @@ const NavBar = () => {
           </Link>
         )}
         <Link to={"/auth"} className="auth hard-centered">
-          {/* Авторизация */}
           <img src="user.png" />
         </Link>
       </div>
 
-      {/* <MobileMenuModal open={modalOpen} onClose={handleClose} /> */}
-
       <div className="mainbar-mobile">
-        <div className={menuClass} onClick={menuHandler}>
-        {/* <div className={menuClass} onClick={handleOpen}> */}
+        <div className={menuClass} onClick={handleOpen}>
           <img src={"menu-mobile.svg"} alt="" />
         </div>
-        <div className={menuContentClass}>
+        <MobileMenuModal open={modalOpen} onClose={handleClose} />
+        {/* <div className={menuContentClass}>
           <ul onClick={closeMenuHandler}>
             <li>
               <Link to={token ? "/cart" : "/auth"}>
@@ -106,7 +107,7 @@ const NavBar = () => {
               <Link to={"/auth"}>Авторизация</Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

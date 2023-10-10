@@ -1,0 +1,88 @@
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  /* background-color: rgba(255, 255, 255, 0.1); */
+
+  /* transition: 3s all linear; */
+  /* -webkit-transition: 1s all linear;
+  -moz-transition: 1s all linear;
+  -ms-transition: 1s all linear;
+  -o-transition: 1s all linear; */
+  /* color: white; */
+  /* background-color: none; */
+}
+
+.modal-container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin: 0 4rem;
+}
+
+.modal-container img {
+  width: 40px;
+  margin-right: 1rem;
+}
+
+.modal-container-link {
+  display: flex;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  margin: 0.5rem 0;
+
+  animation: fadeIn 0.3s linear forwards;
+}
+
+.modal-container-link:nth-child(1) {
+  animation: popUp 0.3s linear forwards 0.1s;
+}
+
+.modal-container-link:nth-child(2) {
+  animation: popUp 0.3s linear forwards 0.05s;
+}
+
+.modal-container-link:nth-child(3) {
+  animation: popUp 0.3s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes popUp {
+  0% {
+    transform: translateY(25%);
+    opacity: 0.1;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.link-cart,
+.link-favorites,
+.link-auth {
+  display: flex;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: var(--h5-font-size);
+  letter-spacing: 1px;
+  padding: 0.8rem 1.2rem;
+}
+
+.link-cart span {
+  font-size: var(--h5-font-size);
+}
