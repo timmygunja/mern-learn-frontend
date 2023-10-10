@@ -31,6 +31,8 @@ const MobileMenuModal = (props) => {
       open={props.open}
       onClose={props.onClose}
       closeAfterTransition
+      disableAutoFocus={true}
+      disableEnforceFocus={true}
     >
       <div className={classes["modal-container"]}>
         <div

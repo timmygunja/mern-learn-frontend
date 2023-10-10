@@ -35,10 +35,10 @@
   border-radius: 12px;
   margin: 0.5rem 0;
 
-  animation: fadeIn 0.3s linear forwards;
+  animation: popUp 0.25s linear forwards;
 }
 
-.modal-container-link:nth-child(1) {
+/* .modal-container-link:nth-child(1) {
   animation: popUp 0.3s linear forwards 0.1s;
 }
 
@@ -48,17 +48,7 @@
 
 .modal-container-link:nth-child(3) {
   animation: popUp 0.3s linear forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
+} */
 
 @keyframes popUp {
   0% {
