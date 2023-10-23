@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -71,16 +71,16 @@ function App() {
               </div>
             )}
           </Route>
-          {isLogged && (
-            <Route exact path="/cart">
-              <Cart />
-            </Route>
-          )}
-          {isLogged && (
-            <Route exact path="/favorites">
-              <Favourite />
-            </Route>
-          )}
+          {/* {isLogged && ( */}
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+          {/* )} */}
+          {/* {isLogged && ( */}
+          <Route exact path="/favorites">
+            <Favourite />
+          </Route>
+          {/* )} */}
           <Redirect to="/"></Redirect>
         </Switch>
       </div>

@@ -9,8 +9,8 @@
   --h8-font-size: calc(12px + 0.8vw);
   --h9-font-size: calc(10px + 0.7vw);
   --h10-font-size: calc(8px + 0.65vw);
-  --h11-font-size: calc(7px + 0.5vw);
-  --h12-font-size: calc(6px + 0.4vw);
+  --h11-font-size: calc(7px + 0.45vw);
+  --h12-font-size: calc(6px + 0.3vw);
 
   --main-color: white;
   --primary-color: rgb(250, 250, 250);
@@ -32,8 +32,8 @@
     --h8-font-size: calc(10px + 2vw);
     --h9-font-size: calc(8px + 1.8vw);
     --h10-font-size: calc(6px + 1.7vw);
-    --h11-font-size: calc(5px + 1.45vw);
-    --h12-font-size: calc(4px + 1.3vw);
+    --h11-font-size: calc(5px + 1.35vw);
+    --h12-font-size: calc(4px + 1.2vw);
   }
 }
 

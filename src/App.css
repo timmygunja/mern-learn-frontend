@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +15,16 @@ a {
   padding: 5px;
   padding-top: 70px;
   min-height: 35vw;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+  /* background-image: linear-gradient(
+      rgba(100, 148, 237, 0.15),
+      rgba(221, 160, 221, 0.15),
+      rgba(230, 86, 0, 0.15)
+    ),
+    url("/public/foam.jpg"); */
+
+  /* background-image: url("/public/foam.jpg"); */
+  font-family: "Montserrat", sans-serif;
 }
 
 @media screen and (max-width: 1200px) {
