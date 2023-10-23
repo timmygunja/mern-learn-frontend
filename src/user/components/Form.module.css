@@ -6,7 +6,8 @@
   overflow: hidden;
   width: 70%;
   min-height: 480px;
-  margin: 2rem 0;
+  margin: 5rem 0;
+  will-change: transform; /* Fixes border flapping in Safari*/
 }
 
 h1 {
@@ -198,6 +199,9 @@ h1 {
 @media screen and (max-width: 600px) {
   .container {
     width: 100%;
+    margin: 0.2rem 0;
+    border-radius: calc(15px + 0.2rem);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
   }
 
   h1 {
