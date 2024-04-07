@@ -14,7 +14,7 @@
 
   --main-color: white;
   --primary-color: rgb(250, 250, 250);
-  --secondary-color: rgb(240, 240, 240);
+  --secondary-color: rgba(235, 235, 235, 0.85);
 
   --text-light-color: #99c9e1;
   --text-dark-color: #072e33;
