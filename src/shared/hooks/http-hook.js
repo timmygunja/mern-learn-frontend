@@ -55,6 +55,9 @@ export const useHttpClient = () => {
         dispatch(uiActions.setIsLoading(false));
         return responseData;
       } catch (err) {
+        if (err.name === "AbortError") {
+          return console.log("AbortError: Fetch request aborted");
+        }
         dispatch(uiActions.setIsLoading(false));
         dispatch(uiActions.setError(err.message));
 
