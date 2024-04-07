@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import RecommendSliderItem from "./RecommendSliderItem";
 import classes from "./RecommendSliderList.module.css";
 
@@ -22,6 +22,7 @@ const RecommendSliderList = (props) => {
             price={product.price}
             image={product.image}
             isFavorite={isFavorite}
+            product={product}
           />
         );
       })}

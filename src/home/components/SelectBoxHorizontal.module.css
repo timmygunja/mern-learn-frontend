@@ -4,33 +4,6 @@
   font-size: var(--h10-font-size);
 }
 
-.select-option,
-.select-option-hidden,
-.select-option-chosen {
-  /* opacity: 100; */
-  /* height: 100%; */
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  text-align: center;
-  background: none;
-  background-color: white;
-  padding: 10px;
-  margin: 0;
-  margin-right: 10px;
-}
-
-.select-option {
-  /* For some odd reason doesn't work on Safari */
-  /* Tried fixing with prefix - didn't work either */
-  animation: slidein 0.7s;
-  transition: border 200ms ease-out;
-}
-
-.select-option:hover {
-  cursor: pointer;
-  border: 2px solid rgba(0, 0, 0, 0.7);
-}
-
 @keyframes slidein {
   0% {
     opacity: 0;
@@ -51,15 +24,6 @@
     -webkit-opacity: 1; /* WebKit browser e.g. Safari */
     filter: alpha(opacity=100); /* For IE8 and earlier */
   }
-}
-
-.select-option-hidden {
-  pointer-events: none;
-  opacity: 0;
-  -moz-opacity: 0; /* Firefox and Mozilla browsers */
-  -webkit-opacity: 0; /* WebKit browser e.g. Safari */
-  filter: alpha(opacity=0); /* For IE8 and earlier */
-  animation: slideout 0.7s;
 }
 
 @keyframes slideout {
@@ -90,6 +54,47 @@
     -moz-transform: translateX(-500%);
     -o-transform: translateX(-500%);
   }
+}
+
+.select-option,
+.select-option-hidden,
+.select-option-chosen {
+  /* opacity: 100; */
+  /* height: 100%; */
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  text-align: center;
+  background: none;
+  background-color: white;
+  padding: 10px;
+  margin: 0;
+  margin-right: 10px;
+  will-change: transform, opacity; /* Prevents flicker in Safari */
+}
+
+.select-option {
+  /* For some odd reason doesn't work on Safari */
+  /* Tried fixing with prefix - didn't work either */
+  animation: slidein 0.7s;
+  transition: border 200ms ease-out;
+  /* will-change: transform, opacity; Prevents flicker in Safari */
+  /* safari workaround that works only on mounting wtf */
+  /* -webkit-animation: slideout 0.7s reverse;  */
+}
+
+.select-option:hover {
+  cursor: pointer;
+  border: 2px solid rgba(0, 0, 0, 0.7);
+}
+
+.select-option-hidden {
+  pointer-events: none;
+  opacity: 0;
+  -moz-opacity: 0; /* Firefox and Mozilla browsers */
+  -webkit-opacity: 0; /* WebKit browser e.g. Safari */
+  filter: alpha(opacity=0); /* For IE8 and earlier */
+  animation: slideout 0.7s;
+  will-change: transform, opacity; /* Prevents flicker in Safari */
 }
 
 .select-option-chosen {

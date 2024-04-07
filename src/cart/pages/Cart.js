@@ -43,9 +43,13 @@ const Cart = () => {
   //   loadCartItems();
   // }, [sendRequest, cartTotalCount]);
 
-  useEffect(async () => {
-    await dispatch(loadCartItems(sendRequest, user));
-    await dispatch(cartActions.setCartChanged(false));
+  useEffect(() => {
+    const loadCartItems = async () => {
+      await dispatch(loadCartItems(sendRequest, user));
+    };
+
+    user.isLogged && loadCartItems();
+    dispatch(cartActions.setCartChanged(false));
   }, [cartChanged]);
 
   // const deleteItemHandler = (itemId) => {
@@ -77,11 +81,9 @@ const Cart = () => {
             )}
           </div>
           <div className={classes["sidebar"]}>
-            {loadedCartItems && loadedCartItems.length === 0 && (
+            {loadedCartItems.length === 0 ? (
               <EmptyPaycard />
-            )}
-            {loadedCartItems && totalPrice && (
-              // <Paycard cartItems={loadedCartItems} totalPrice={totalPrice} />
+            ) : (
               <Paycard cartItems={loadedCartItems} />
             )}
           </div>

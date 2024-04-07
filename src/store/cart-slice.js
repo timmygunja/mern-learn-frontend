@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import produce from "immer";
 import { favoritesActions } from "./favorites-slice";
 import env from "../env";
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    loadedCartItems: undefined,
-    totalPrice: undefined,
+    loadedCartItems: [],
+    totalPrice: 0,
     totalCount: 0,
     changed: false,
   },
@@ -23,11 +24,39 @@ const cartSlice = createSlice({
     setTotalCartPrice(state, action) {
       state.totalPrice = action.payload;
     },
-    addToCart(state) {
+    addToCartTotalCount(state) {
       state.totalCount += 1;
     },
-    removeFromCart(state) {
+    removeFromCartTotalCount(state) {
       state.totalCount -= 1;
+    },
+    unloggedAddToCart(state, action) {
+      const existingItem = state.loadedCartItems.find(
+        (cartItem) => cartItem.product.id === action.payload.product.id
+      );
+
+      state.totalPrice += action.payload.product.price;
+
+      if (!existingItem) {
+        state.loadedCartItems.push({
+          product: action.payload.product,
+          quantity: 1,
+        });
+        return;
+      }
+
+      existingItem.quantity += 1;
+    },
+    unloggedDeleteFromCart(state, action) {
+      state.totalPrice -= action.payload.product.price;
+
+      action.payload.product.quantity > 1
+        ? (state.loadedCartItems.find(
+            (cartItem) => cartItem.product.id === action.payload.product.id
+          ).quantity -= 1)
+        : (state.loadedCartItems = state.loadedCartItems.filter(
+            (cartItem) => cartItem.product.id !== action.payload.product.id
+          ));
     },
   },
 });
@@ -60,8 +89,6 @@ export const loadCartItems = (sendRequest, user) => {
           Username: user.username,
         }
       );
-
-      // console.log("here", responseData.cartItems);
 
       responseData.cartItems.length > 0
         ? dispatch(cartActions.setLoadedCartItems(responseData.cartItems))
@@ -105,7 +132,7 @@ export const increaseCartItemQuantity = (sendRequest, user, productId) => {
         }
       );
 
-      dispatch(cartActions.addToCart());
+      dispatch(cartActions.addToCartTotalCount());
       dispatch(cartActions.setCartChanged(true));
     } catch (err) {}
   };
@@ -125,7 +152,7 @@ export const decreaseCartItemQuantity = (sendRequest, user, cartItemId) => {
         }
       );
 
-      dispatch(cartActions.removeFromCart());
+      dispatch(cartActions.removeFromCartTotalCount());
       dispatch(cartActions.setCartChanged(true));
     } catch (err) {}
   };
@@ -145,7 +172,7 @@ export const addProductToCart = (sendRequest, user, productId) => {
         }
       );
 
-      dispatch(cartActions.addToCart());
+      dispatch(cartActions.addToCartTotalCount());
       dispatch(cartActions.setCartChanged(true));
     } catch (err) {}
   };

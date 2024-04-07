@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -7,6 +7,7 @@ import {
   deleteFromFavoritesIds,
   favoritesActions,
 } from "../../store/favorites-slice";
+import { cartActions } from "../../store/cart-slice";
 import classes from "./FavItem.module.css";
 import env from "../../env";
 
@@ -32,19 +33,23 @@ const FavItem = (props) => {
 
   const removeFromFavoritesHandler = async (e) => {
     e.preventDefault();
-    try {
-      await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
-      await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
-      await dispatch(favoritesActions.setFavoritesChanged(true));
-    } catch (err) {}
+    user.isLogged
+      ? await dispatch(deleteFromFavoritesIds(sendRequest, user, id))
+      : dispatch(favoritesActions.unloggedDeleteFromFavorites(id));
+
+    dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
   };
 
   const addToCartHandler = async (e) => {
     e.preventDefault();
-    try {
-      await dispatch(addProductToCart(sendRequest, user, id));
-      await dispatch(favoritesActions.setFavoritesChanged(true));
-    } catch (err) {}
+    user.isLogged
+      ? await dispatch(addProductToCart(sendRequest, user, id))
+      : dispatch(cartActions.unloggedAddToCart({ product: props.item }));
+
+    dispatch(cartActions.addToCartTotalCount());
+    dispatch(cartActions.setCartChanged(true));
+
+    // dispatch(favoritesActions.setFavoritesChanged(true));
   };
 
   return (

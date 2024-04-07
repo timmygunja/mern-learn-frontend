@@ -39,7 +39,7 @@ const MobileMenuModal = (props) => {
           className={classes["modal-container-link"]}
           onClick={props.onClose}
         >
-          <Link to={token ? "/cart" : "/auth"} className={classes["link-cart"]}>
+          <Link to={"/cart"} className={classes["link-cart"]}>
             <img src="shopping-bag.png" />
             {/* <span>{cartTotalCount}</span> */}
             <p className="hard-centered">Корзина</p>
@@ -50,10 +50,7 @@ const MobileMenuModal = (props) => {
           className={classes["modal-container-link"]}
           onClick={props.onClose}
         >
-          <Link
-            to={token ? "/favorites" : "/auth"}
-            className={classes["link-favorites"]}
-          >
+          <Link to={"/favorites"} className={classes["link-favorites"]}>
             <img src="heart.png" />
             <p className="hard-centered">Избранное</p>
           </Link>

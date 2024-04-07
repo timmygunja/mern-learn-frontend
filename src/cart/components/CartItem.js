@@ -2,11 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import {
-  cartActions,
-  decreaseCartItemQuantity,
-  increaseCartItemQuantity,
-} from "../../store/cart-slice";
+import { cartActions } from "../../store/cart-slice";
 import classes from "./CartItem.module.css";
 import env from "../../env";
 
@@ -27,7 +23,7 @@ const CartItem = (props) => {
   //       Username: user.username,
   //     });
 
-  //     dispatch(cartActions.addToCart());
+  //     dispatch(cartActions.addToCartTotalCount());
   //   } catch (err) {}
   // };
   //
@@ -45,7 +41,7 @@ const CartItem = (props) => {
   //       }
   //     );
 
-  //     dispatch(cartActions.removeFromCart());
+  //     dispatch(cartActions.removeFromCartTotalCount());
   //   } catch (err) {}
 
   //   if (quantity <= 1) {
@@ -55,18 +51,26 @@ const CartItem = (props) => {
 
   const increaseQuantity = async (event) => {
     event.preventDefault();
+    user.isLogged
+      ? await dispatch(
+          cartActions.increaseCartItemQuantity(sendRequest, user, id)
+        )
+      : dispatch(cartActions.unloggedAddToCart({ product: props.item }));
 
-    try {
-      await dispatch(increaseCartItemQuantity(sendRequest, user, id));
-    } catch (err) {}
+    dispatch(cartActions.addToCartTotalCount());
+    dispatch(cartActions.setCartChanged(true));
   };
 
   const decreaseQuantity = async (event) => {
     event.preventDefault();
+    user.isLogged
+      ? await dispatch(
+          cartActions.decreaseCartItemQuantity(sendRequest, user, id)
+        )
+      : dispatch(cartActions.unloggedDeleteFromCart({ product: props.item }));
 
-    try {
-      await dispatch(decreaseCartItemQuantity(sendRequest, user, cartItemId));
-    } catch (err) {}
+    dispatch(cartActions.removeFromCartTotalCount());
+    dispatch(cartActions.setCartChanged(true));
   };
 
   return (

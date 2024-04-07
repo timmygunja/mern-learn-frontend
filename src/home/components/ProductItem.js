@@ -17,26 +17,31 @@ const ProductItem = (props) => {
   const dispatch = useDispatch();
   const { sendRequest } = useHttpClient();
   const user = useSelector((state) => state.ui.user);
-  const { id, name, firm, price, image, isFavorite } = props;
+  const { id, name, firm, price, image, isFavorite, product } = props;
   const [likeClass, setLikeClass] = useState(
     isFavorite ? classes["prod-like-active"] : classes["prod-like"]
   );
 
   const onLikeHandler = async (event) => {
     event.preventDefault();
-    if (user.username) {
+    
+    try {
       if (!isFavorite) {
-        await dispatch(addToFavoritesIds(sendRequest, user, id));
+        user.isLogged
+          ? await dispatch(addToFavoritesIds(sendRequest, user, id))
+          : dispatch(favoritesActions.unloggedAddToFavorites(product));
+
         await dispatch(favoritesActions.addToFavoritesIdsReducer(id));
         setLikeClass(classes["prod-like-active"]);
       } else {
-        await dispatch(deleteFromFavoritesIds(sendRequest, user, id));
+        user.isLogged
+          ? await dispatch(deleteFromFavoritesIds(sendRequest, user, id))
+          : dispatch(favoritesActions.unloggedDeleteFromFavorites(id));
+
         await dispatch(favoritesActions.deleteFromFavoritesIdsReducer(id));
         setLikeClass(classes["prod-like"]);
       }
-    } else {
-      history.push("/auth");
-    }
+    } catch (error) {}
   };
 
   return (

@@ -20,7 +20,15 @@ const ProductDetail = (props) => {
   const { sendRequest } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState(null);
   const user = useSelector((state) => state.ui.user);
-  const history = useHistory();
+  const loadedCartItems = useSelector((state) => state.cart.loadedCartItems);
+  const loadedFavoritesIds = useSelector(
+    (state) => state.favorites.loadedFavoritesIds
+  );
+  // const loadedCartItemsIds = loadedCartItems.map((item) => {
+  //   return item.product.id;
+  // });
+
+  // const history = useHistory();
 
   useEffect(() => {
     // async lower because useEffect async is a bad practice
@@ -44,25 +52,34 @@ const ProductDetail = (props) => {
   const addToCartHandler = async (e) => {
     e.preventDefault();
 
-    if (user.username == undefined) {
-      window.location.replace("/auth");
-    }
-
     try {
-      await dispatch(addProductToCart(sendRequest, user, productId));
-      await dispatch(cartActions.setCartChanged(true));
-    } catch (err) {} 
+      if (user.isLogged) {const user = useSelector((state) => state.ui.user);
+        await dispatch(addProductToCart(sendRequest, user, productId));
+      } else {
+        dispatch(
+          cartActions.unloggedAddToCart({
+            product: loadedProduct,
+          })
+        );
+
+        dispatch(cartActions.addToCartTotalCount());
+        dispatch(cartActions.setCartChanged(true));
+      }
+    } catch (err) {}
   };
 
   const addToFavoritesIdsHandler = async (e) => {
     e.preventDefault();
-    if (user.username == undefined) {
-      window.location.replace("/auth");
-    }
+
     try {
-      await dispatch(addToFavoritesIds(sendRequest, user, productId));
-      await dispatch(favoritesActions.setFavoritesChanged(true));
-    } catch (err) {} 
+      if (!loadedFavoritesIds.includes(productId)) {
+        user.isLogged
+          ? await dispatch(addToFavoritesIds(sendRequest, user, productId))
+          : dispatch(favoritesActions.unloggedAddToFavorites(loadedProduct));
+
+        await dispatch(favoritesActions.addToFavoritesIdsReducer(productId));
+      }
+    } catch (err) {}
   };
 
   if (loadedProduct) {

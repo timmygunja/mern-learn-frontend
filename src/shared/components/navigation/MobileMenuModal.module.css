@@ -76,3 +76,7 @@
 .link-cart span {
   font-size: var(--h5-font-size);
 }
+
+.link-admin {
+  padding: 0.5rem;
+}

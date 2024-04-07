@@ -6,11 +6,17 @@ const screenWidth = window.innerWidth;
 let width = undefined;
 let padding = 3;
 
-if (screenWidth < 700) {
-  width = screenWidth - screenWidth / 3;
-} else if (screenWidth < 500) {
-  width = screenWidth - screenWidth / 10;
+if (screenWidth < 400) {
+  width = screenWidth * 0.8;
+} else if (screenWidth < 600) {
+  width = screenWidth * 0.75;
   padding = 1;
+} else if (screenWidth < 800) {
+  width = screenWidth * 0.7;
+} else if (screenWidth < 1000) {
+  width = screenWidth * 0.6;
+} else if (screenWidth < 1200) {
+  width = screenWidth * 0.5;
 }
 
 const style = {

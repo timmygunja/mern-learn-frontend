@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -37,8 +37,10 @@ const Favorites = () => {
   // }, [sendRequest]);
 
   useEffect(async () => {
-    await dispatch(loadFavorites(sendRequest, user));
-    dispatch(favoritesActions.setFavoritesChanged(false));
+    if (user.isLogged) {
+      await dispatch(loadFavorites(sendRequest, user));
+      await dispatch(favoritesActions.setFavoritesChanged(false));
+    }
   }, [favoritesChanged]);
 
   // const deleteItemHandler = (itemId) => {

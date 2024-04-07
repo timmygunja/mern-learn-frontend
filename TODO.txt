@@ -8,7 +8,7 @@
 // 8) complete cart page, fix cart items' quantity management
 9) fix edit product functionality
 10) make single configurable modal components
-11)
+11) problems with error modals on close
 12)
 13)
 14) translate project to TypeScript

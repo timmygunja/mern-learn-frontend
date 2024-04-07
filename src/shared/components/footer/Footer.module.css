@@ -6,14 +6,21 @@
     "bottomcontent";
   grid-gap: 20px;
   background-color: rgba(0, 0, 0, 0.9);
+  /* background: linear-gradient(to bottom, #cc5333, #23074d); */
   color: rgba(220, 220, 220, 0.8);
   letter-spacing: 1px;
   font-family: "Montesserat", sans-serif;
+
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
 }
+
+
 
 .top-content {
   grid-area: topcontent;
-  padding: 30px 12%;
+  padding: 2.5rem 12%;
+  padding-top: 3.4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "help about";

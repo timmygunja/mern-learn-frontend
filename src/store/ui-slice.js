@@ -14,9 +14,9 @@ const uiSlice = createSlice({
     },
   },
   reducers: {
-    setReadyToTender(state, action) {
-      state.isLoading = action.payload;
-    },
+    // setReadyToRender(state, action) {
+    //   state.isLoading = action.payload;
+    // },
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },

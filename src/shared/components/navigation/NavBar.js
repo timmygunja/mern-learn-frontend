@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className={"navbar"}>
+    <div className="navbar">
       <Link to="/" className="hard-centered">
         <div className={"logo"}>
           <div className={"logopic hard-centered"}>
@@ -52,9 +52,17 @@ const NavBar = () => {
           </div>
 
           <div className={"logotext hard-centered"}>
-            <div>
-              <p>Планета</p>
-              <p>напитков</p>
+            <div className={"logotext-content"}>
+              <div className={"logotext-content-one"}>
+                <p>Планета</p>
+                <p>напитков</p>
+              </div>
+              <div className={"logotext-content-two-container"}>
+                <div className={"logotext-content-two"}>
+                  <p>Планета</p>
+                  <p>напитков</p>
+                </div>
+              </div>
             </div>
             <p></p>
           </div>
@@ -63,14 +71,11 @@ const NavBar = () => {
 
       <div className="mainbar">
         {/* <SearchBox /> */}
-        <Link to={token ? "/cart" : "/auth"} className="cart hard-centered">
+        <Link to={"/cart"} className="cart hard-centered">
           <img src="shopping-bag.png" />
           <span>{cartTotalCount}</span>
         </Link>
-        <Link
-          to={token ? "/favorites" : "/auth"}
-          className="favorites hard-centered"
-        >
+        <Link to={"/favorites"} className="favorites hard-centered">
           <img src="heart.png" />
         </Link>
         {user == "admin" && (

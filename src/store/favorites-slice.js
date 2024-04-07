@@ -4,8 +4,8 @@ import env from "../env";
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState: {
-    loadedFavorites: undefined,
-    loadedFavoritesIds: undefined,
+    loadedFavorites: [],
+    loadedFavoritesIds: [],
     changed: false,
   },
   reducers: {
@@ -25,6 +25,14 @@ const favoritesSlice = createSlice({
     deleteFromFavoritesIdsReducer(state, action) {
       state.loadedFavoritesIds = state.loadedFavoritesIds.filter(
         (id) => id !== action.payload
+      );
+    },
+    unloggedAddToFavorites(state, action) {
+      state.loadedFavorites = [...state.loadedFavorites, action.payload];
+    },
+    unloggedDeleteFromFavorites(state, action) {
+      state.loadedFavorites = state.loadedFavorites.filter(
+        (product) => product.id !== action.payload
       );
     },
   },

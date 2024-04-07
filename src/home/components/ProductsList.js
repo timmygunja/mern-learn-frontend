@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import classes from "./ProductsList.module.css";
 import ProductItem from "./ProductItem";
 
@@ -24,6 +24,7 @@ const ProductsList = (props) => {
             image3={product.image3}
             image4={product.image4}
             isFavorite={isFavorite}
+            product={product}
           />
         );
       })}
