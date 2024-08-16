@@ -1,4 +1,5 @@
 .product {
+  height: 30rem;
   background-color: rgba(255, 255, 255, 0.9);
   justify-content: center;
   text-align: center;
@@ -6,7 +7,7 @@
   grid-template-areas:
     "prod-pic"
     "prod-text";
-    grid-gap: 1%;
+  grid-gap: 1%;
   /* grid-template-rows: 80% 20%; */
   /* grid-template-rows: 70% 30%; */
   grid-template-rows: calc(83% - 1.1vw) calc(17% + 1.1vw);
@@ -31,9 +32,9 @@
 }
 
 .prod-pic img {
-  max-width: 100%;
-  max-height: 100%;
-  /* width: 100%; */
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 
   border-radius: 16px;
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
@@ -126,4 +127,11 @@
 .prod-like-numb {
   background: rgb(155, 109, 121);
   color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .product {
+    height: 20rem;
+    grid-template-rows: calc(79% - 1.1vw) calc(21% + 1.1vw);
+  }
 }
